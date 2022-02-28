@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 26, 22, 12:53:18 AM
+    Author     : Admin
+*/
+
+.about-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    height: 45rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 95rem;   
+}
+
+.about-section .about-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    height: 100%;
+    width: 95%;        
+}
+
+.about-section .about-container .about-panel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.about-section .about-container .about-panel .about-icon{
+    align-items: center; 
+    background: var(--brown2);
+    border-radius: 50%;
+    color: white;
+    display:flex;
+    font-size: 48px;
+    height: 70px;
+    justify-content: center;
+    width: 70px;
+    padding: 12px;
+    margin-right: 20px;
+}
+
+.about-section .about-container .about-panel .about-text h2{
+    font-family: var(--font3);
+    font-size: 1.5rem; 
+    padding: 20px 0 15px 0;
+}
+
+
+.about-section .about-container .about-panel .about-text{
+    color: var(--brown2);
+    font-family: "Helvetica";
+    font-size: 1.2rem; 
+    text-align: justify;
+}
+

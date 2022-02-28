@@ -1,0 +1,127 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 28, 22, 1:32:26 AM
+    Author     : Admin
+*/
+
+.login-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    height: 45rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50rem; 
+    box-shadow: 20px 20px var(--brown1);
+}
+
+.login-section .login-container{
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    margin: 30px auto;
+    width: 95%;
+}
+
+.login-section .login-container h2{
+    color: var(--brown2);
+    font-family: var(--font3);
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-section .login-container h3{
+    color: var(--brown2);
+    font-family: var(--font2);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-section .login-container a{
+   color: var(--brown4);
+   font-family: var(--font2);
+   font-size: 1.6rem;
+}
+
+.login-section .login-container .input-container{
+    width: 60%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 3rem 0;
+}
+
+.login-section .login-container .input-container label{
+    color: var(--brown2);
+    font-family: var(--font2);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    
+}
+
+
+.login-section .login-container .input-container .input{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--grey1);
+    border: none;
+    border-radius: 10px;
+    height: 5rem;
+    margin-bottom: 2rem;
+
+}
+
+.login-section .login-container .input-container .input .input-icon{
+    position: absolute;
+    margin-left: 20px;
+    font-size: 36px;
+       
+}
+
+
+.login-section .login-container .input-container .input input{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-family: var(--font1);
+    height: 5rem;
+    width: 100%; 
+    padding: 20px 70px;
+   
+}
+
+.login-section .login-container .input-container .input .psw-show{
+    position: absolute;
+    left: 85%;
+    cursor: pointer;
+    font-size: 36px;
+}
+
+.login-section .login-container  button{
+   background: var(--brown1);
+   border: none;
+   border-radius: 10px;
+   color: #ffffff;
+   font-family: var(--font2);
+   font-size: 3rem;
+   height: 5rem;
+   margin-bottom: 20px;
+   width: 60%;
+}

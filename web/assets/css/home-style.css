@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 25, 22, 2:15:17 PM
+    Author     : Admin
+*/
+section{
+    width: 95rem;
+    margin: auto;
+}
+
+.home-section .home-header{
+    display: flex;
+    height: 40rem;
+    justify-content: center;
+}
+
+.home-section .home-header .home-logo{
+    height: 50rem;
+    width: 40rem;
+}
+
+.home-section .home-header .home-title{
+    margin-top: 15rem;
+    width: 100%;
+}
+
+.home-section .home-header .home-title h2{
+    font-family: var(--font4);
+    color: #E13365;
+    font-size: 8rem;
+}
+
+.home-section .home-header .home-title h3{
+    font-family: var(--font2);
+    font-size: 4rem;
+    font-weight: 100;
+}
+
+.home-section  .home-sub {
+    margin-left: 10rem;
+}
+
+.home-section  .home-sub h5{
+    font-family: var(--font2);
+    font-size: 3rem;
+}
+
+.home-section .home-sub button{
+    align-items: center;
+    background: #AE9279;
+    border: 1px solid #AE9279;
+    border-radius: 16px;
+    color: white;
+    cursor: pointer;
+    font-family: var(--font2);
+    font-size: 3rem;
+    height: 5rem;
+    margin-top: 20px;
+    width: 20rem;
+    
+}

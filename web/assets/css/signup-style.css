@@ -1,0 +1,128 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 28, 22, 1:32:26 AM
+    Author     : Admin
+*/
+
+.signup-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    height: 52rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -45%);
+    width: 50rem; 
+    box-shadow: 20px 20px var(--brown1);
+}
+
+.signup-section .signup-container{
+    display: flex;
+    flex-direction: column;
+    align-items:  center;
+    margin: 30px auto;
+    width: 95%;
+}
+
+.signup-section .signup-container h2{
+    color: var(--brown2);
+    font-family: var(--font3);
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.signup-section .signup-container h3{
+    color: var(--brown2);
+    font-family: var(--font2);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.signup-section .signup-container a{
+   color: var(--brown4);
+   font-family: var(--font2);
+   font-size: 1.6rem;
+}
+
+.signup-section .signup-container .input-container{
+    width: 60%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.signup-section .signup-container .input-container label{
+    color: var(--brown2);
+    font-family: var(--font2);
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    
+}
+
+
+.signup-section .signup-container .input-container .input{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--grey1);
+    border: none;
+    border-radius: 10px;
+    height: 5rem;
+    margin-bottom: 20px;
+
+}
+
+
+
+.signup-section .signup-container .input-container .input input{
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-family: var(--font1);
+    height: 5rem;
+    width: 100%; 
+    padding: 20px 40px;
+   
+}
+
+.signup-section .signup-container .input-container .input .psw-show{
+    position: absolute;
+    left: 85%;
+    cursor: pointer;
+    font-size: 36px;
+}
+
+.signup-section .signup-container .privacy-policy{
+    margin-bottom: 20px;
+    font-family: var(--font2);
+    font-size: 1.6rem;
+    width: 60%;
+}
+
+.signup-section .signup-container  button{
+   background: var(--brown1);
+   border: none;
+   border-radius: 10px;
+   color: #ffffff;
+   font-family: var(--font2);
+   font-size: 3rem;
+   height: 4rem;
+   margin-bottom: 20px;
+   width: 60%;
+}
