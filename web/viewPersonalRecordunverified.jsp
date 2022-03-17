@@ -1,9 +1,9 @@
 <%-- 
-    Document   : login
+    Document   : viewPersonalRecordunverified
     Created on : 02 28, 22, 12:46:41 AM
     Author     : Admin
 --%>
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,9 @@
         <link rel="icon" href="assets/logo.svg">
         <link rel="stylesheet" href="assets/css/asset-sheet.css">
         <link rel="stylesheet" href="assets/css/navbar-style.css">
-        <link rel="stylesheet" href="assets/css/login-style.css">
+        <link rel="stylesheet" href="assets/css/about-style.css">
+        <link rel="stylesheet" href="assets/css/viewPersonalRecord_unverified.css">
+
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,12 +25,12 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <title>UST-TGS</title>
+
     </head>
     <body>
-	<!-- navbar -->
+        <!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">
                 <div class="nav-title">
@@ -38,52 +40,52 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="home.jsp">Home</a>
-                    <a class="option" href="subpage/about.jsp">About</a>
+                    <a class="option" href="authenticatedHome.jsp">Home</a>
+                    <a class="option" href="authenticatedAbout.jsp">About</a>
                     <a class="option" href="/">Events</a>
                     <a class="option" href="/">Contact</a>
-                    <button class="button " href="/">Login</button>
+                    <form style="color:#B92432;" action="myAccountPage.jsp">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="My Account"  class="button"/>
+                    </form>
 
                 </div>
             </div>
         </div>
 
-        <section class="login-section">
-            <div class="login-container">
+	<!-- 1st section/ about -->
+        <section class="personalrecord-section">
+            <div class="personalrecord-container">
                 <%
-
 		    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+		    String uname = (String) session.getAttribute("username");
+		    session.setAttribute("verify", session.getAttribute("verify"));
+		    session.setAttribute("username", uname);
+		    if (uname == null) {
+			response.sendRedirect("home.jsp");
+		    }
                 %>
-                <h2>Welcome Back</h2>
-                <h3>Don't have an account yet? <a href="signup/signup.jsp">Sign up</a></h3>
-
-
+                <h2>View Personal Record</h2>
                 <div class="input-container">
-                    <form class="lg-form" method="POST" action="LoginServlet">
-			<label for="uname"><b>Username</b></label>
+                    <div class ="input">
+                        <h3>EMAIL:<c:out value="${email}"/></h3>
+			<h3>USERNAME: <c:out value="${username}"/></h3>
+			<h3>PASSWORD: <c:out value="${password}"/></h3>
 
-			<div class="input">
-			    <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>
-			    <input type="text" placeholder="Enter Username" name="uname">
-			</div>
+                    </div>
 
-			<label for="psw"><b>Password</b></label>
-			<div class="input">
-			    <span class="material-icons input-icon" style="color:#23B461;">&#xe32a;</span>
-			    <input type="password" placeholder="Enter Password" name="psw">
-			    <span class="material-icons-outlined psw-show">visibility_off</span>
-			</div>
-
-
-
-			<button type="submit">LOGIN</button>
+		    <form class="lg-form" method="POST" action="subpage/myAccountPage.jsp">
+                        <button class="button">Go Back</button>
                     </form>
+		    <form class="lg-form" method="POST" action="LogoutServlet">
+                        <button class="button">Logout</button>
+                    </form>
+
+
+		    <h1> Your account is not yet verified</h1>
+
                 </div>
-
-
-
-                <a href="/">Forgot Password?</a>
             </div>
-        </section>       
+        </section>
     </body>
 </html>

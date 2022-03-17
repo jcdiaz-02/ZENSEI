@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 02 28, 22, 12:46:41 AM
+    Document   : about
+    Created on : 02 25, 22, 10:33:45 PM
     Author     : Admin
 --%>
 
@@ -10,25 +10,27 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
         <link rel="icon" href="assets/logo.svg">
         <link rel="stylesheet" href="assets/css/asset-sheet.css">
         <link rel="stylesheet" href="assets/css/navbar-style.css">
-        <link rel="stylesheet" href="assets/css/login-style.css">
-
+        <link rel="stylesheet" href="assets/css/about-style.css">
+        <link rel="stylesheet" href="assets/css/verification-style.css">
+        
+        
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    
         <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <title>UST-TGS</title>
+        
     </head>
     <body>
-	<!-- navbar -->
+        <!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">
                 <div class="nav-title">
@@ -39,51 +41,40 @@
                 </div>
                 <div class="nav-options" >
                     <a class="option" href="home.jsp">Home</a>
-                    <a class="option" href="subpage/about.jsp">About</a>
+                    <a class="option" href="about.jsp">About</a>
                     <a class="option" href="/">Events</a>
                     <a class="option" href="/">Contact</a>
-                    <button class="button " href="/">Login</button>
-
+                    <form style="color:#B92432;" action="login.jsp">
+                        <input type="submit" value="Login"  class="button"/>
+                    </form>
+                 
                 </div>
             </div>
         </div>
-
-        <section class="login-section">
-            <div class="login-container">
-                <%
-
-		    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-                %>
-                <h2>Welcome Back</h2>
-                <h3>Don't have an account yet? <a href="signup/signup.jsp">Sign up</a></h3>
-
-
-                <div class="input-container">
-                    <form class="lg-form" method="POST" action="LoginServlet">
-			<label for="uname"><b>Username</b></label>
-
-			<div class="input">
-			    <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>
-			    <input type="text" placeholder="Enter Username" name="uname">
-			</div>
-
-			<label for="psw"><b>Password</b></label>
-			<div class="input">
-			    <span class="material-icons input-icon" style="color:#23B461;">&#xe32a;</span>
-			    <input type="password" placeholder="Enter Password" name="psw">
-			    <span class="material-icons-outlined psw-show">visibility_off</span>
-			</div>
+        
+         <!-- 1st section/ about -->
+        <section class="verification-section">
+            <div class="verification-container">
+               
+                <h1>Verify Your Identity</h1>
+                <h2>For added security, we need to verify your email address. We have sent a verification code to juan.delacruz.cics@ust.edu.ph</h2>
+                <h2>If the email does not arrive soon, check your spam folder or have us send it again.</h2>
 
 
-
-			<button type="submit">LOGIN</button>
-                    </form>
+                <div class="input">
+                    <input type="text" placeholder="enter verification code" name="verify" required>
                 </div>
-
-
-
-                <a href="/">Forgot Password?</a>
+                
+                <h3><%request.getAttribute("Incorrect");%></h3>
+                 <form action="verificationServlet.java">
+                     
+     
+                     <button class="button" name="randomNumber" value="<%request.getAttribute("randomNumber");%>">CONTINUE</button>
+                    
+                </form>
+                
+                </div>
             </div>
-        </section>       
+        </section>
     </body>
 </html>

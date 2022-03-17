@@ -1,5 +1,5 @@
 <%-- 
-    Document   : about
+    Document   : learnmore
     Created on : 02 25, 22, 10:33:45 PM
     Author     : Admin
 --%>
@@ -14,7 +14,7 @@
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
-        <link rel="stylesheet" href="../assets/css/about-style.css">
+        <link rel="stylesheet" href="../assets/css/learnmore-style.css">
         
         
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
                 </div>
                 <div class="nav-options" >
                     <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" style="color:#B92432;" href="about.jsp">About</a>
+                    <a class="option" href="about.jsp">About</a>
                     <a class="option" href="/">Events</a>
                     <a class="option" href="/">Contact</a>
                     <form action="../login.jsp">
@@ -51,15 +51,14 @@
             </div>
         </div>
         
-         <!-- 1st section/ about -->
-        <section class="about-section">
+         <!-- 1st section/ learnmore -->
+        <section class="learnmore-section">
             <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-            <div class="about-container">
-                <div class="about-panel">
-                    <span class="material-icons-outlined about-icon">&#xe8e1;</span>
-                    <span class="about-text">
-                        <h2> About </h2>
+            <div class="learnmore-container">
+                <div class="learnmore-panel">
+                    <span class="material-icons-outlined learnmore-icon">&#xe8e1;</span>
+                    <span class="learnmore-text">
+                        <h2> Learn More </h2>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
                         ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
@@ -72,10 +71,32 @@
                     </span>
                 </div>
                 
-                <div class="about-panel">
-                    <span class="material-icons-outlined about-icon">&#xe8f4;</span>
-                    <span class="about-text">
-                        <h2> Vision </h2>
+                <div class="learnmore-panel">
+                    <span class="material-icons-outlined learnmore-icon">&#xe8f4;</span>
+                    <span class="learnmore-text">
+                        <h2> Information We Collect </h2>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariaturUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur </span>
+                </div>
+                
+                <div class="learnmore-panel">
+                    <span class="material-icons-outlined learnmore-icon">&#xe8f4;</span>
+                    <span class="learnmore-text">
+                        <h2> Log Data </h2>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
                         ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
@@ -91,17 +112,25 @@
                         deserunt mollit anim id est laborum.</span>
                 </div>
                 
-                <div class="about-panel">
-                    <span class="material-icons-outlined about-icon">&#xe87e;</span>
-                    <span class="about-text">
-                        <h2> Mission </h2>
+               <div class="learnmore-panel">
+                    <span class="material-icons-outlined learnmore-icon">&#xe8f4;</span>
+                    <span class="learnmore-text">
+                        <h2> Log Data </h2>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
                         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
                         ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
                         eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum.
-                    </span>
+                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
+                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                        deserunt mollit anim id est laborum.</span>
                 </div>
+                
             </div>
         </section>
     </body>

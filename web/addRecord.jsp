@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 02 28, 22, 12:46:41 AM
+    Document   : addRecord
+    Created on : 03 13, 22, 12:46:41 AM
     Author     : Admin
 --%>
 
@@ -14,7 +14,7 @@
         <link rel="icon" href="assets/logo.svg">
         <link rel="stylesheet" href="assets/css/asset-sheet.css">
         <link rel="stylesheet" href="assets/css/navbar-style.css">
-        <link rel="stylesheet" href="assets/css/login-style.css">
+        <link rel="stylesheet" href="assets/css/addrecord-style.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,10 @@
         <title>UST-TGS</title>
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    session.setAttribute("username", session.getAttribute("username"));
+	%>         
 	<!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">
@@ -50,33 +54,33 @@
 
         <section class="login-section">
             <div class="login-container">
-                <%
-
-		    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-                %>
-                <h2>Welcome Back</h2>
-                <h3>Don't have an account yet? <a href="signup/signup.jsp">Sign up</a></h3>
 
 
                 <div class="input-container">
-                    <form class="lg-form" method="POST" action="LoginServlet">
-			<label for="uname"><b>Username</b></label>
+                    <form class="lg-form" method="POST" action="AddRecordServlet">
 
-			<div class="input">
-			    <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>
-			    <input type="text" placeholder="Enter Username" name="uname">
-			</div>
-
-			<label for="psw"><b>Password</b></label>
-			<div class="input">
-			    <span class="material-icons input-icon" style="color:#23B461;">&#xe32a;</span>
-			    <input type="password" placeholder="Enter Password" name="psw">
-			    <span class="material-icons-outlined psw-show">visibility_off</span>
-			</div>
+			<h1>Name: </h1><input type="text" placeholder="Enter Name" name="myname"><br>
 
 
+			<h1>Course: </h1><input type="text" placeholder="Enter Course" name="course"><br>
 
-			<button type="submit">LOGIN</button>
+
+			<h1>Age: </h1><input type="text" placeholder="Enter Age" name="age"><br>
+
+			<h1>Birthday: </h1><input type="date" placeholder="Enter Birthday" name="birthday"><br>
+
+
+			<h1>Gender: </h1><input type="text" placeholder="Enter Gender" name="gender"><br>
+
+			<h1>Student Number: </h1><input type="text" placeholder="Enter Student Number" name="snumber"><br>
+			
+			<h1>Contact Number: </h1><input type="text" placeholder="Enter Conatct Number" name="cnumber"><br>
+
+			<h1>Favorite Game: </h1><input type="text" placeholder="Enter Favorite Game" name="favgame"><br>
+
+			<h1>Address: </h1><input type="text" placeholder="Enter Address" name="address"><br>
+			
+			<button type="submit">SUBMIT</button>
                     </form>
                 </div>
 
