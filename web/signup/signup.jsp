@@ -42,7 +42,7 @@
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="/">Events</a>
                     <a class="option" href="/">Contact</a>
-                    <form action="login.jsp">
+                    <form action="../login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
             
@@ -52,44 +52,44 @@
          
         <section class="signup-section">
             <div class="signup-container">
+               
                 <h2>Sign Up</h2>
-                <h3>Already registered? <a href="/">Login</a></h3>
+                <h3>Already registered? <a href="../login.jsp">Login</a></h3>
+                 <form class="lg-form" method="POST" action="../UserVerification">
+                    <div class="input-container">
+                        <label for="email"><b>Email</b></label>    
+                        <div class="input">
+                            <input type="text" placeholder="Enter Email" name="email" required>
+                        </div>
+
+                        <label for="uname"><b>Username</b></label>
+                        <div class="input">
+                            <input type="text" placeholder="Enter Username" name="uname" required>
+
+                        </div>
+
+                        <label for="uname"><b>Password</b></label>    
+                        <div class="input">
+
+                            <input type="password" placeholder="Enter Password" name="psw" required>
+                            <button class="material-icons-outlined psw-show">visibility_off</button>
+                        </div>
+
+                        <div class="input">
+                            <input type="password" placeholder="Confirm Password" name="psw1" required>
+                            <span class="material-icons-outlined psw-show">&#xe8f5;</span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-policy"> 
+                        <input type="checkbox" id="privacy-policy" name="privacy-policy" value='' >
+                        <label for="privacy-policy"> 
+                            I have read and agreed to the website's <a href="privacypolicy.jsp">Privacy Policy</a>
+                        </label>
+                    </div>
                 
-                <div class="input-container">
-                    <label for="email"><b>Email</b></label>    
-                    <div class="input">
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                    </div>
-                    
-                    <label for="uname"><b>Username</b></label>
-                    <div class="input">
-                        <input type="password" placeholder="Enter Username" name="psw" required>
-                        
-                    </div>
-                    
-                    <label for="uname"><b>Password</b></label>    
-                    <div class="input">
-                       
-                        <input type="text" placeholder="Enter Password" name="uname" required>
-                        <span class="material-icons-outlined psw-show">visibility_off</span>
-                    </div>
-                      
-                    <div class="input">
-                        <input type="text" placeholder="Confirm Password" name="uname" required>
-                        <span class="material-icons-outlined psw-show">&#xe8f5;</span>
-                    </div>
-                    
-                    
-                 
-                </div>
-                
-                <div class="privacy-policy"> 
-                    <input type="checkbox" id="privacy-policy" name="privacy-policy" value='' >
-                    <label for="privacy-policy"> 
-                        I have read and agreed to the website's <a href="privacypolicy.jsp">Privacy Policy</a>
-                    </label>
-                </div>
-                <button type="submit">SIGN UP</button>
+                    <button type="submit">SIGN UP</button>
+                </form>
                 
             </div>
         </section>       

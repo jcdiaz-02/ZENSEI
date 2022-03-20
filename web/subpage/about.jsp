@@ -53,6 +53,8 @@
         
          <!-- 1st section/ about -->
         <section class="about-section">
+            <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+
             <div class="about-container">
                 <div class="about-panel">
                     <span class="material-icons-outlined about-icon">&#xe8e1;</span>

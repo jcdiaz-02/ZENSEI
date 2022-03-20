@@ -115,9 +115,11 @@ and open the template in the editor.
 }
 
 .login-section .login-container  button{
-   background: var(--brown1);
+   background: #AE9279;
    border: none;
    border-radius: 10px;
+   
+   transform: translate(35%, 0%);
    color: #ffffff;
    font-family: var(--font2);
    font-size: 3rem;
