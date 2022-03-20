@@ -40,8 +40,8 @@
                 <div class="nav-options" >
                     <a class="option" href="home.jsp">Home</a>
                     <a class="option" href="subpage/about.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="EventPage.jsp">Events</a>
+                    <a class="option" href="ContactPage.jsp">Contact</a>
                     <button class="button " href="/">Login</button>
 
                 </div>
