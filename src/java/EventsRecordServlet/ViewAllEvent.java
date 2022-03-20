@@ -42,11 +42,14 @@ public class ViewAllEvent extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
+            role = "admin";
+
+            List<EventRecord> recordList = new ArrayList<EventRecord>();
 
             if ("admin".equals(role)) {
                 String tablename = "event_record";
                 ResultSet rs = db.getTableResultSet(tablename, conn);
-                List<EventRecord> recordList = new ArrayList<EventRecord>();
+
                 while (rs.next()) {
                     EventRecord record = new EventRecord(rs.getInt(1), rs.getString(2), rs.getString(3),
                             rs.getString(4),
@@ -56,7 +59,8 @@ public class ViewAllEvent extends HttpServlet {
                 // recordList.get(1).getEventName(); sample
             }
             // give list of event to jsp
-
+            session.setAttribute("eventList", recordList);
+            response.sendRedirect("ViewAllEventPage.jsp");
         } catch (Exception e) {
 
         }

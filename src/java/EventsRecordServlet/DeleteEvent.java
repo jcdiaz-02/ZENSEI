@@ -43,6 +43,7 @@ public class DeleteEvent extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
         String role = (String) session.getAttribute("role");
+        role = "admin";
 
         String record_id = request.getParameter("record_id");
         String query = "DELETE FROM event_record WHERE record_id = ?";
@@ -51,6 +52,7 @@ public class DeleteEvent extends HttpServlet {
                 db.updateQuery(query, record_id, conn);
             }
             // redirect back to view all event
+            response.sendRedirect("ViewAllEventPage.jsp");
         } catch (Exception e) {
 
         }

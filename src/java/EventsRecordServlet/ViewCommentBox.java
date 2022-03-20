@@ -44,10 +44,13 @@ public class ViewCommentBox extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
+            role = "admin";
+
+            List<CommentBox> commentList = new ArrayList<CommentBox>();
             if ("admin".equals(role)) {
                 String tablename = "event_record";
                 ResultSet rs = db.getTableResultSet(tablename, conn);
-                List<CommentBox> commentList = new ArrayList<CommentBox>();
+
                 while (rs.next()) {
                     CommentBox comments = new CommentBox(rs.getString(1), rs.getString(2), rs.getString(3),
                             rs.getString(4), rs.getString(5));
@@ -55,6 +58,8 @@ public class ViewCommentBox extends HttpServlet {
                 }
                 // recordList.get(1).getEventName(); sample
             }
+            request.setAttribute("commentList", commentList);
+            response.sendRedirect("CommentBoxPage.jsp");
         } catch (Exception e) {
 
         }
