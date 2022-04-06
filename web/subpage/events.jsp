@@ -36,6 +36,13 @@
       
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String uname = (String) session.getAttribute("username");
+	    if (uname != null) {
+		response.sendRedirect("authenticatedEvents.jsp");
+	    }
+	%>
         <!-- TODO: ALLOW TO ACCESS DATABASE FOR CALENDAR -->
         <!-- TODO: ALLOW TO ACCESS DATABASE ITEMS TO LIST PLANNED AND ORGANIZED EVENTS -->
         <!-- TODO: MAKE ADD AND DELETE BUTTONS ONLY AVAILABLE TO ADMIN -->

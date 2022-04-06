@@ -102,6 +102,7 @@ body{
 
 .bar .nav-options .button{
     align-items: center;
+<<<<<<< HEAD
     background: var(--brown1);
     border: 1px solid var(--brown1);
     border-radius: 20px;

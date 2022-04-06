@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02 26, 22, 12:53:18 AM
+    Author     : Admin
+*/
+
+.learnmore-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    height: 45rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 95rem;   
+    position: fixed;
+    overflow: scroll;
+}
+
+.learnmore-section .learnmore-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: auto;
+    height: auto;
+    width: 95%;      
+    
+}
+
+.learnmore-section .learnmore-container .learnmore-panel {
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+
+.learnmore-section .learnmore-container .learnmore-panel .learnmore-icon{
+    align-items: center; 
+    background: var(--brown2);
+    border-radius: 50%;
+    color: white;
+    display:flex;
+    font-size: 48px;
+    height: 70px;
+    justify-content: center;
+    width: 70px;
+    padding: 12px;
+    margin-right: 20px;
+}
+
+.learnmore-section .learnmore-container .learnmore-panel .learnmore-text h2{
+    font-family: var(--font3);
+    font-size: 1.5rem; 
+    
+    
+}
+
+
+.learnmore-section .learnmore-container .learnmore-panel .learnmore-text{
+    color: var(--brown2);
+    font-family: "Helvetica";
+    font-size: 1.2rem; 
+    text-align: justify;
+    margin-right: 20px;
+    padding-bottom: 10px;
+    
+}
+

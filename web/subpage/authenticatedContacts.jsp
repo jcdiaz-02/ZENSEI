@@ -26,7 +26,7 @@
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-        
+
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
     </head>
@@ -34,8 +34,9 @@
 	<%
 	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	    String uname = (String) session.getAttribute("username");
-	    if (uname != null) {
-		response.sendRedirect("authenticatedContacts.jsp");
+	    String role = (String) session.getAttribute("role");
+	    if (uname == null) {
+		response.sendRedirect("home.jsp");
 	    }
 	%>
         <!--TODO: CONNECT A CONTACT SERVLET-->
@@ -53,13 +54,23 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" style="color:#B92432;" href="../subpage/contact.jsp">Contact</a>
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
-                    </form>
+		    <a class="option" href="authenticatedHome.jsp">Home</a>
+                    <a class="option" href="authenticatedAbout.jsp">About</a>
+                    <a class="option" href="authenticatedEvents.jsp">Events</a>
+                    <a class="option" style="color:#B92432;" href="authenticatedContacts.jsp">Contact</a>
+		    <%
+			if (role.equalsIgnoreCase("member")) {
+		    %>
+		    <form action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="My Account"  class="button"/>
+		    </form>
+		    <%    } else if (role.equalsIgnoreCase("admin")) { %>
+		    <form action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="ADMIN"  class="button"/>
+		    </form>
+		    <% }%>  
 
                 </div>
             </div>
@@ -108,31 +119,31 @@
 
                             <label for="lname">Last Name <span style="color:red;">*</span></label>
                             <input type="text" name="lname" autocomplete="chrome-off" required>
-                           
+
                         </div>
-                    
+
                         <div class="panel">
                             <label for="email">Email <span style="color:red;">*</span></label>
                             <input type="email" name="email" required>
-                            
+
                             <label for="course">Course <span style="color:red;">*</span></label>
                             <input type="text" name="course" autocomplete="chrome-off" required>
-                    
+
                         </div>
                     </div>
-                    
+
                     <div class="panel1">
                         <label for="comments">Comments/Suggestions <span style="color:red;">*</span></label>
                         <input type="text" name="comments" placeholder="Write your message here" required>
                     </div>
-                    
+
                     <div class="panel2">
                         <input type="submit" value="SUBMIT"  class="button"/>
                         <a href="">Comments/Suggestions Box</a>
                         <span class="material-icons-outlined"> &#xe8af;</span>
                     </div>
                 </form>
-                
+
             </div>
         </section>
     </body>
