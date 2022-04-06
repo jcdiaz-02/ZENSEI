@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+ 
     <servlet>
 	<servlet-name>LoginServlet</servlet-name>
 	<servlet-class>LoginServlet</servlet-class>
@@ -121,7 +122,7 @@
 	    <param-value>app</param-value>
 	</init-param>
     </servlet>
-      <servlet>
+    <servlet>
 	<servlet-name>TransferRecordServlet</servlet-name>
 	<servlet-class>TransferRecordServlet</servlet-class>
 	<init-param>
@@ -141,7 +142,7 @@
 	    <param-value>app</param-value>
 	</init-param>
     </servlet>
-     <servlet>
+    <servlet>
 	<servlet-name>DeleteRecordServlet</servlet-name>
 	<servlet-class>DeleteRecordServlet</servlet-class>
 	<init-param>
@@ -211,11 +212,11 @@
 	<servlet-name>UpdateRecordServlet</servlet-name>
 	<url-pattern>/UpdateRecordServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
 	<servlet-name>TransferRecordServlet</servlet-name>
 	<url-pattern>/TransferRecordServlet</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
+    <servlet-mapping>
 	<servlet-name>DeleteRecordServlet</servlet-name>
 	<url-pattern>/DeleteRecordServlet</url-pattern>
     </servlet-mapping>

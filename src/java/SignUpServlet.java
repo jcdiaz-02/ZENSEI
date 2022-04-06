@@ -90,7 +90,7 @@ public class SignUpServlet extends HttpServlet {
 		pst.setString(4, "member");
 		pst.setString(5, date);
 		pst.executeUpdate();
-		response.sendRedirect("authenticatedHome.jsp");
+		response.sendRedirect("home.jsp");
 	    } else {
 		request.setAttribute("Incorrect", "Incorrect code");
 		request.getRequestDispatcher("verificationPage.jsp").forward(request, response);
