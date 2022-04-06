@@ -20,15 +20,20 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=VT323&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
+        <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
     </head>
     <body>
         <!-- navbar -->
-        <div class="bar"> 
+       <div class="bar"> 
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                   <i class="fas fa-bars"></i>
+            </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
@@ -37,13 +42,14 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" style="color:#B92432;" href="../home.jsp">Home</a>
+                    <a class="option" style="color:#B92432; "href="home.jsp">Home</a>
                     <a class="option" href="subpage/about.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="">Contact</a>
-                    <form action="login.jsp">
+                    <a class="option" href="subpage/events.jsp">Events</a>
+                    <a class="option" href="subpage/contact.jsp">Contact</a>
+                    <form  action="login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
+            
                 </div>
             </div>
         </div>

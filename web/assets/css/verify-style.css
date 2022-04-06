@@ -1,0 +1,165 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03 1, 22, 5:10:41 PM
+    Author     : Admin
+*/
+
+
+.verify-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    height: 45rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -45%);
+    width: 45rem; 
+    box-shadow: 20px 20px var(--brown1);
+}
+
+.verify-section .verify-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    height: 100%;
+    width: 100%;        
+}
+
+.verify-section .verify-container h2{
+    color: var(--brown2);
+    font-family: var(--font2);
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/*signup verify*/
+.verify-section .verify-container .verify-signup-code{
+    background: #E1EFCD;
+    border-radius: 20px;
+    height: 15%;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 7rem;
+}
+
+.verify-section .verify-container .verify-signup-code p{
+    color: var(--brown2);
+    font-family: var(--font5);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+
+.verify-section .verify-container .verify-signup-code .verify-email{
+    color: var(--aqua1);
+    font-size: 1.5rem;
+    font-style: italic;
+}
+/*end of signup verify*/
+
+
+
+/*login verify*/
+.verify-section .verify-container .verify-login-code{
+    border-radius: 20px;
+    height: 30%;
+    margin-bottom: 2rem;
+    text-align: justify;
+    width: 80%;
+}
+
+.verify-section .verify-container .verify-login-code p{
+    color: var(--brown2);
+    font-family: var(--font5);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+
+
+.verify-section .verify-container .verify-login-code p a{
+    color: var(--brown1);
+    cursor: pointer;
+    font-family: var(--font5);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.verify-section .verify-container .verify-login-code .verify-email{
+    color: var(--aqua1);
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: bold;
+
+}
+/*end of login verify*/
+
+
+.verify-section .verify-container .input-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-bottom: 3rem;
+}
+
+
+
+.verify-section .verify-container .input-container label{
+    color: var(--brown2);
+    font-family: var(--font2);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    
+}
+
+.verify-section .verify-container .input-container input{
+    display: flex;
+    align-items: center;
+    background: var(--grey1);
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    font-family: var(--font1);
+    height: 5rem;
+    width: 100%; 
+    padding: 20px 30px;
+   
+}
+.verify-section .verify-container .submit-container{
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+    height: 20%;
+}
+
+
+.verify-section .verify-container .submit-container button{
+   background: var(--brown1);
+   border: none;
+   border-radius: 10px;
+   color: #ffffff;
+   font-family: var(--font2);
+   font-size: 3rem;
+   height: 5rem;
+   width: 100%;
+}
+
+.verify-section .verify-container .submit-container a{
+   text-decoration: none;
+   font-family: var(--font5);
+   font-size: 1.2rem;
+   color: var(--brown1);
+   margin-top: 10px;
+}

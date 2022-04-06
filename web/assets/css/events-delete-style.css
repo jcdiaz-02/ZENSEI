@@ -1,0 +1,22 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03 13, 22, 2:23:19 AM
+    Author     : Admin
+*/
+
+.delete-events-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    height: 45rem;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60rem;   
+}

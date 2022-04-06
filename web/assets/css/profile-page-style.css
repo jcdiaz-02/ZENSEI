@@ -1,0 +1,57 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03 19, 22, 3:08:40 AM
+    Author     : Admin
+*/
+
+.profile-section{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    font-family: var(--font5);
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40rem; 
+    padding: 2rem 4rem;
+}
+
+.profile-section .button{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    background: var(--brown1);
+    border: 1px solid var(--brown1);
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    width: 100%;
+    padding: 20px 50px;
+    margin-bottom: 2rem;
+}
+
+.button span{
+    margin-right: 20px;
+    font-size: 36px;
+}
+
+.profile-verify-msg{
+    display: flex;
+}
+
+.profile-verify-msg span{
+    font-size: 24px;
+    margin-right: 10px; 
+}
+
+.profile-verify-msg p{
+    font-size: 1.2rem;
+}
