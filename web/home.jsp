@@ -77,7 +77,7 @@
             </div>
             <div class="home-sub">
                 <h5>UNIVERSITY OF SANTO TOMAS' GAMING ORGANIZATION</h5>
-                <form action="subpage/authenticatedlearnMore.jsp">
+                <form action="subpage/learnMore.jsp">
                     <button class="button" type="submit" >LEARN MORE</button>
                 </form>
                 
