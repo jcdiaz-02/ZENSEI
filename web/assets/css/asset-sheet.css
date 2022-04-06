@@ -13,13 +13,21 @@ and open the template in the editor.
     --font2: 'VT323', monospace;
     --font3: 'Press Start 2P', cursive;
     --font4: 'Audiowide', monospace;
-    
+    --font5: 'Quicksand', sans-serif;
+    --font6: 'Poppins', sans-serif;
 
+    
+    --brown0: #FFF1E9;
     --brown1: #AE9279;
     --brown2: #695450;
     --brown3: #503E3E;
     --brown4: #AA8667;
+    --brown5: #B38B6D;
+    
+    --red1: #792527;
     
     --grey1: #F1ECEC;
+    --grey2: #EFF1F4;
 
+    --aqua1: #2180BA;
 }

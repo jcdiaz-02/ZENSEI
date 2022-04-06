@@ -1,6 +1,6 @@
 <%-- 
-    Document   : login
-    Created on : 02 28, 22, 12:46:41 AM
+    Document   : login-verify
+    Created on : 03 5, 22, 9:31:05 PM
     Author     : Admin
 --%>
 
@@ -14,7 +14,7 @@
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
-        <link rel="stylesheet" href="../assets/css/signup-style.css">
+        <link rel="stylesheet" href="../assets/css/verify-style.css">
           
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,8 +30,14 @@
         <title>UST-TGS</title>
     </head>
     <body>
-         <!-- navbar -->
+        <!-- TODO: CONNECT LOGIN SERVLET -->
+        <!-- TODO: CONNECT LOGIN TO VERIFICATION -->
+        <!-- navbar -->
         <div class="bar"> 
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                   <i class="fas fa-bars"></i>
+            </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
@@ -44,57 +50,40 @@
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="../subpage/events.jsp">Events</a>
                     <a class="option" href="/">Contact</a>
-                    <form action="../login/login.jsp">
+                    <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
             
                 </div>
             </div>
         </div>
-         
-        <section class="signup-section">
-            <form class="signup-container" method="post" action="SignupServlet">
-                <h2>Sign Up</h2>
-                <h3>Already registered? <a href="../login/login.jsp">Login</a></h3>
+        
+        <section class="verify-section">
+            <form class="verify-container" method="post" action="SignupVerifyServlet">
+                <h2>Verify your Identity</h2>
                 
-                <div class="input-container">
+                <div class="verify-login-code">
+                    <p>For added security, we need to verify your email address. We have sent a verification code to  
+                        <span class="verify-email">juan.delacruz.cics@ust.edu.ph</span>
+                    </p>
                     
-                    <label for="email"><b>Email</b></label>    
-                    <div class="input">
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                    </div>
-                    
-                    <label for="uname"><b>Username</b></label>
-                    <div class="input">
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-                        
-                    </div>
-                    
-                    <label for="psw"><b>Password</b></label>    
-                    <div class="input">
-                       
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                        <span class="material-icons-outlined psw-show">visibility_off</span>
-                    </div>
-                      
-                    <div class="input">
-                        <input type="password" placeholder="Confirm Password" name="cpsw" required>
-                        <span class="material-icons-outlined psw-show">&#xe8f5;</span>
-                    </div>
-                    
-                    
-                 
+                    <p>If the email does not arrive soon, check your spam folder or have us <a>send it again.</a></p>
+                   
                 </div>
                 
-                <div class="privacy-policy"> 
-                    <input type="checkbox" id="privacy-policy" name="privacy-policy" value='' >
-                    <label for="privacy-policy"> 
-                        I have read and agreed to the website's <a href="privacypolicy.jsp">Privacy Policy</a>
-                    </label>
-                </div>
-                <button type="submit">SIGN UP</button>
                 
-            </form>
-        </section>       
+                <div class="input-container">   
+                    <label for="vcode"><b>Validate OTP</b></label>    
+                    <div class="input">
+                        <input type="" placeholder="Enter verification code" name="vcode" required>
+                    </div>
+                </div>
+                
+                <div class="submit-container">
+                    <button type="submit">SUBMIT</button>
+                    
+                </div>
+            </form>   
+        </section>
     </body>
 </html>

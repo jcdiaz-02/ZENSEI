@@ -20,17 +20,23 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=VT323&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+       
+         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
         
     </head>
     <body>
         <!-- navbar -->
         <div class="bar"> 
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                   <i class="fas fa-bars"></i>
+            </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
@@ -40,17 +46,16 @@
                 </div>
                 <div class="nav-options" >
                     <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" style="color:#B92432;" href="about.jsp">About</a>
-                    <a class="option" href="/">Events</a>
+                    <a class="option" style="color:#B92432;" href="../subpage/about.jsp">About</a>
+                    <a class="option" href="../subpage/events.jsp">Events</a>
                     <a class="option" href="/">Contact</a>
-                    <form action="../login.jsp">
+                    <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
-                 
+            
                 </div>
             </div>
         </div>
-        
          <!-- 1st section/ about -->
         <section class="about-section">
             <%response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
@@ -60,15 +65,10 @@
                     <span class="material-icons-outlined about-icon">&#xe8e1;</span>
                     <span class="about-text">
                         <h2> About </h2>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum.
+                        The Thomasian Gaming Society is a college-based organization of the University of Santo Tomas, 
+                        College of Information and Computing Sciences, that focuses on Thomasian video game enthusiasts 
+                        committed to cultivating and promoting camaraderie and sportsmanship in the video gaming community. 
+                        The organization, imbued with the Thomasian core values--competence, commitment, and compassion--aims to provide an avenue for development of leadership, social skills and critical thinking as skilled individuals capable of building connections and contributing significant initiatives in the pursuit of culture, creativity and innovation through video games.
                     </span>
                 </div>
                 
@@ -76,30 +76,24 @@
                     <span class="material-icons-outlined about-icon">&#xe8f4;</span>
                     <span class="about-text">
                         <h2> Vision </h2>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum.</span>
+                       The Thomasian Gaming Society - CICS, as the first ever college-based gaming organization, envisions 
+                       itself as an open platform for all Thomasian garners committed to building relationships and contributing 
+                       significant change to man, God and country through video games. The organization will be the 
+                       promenade of its members into a collective that molds the core skills and virtues of Thomasian leadership,
+                       creativity and camaraderie.</span>
                 </div>
                 
                 <div class="about-panel">
                     <span class="material-icons-outlined about-icon">&#xe87e;</span>
                     <span class="about-text">
                         <h2> Mission </h2>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et 
-                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                        eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                        deserunt mollit anim id est laborum.
+                       The Thomasian Gaming Society is a college-based organization composed of like-minded Thomasian 
+                       students with a passion and knack for video games, committed to establishing and cultivating a unique 
+                       college-based video gaming culture and fostering sportsmanship and camaraderie through gaming in the 
+                       community. The organization, guided by the Thomasian core values, aims to provide an holistic avenue 
+                       for leadership and development of critical thinking and social skills in order to grow skilled and 
+                       god-centered individuals capable of building connections with like-minded people in the pursuit of 
+                       enriching gaming culture, encouraging creativity, and introducing innovation through video games.
                     </span>
                 </div>
             </div>
