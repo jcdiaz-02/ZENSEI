@@ -15,8 +15,8 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${file.reference.Downloads-javamail-1.4.5}</file>
-                    <path-in-war>WEB-INF/classes</path-in-war>
+                    <file>${file.reference.javax.mail.jar}</file>
+                    <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
                     <file>${file.reference.jakarta.servlet-api.jar}</file>

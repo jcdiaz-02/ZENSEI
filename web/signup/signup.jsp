@@ -4,7 +4,9 @@
     Author     : Admin
 --%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -51,7 +53,9 @@
                 </div>
             </div>
         </div>
-         
+         <%
+	 session.setAttribute("identifier","signup");
+	 %>
         <section class="signup-section">
             <form class="signup-container" method="post" action="../UserVerification">
                 <h2>Sign Up</h2>
@@ -70,7 +74,7 @@
                         
                     </div>
                     
-                    <label for="psw"><b>Password</b></label>    
+                    <label for="psw"><b>Password</b></label> <c:out value="${error}"/>
                     <div class="input">
                        
                         <input type="password" placeholder="Enter Password" name="psw" required>
@@ -92,7 +96,7 @@
                         I have read and agreed to the website's <a href="privacypolicy.jsp">Privacy Policy</a>
                     </label>
                 </div>
-                <button type="submit">SIGN UP</button>
+                <button type="submit" name="button" value="signup">SIGN UP</button>
                 
             </form>
         </section>       
