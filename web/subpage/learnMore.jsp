@@ -29,6 +29,13 @@
         
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String uname = (String) session.getAttribute("username");
+	    if (uname != null) {
+		response.sendRedirect("authenticatedlearnMore.jsp");
+	    }
+	%>
         <!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">

@@ -48,10 +48,10 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="authenticatedHome.jsp">Home</a>
-                    <a class="option" href="authenticatedAbout.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="subpage/authenticatedContacts.jsp">Contact</a>
                     <%
 			if (role.equalsIgnoreCase("member")) {
 		    %>

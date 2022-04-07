@@ -11,10 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="assets/logo.svg">
-        <link rel="stylesheet" href="assets/css/asset-sheet.css">
-        <link rel="stylesheet" href="assets/css/navbar-style.css">
-        <link rel="stylesheet" href="assets/css/home-style.css">
+	<link rel="icon" href="../assets/logo.svg">
+        <link rel="stylesheet" href="../assets/css/asset-sheet.css">
+        <link rel="stylesheet" href="../assets/css/navbar-style.css">
+        <link rel="stylesheet" href="../assets/css/home-style.css">
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,9 +37,13 @@
 	%>
         <!-- navbar -->
         <div class="bar"> 
+	    <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                   <i class="fas fa-bars"></i>
+            </label>
             <div class="nav-content">
                 <div class="nav-title">
-                    <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
+                    <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
                     <a class="" href="/"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
@@ -47,17 +51,17 @@
                 <div class="nav-options" >
                     <a class="option" style="color:#B92432;" href="authenticatedHome.jsp">Home</a>
                     <a class="option" href="authenticatedAbout.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="authenticatedContacts.jsp".jsp">Contact</a>
 		    <%
 			if (role.equalsIgnoreCase("member")) {
 		    %>
-		    <form action="MyAccountServlet">
+		    <form action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
 			<input type="submit" value="My Account"  class="button"/>
 		    </form>
 		    <%    } else if (role.equalsIgnoreCase("admin")) { %>
-		    <form action="MyAccountServlet">
+		    <form action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
 			<input type="submit" value="ADMIN"  class="button"/>
 		    </form>
@@ -69,7 +73,7 @@
         <!-- 1st section/ home -->
         <section class="home-section">
             <div class="home-header">
-                <img class="home-logo" src="assets/logo.svg">
+                <img class="home-logo" src="../assets/logo.svg">
                 <div class="home-title">
                     <h2 class="font-effect-anaglyph">UST-TGS</h2>
                     <h3 class="font-effect-anaglyph">UST THOMASIAN GAMING SOCIETY</h3>

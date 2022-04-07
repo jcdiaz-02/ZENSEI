@@ -28,6 +28,13 @@
         <title>UST-TGS</title>
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String uname = (String) session.getAttribute("username");
+	    if (uname != null) {
+		response.sendRedirect("subpage/authenticatedHome.jsp");
+	    }
+	%>
         <!-- navbar -->
        <div class="bar"> 
             <input type="checkbox" id="check">

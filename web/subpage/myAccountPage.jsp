@@ -40,11 +40,11 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../authenticatedHome.jsp">Home</a>
-                    <a class="option" href="../authenticatedAbout.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
-                    <form style="color:#B92432;" action="m  yAccountPage.jsp">
+                    <a class="option" href="authenticatedHome.jsp">Home</a>
+                    <a class="option" href="authenticatedAbout.jsp">About</a>
+                    <a class="option" href="authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="authenticatedContacts.jsp">Contact</a>
+                    <form style="color:#B92432;" action="myAccountPage.jsp">
 
                         <input type="submit" value="My Account"  class="button"/>
                     </form>

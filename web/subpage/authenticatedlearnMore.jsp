@@ -11,10 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="assets/logo.svg">
-        <link rel="stylesheet" href="assets/css/asset-sheet.css">
-        <link rel="stylesheet" href="assets/css/navbar-style.css">
-        <link rel="stylesheet" href="assets/css/learnmore-style.css">
+        <link rel="icon" href="../assets/logo.svg">
+        <link rel="stylesheet" href="../assets/css/asset-sheet.css">
+        <link rel="stylesheet" href="../assets/css/navbar-style.css">
+        <link rel="stylesheet" href="../assets/css/learnmore-style.css">
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,17 +49,17 @@
                 <div class="nav-options" >
                     <a class="option" href="authenticatedHome.jsp">Home</a>
                     <a class="option" href="authenticatedAbout.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="authenticatedContacts.jsp".jsp">Contact</a>
 		    <%
 			if (role.equalsIgnoreCase("member")) {
 		    %>
-		    <form action="MyAccountServlet">
+		    <form action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
 			<input type="submit" value="My Account"  class="button"/>
 		    </form>
 		    <%    } else if (role.equalsIgnoreCase("admin")) { %>
-		    <form action="MyAccountServlet">
+		    <form action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
 			<input type="submit" value="ADMIN"  class="button"/>
 		    </form>
@@ -71,7 +71,7 @@
 	<!-- 1st section/ learnmore -->
         <section class="learnmore-section">
             <div class="learnmore-container">
-                
+
                 <div class="learnmore-panel">
                     <span class="material-icons-outlined learnmore-icon">&#xe8e1;</span>
                     <span class="learnmore-text">

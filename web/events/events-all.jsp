@@ -56,7 +56,7 @@
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" style="color:#B92432;" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="../subpage/contact.jsp">Contact</a>
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>

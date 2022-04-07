@@ -30,6 +30,12 @@
         
     </head>
     <body>
+	<%
+		session.setAttribute("uname", session.getAttribute("uname"));
+		session.setAttribute("psw", session.getAttribute("pass"));
+		session.setAttribute("email", session.getAttribute("email"));
+		session.setAttribute("code",session.getAttribute("code"));
+	    %>
         <!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">
@@ -41,9 +47,9 @@
                 </div>
                 <div class="nav-options" >
                     <a class="option" href="home.jsp">Home</a>
-                    <a class="option" href="about.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="/subpage/about.jsp">About</a>
+                    <a class="option" href="/subpage/events.jsp">Events</a>
+                    <a class="option" href="/subpage/contact.jsp">Contact</a>
                     <form style="color:#B92432;" action="login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
@@ -66,12 +72,10 @@
                 </div>
                 
                 <h3><%request.getAttribute("Incorrect");%></h3>
-                 <form action="verificationServlet.java">
-                     
-     
-                     <button class="button" name="randomNumber" value="<%request.getAttribute("randomNumber");%>">CONTINUE</button>
+                <form action="SignUpServlet">
+		    <button class="button">CONTINUE</button>
                     
-                </form>
+		</form>
                 
                 </div>
             </div>

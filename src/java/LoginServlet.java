@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet {
 			    session.setAttribute("role", records.getString("ROLE"));
 			    session.setAttribute("verify", "verified");
 
-			    response.sendRedirect("authenticatedHome.jsp");
+			    response.sendRedirect("subpage/authenticatedHome.jsp");
 			}
 		    }
 		} else {
@@ -102,7 +102,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("username", uname);
 			session.setAttribute("role", "member");
 			session.setAttribute("verify", "unverified");
-			response.sendRedirect("authenticatedHome.jsp");
+			response.sendRedirect("subpage/authenticatedHome.jsp");
 
 		    }
 		}

@@ -47,10 +47,10 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="home.jsp">Home</a>
-                    <a class="option" href="subpage/about.jsp">About</a>
-                    <a class="option" href="/">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="subpage/authenticatedContacts.jsp">Contact</a>
                     <form style="color:#B92432;" action="MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
                         <input type="submit" value="ADMIN"  class="button"/>

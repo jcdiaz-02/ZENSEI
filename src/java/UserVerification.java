@@ -51,29 +51,39 @@ public class UserVerification extends HttpServlet {
 
 	String subject = "verification";
 	String messageText = "Verification code is: " + randomNumber;//messageString;
-	String fromemail = "";
+	String fromemail = "";//sender email & pas
 	String frompassword = "";
 
 	HttpSession httpsession = request.getSession();
+	Properties properties = new Properties();
+	//properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+	properties.put("mail.smtp.ssl.enable", "true");
+	properties.put("mail.smtp.auth", "true");
+	//properties.put("mail.transport.protocol", "smtp");
+	properties.put("mail.smtp.starttls.enable", "true");
+	properties.put("mail.smtp.host", "smtp.gmail.com");
+	properties.put("mail.user", fromemail);
+	//properties.put("mail.password", frompassword);
+	properties.put("mail.smtp.port", "587");
+	//properties.put("mail.smtp.socketFactory.port", 465);
+	//properties.put("mail.smtp.socketFactory.fallback", "false");
+
+	Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+	    @Override
+	    protected PasswordAuthentication getPasswordAuthentication() {
+		return new PasswordAuthentication(fromemail, frompassword);
+	    }
+	});
+
+	session.setDebug(true);
+
 	try {
-	    Properties properties = new Properties();
-	    properties.put("mail.smtp.auth", "true");
-	    properties.put("mail.smtp.starttls.enable", "true");
-	    properties.put("mail.smtp.host", "smtp.gmail.com");
-	    properties.put("mail.smtp.port", "587");
 
-	    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-		protected PasswordAuthentication getPasswordAuthentication() {
-		    return new PasswordAuthentication(fromemail, frompassword);
-		}
-	    });
 	    MimeMessage msg = new MimeMessage(session);
-
 	    msg.setFrom(
 		    new InternetAddress(fromemail));
 	    msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
 	    msg.setSubject(subject);
-
 	    msg.setText(messageText);
 
 	    Transport.send(msg);

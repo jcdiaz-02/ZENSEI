@@ -1,5 +1,5 @@
 <%-- 
-    Document   : login
+    Document   : signup
     Created on : 02 28, 22, 12:46:41 AM
     Author     : Admin
 --%>
@@ -53,10 +53,10 @@
         </div>
          
         <section class="signup-section">
-            <form class="signup-container" method="post" action="SignupServlet">
+            <form class="signup-container" method="post" action="../UserVerification">
                 <h2>Sign Up</h2>
                 <h3>Already registered? <a href="../login/login.jsp">Login</a></h3>
-                
+
                 <div class="input-container">
                     
                     <label for="email"><b>Email</b></label>    

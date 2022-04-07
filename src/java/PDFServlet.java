@@ -229,9 +229,9 @@ public class PDFServlet extends HttpServlet {
 		    table.addCell(new Phrase(rs1.getString("ROLE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 		} else if (btn.equals("alluserpdf") || btn.equals("alluserpdftoday")) {
 		    if (btn.equals("alluserpdf")) {
-			query1 = "SELECT * FROM APP.USERDDB";//for printing of all records
+			query1 = "SELECT * FROM APP.USERDB";//for printing of all records
 			stmt = conn.prepareStatement(query1);
-		    } else {
+		    } else if(btn.equals("alluserpdftoday")) {
 			query1 = "SELECT * FROM APP.USERDB where DATE=?";
 			stmt = conn.prepareStatement(query1);
 			stmt.setString(1, todaydate);
@@ -270,7 +270,7 @@ public class PDFServlet extends HttpServlet {
 		if (btn.equals("alluserpdf")) {
 		    query1 = "SELECT * FROM APP.VERIFIEDDB";//for printing of all records
 		    stmt = conn.prepareStatement(query1);
-		} else {
+		} else if(btn.equals("alluserpdftoday")) {
 		    query1 = "SELECT * FROM APP.VERIFIEDDB where DATE=?";
 		    stmt = conn.prepareStatement(query1);
 		    stmt.setString(1, todaydate);

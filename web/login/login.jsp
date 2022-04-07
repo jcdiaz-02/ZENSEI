@@ -30,6 +30,13 @@
         
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String uname = (String) session.getAttribute("username");
+	    if (uname != null) {
+		response.sendRedirect("../subpage/authenticatedHome.jsp");
+	    }
+	%>
          <!-- navbar -->
         <div class="bar"> 
             <input type="checkbox" id="check">
@@ -57,7 +64,7 @@
         </div>
          
         <section class="login-section">
-            <form class="login-container" method="post" action="LoginServlet">
+            <form class="login-container" method="post" action="../LoginServlet">
                 <h2>Welcome Back</h2>
                 <h3>Don't have an account yet? <a href="../signup/signup.jsp">Sign up</a></h3>
                 
