@@ -55,25 +55,46 @@ public class LoginServlet extends HttpServlet {
 	    throws ServletException, IOException {
 
 	try {
-	    String uname = request.getParameter("uname");
-	    String pass = request.getParameter("psw");
+	    HttpSession httpsession = request.getSession();
 
-	    if ((uname.equals("")) || (pass.equals(""))) {
-		//no username or password
-		throw new NullValueException();
-	    } else {
-		String query = "SELECT PASSWORD FROM APP.USERDB where USERNAME=?";
-		PreparedStatement pstmt = conn.prepareStatement(query);
-		pstmt.setString(1, uname);
-		ResultSet records = pstmt.executeQuery();
-		if (records.next() == false) {
+	    String uname = (String) httpsession.getAttribute("uname");
+	    String pass = (String) httpsession.getAttribute("psw");
+	    String code = (String) httpsession.getAttribute("code");
+	    String verify = request.getParameter("verify");
 
-		    String query1 = "SELECT PASSWORD,ROLE FROM APP.VERIFIEDDB where USERNAME=?";
-		    pstmt = conn.prepareStatement(query1);
+	    if (code.equals(verify)) {
+		if ((uname.equals("")) || (pass.equals(""))) {
+		    //no username or password
+		    throw new NullValueException();
+		} else {
+		    String query = "SELECT PASSWORD FROM APP.USERDB where USERNAME=?";
+		    PreparedStatement pstmt = conn.prepareStatement(query);
 		    pstmt.setString(1, uname);
-		    records = pstmt.executeQuery();
+		    ResultSet records = pstmt.executeQuery();
 		    if (records.next() == false) {
-			throw new AuthenticationExceptionUsername();
+
+			String query1 = "SELECT PASSWORD,ROLE FROM APP.VERIFIEDDB where USERNAME=?";
+			pstmt = conn.prepareStatement(query1);
+			pstmt.setString(1, uname);
+			records = pstmt.executeQuery();
+			if (records.next() == false) {
+			    throw new AuthenticationExceptionUsername();
+			} else {
+			    String dPass = records.getString("PASSWORD");
+//                    System.out.println("password is:" + dPass);
+			    if (!dPass.equals(pass)) {
+				//password is incorrect
+				throw new AuthenticationExceptionPassword();
+			    } else if (dPass.equals(pass)) {
+
+				HttpSession session = request.getSession();
+				session.setAttribute("username", uname);
+				session.setAttribute("role", records.getString("ROLE"));
+				session.setAttribute("verify", "verified");
+
+				response.sendRedirect("subpage/authenticatedHome.jsp");
+			    }
+			}
 		    } else {
 			String dPass = records.getString("PASSWORD");
 //                    System.out.println("password is:" + dPass);
@@ -84,29 +105,18 @@ public class LoginServlet extends HttpServlet {
 
 			    HttpSession session = request.getSession();
 			    session.setAttribute("username", uname);
-			    session.setAttribute("role", records.getString("ROLE"));
-			    session.setAttribute("verify", "verified");
-
+			    session.setAttribute("role", "member");
+			    session.setAttribute("verify", "unverified");
 			    response.sendRedirect("subpage/authenticatedHome.jsp");
+
 			}
 		    }
-		} else {
-		    String dPass = records.getString("PASSWORD");
-//                    System.out.println("password is:" + dPass);
-		    if (!dPass.equals(pass)) {
-			//password is incorrect
-			throw new AuthenticationExceptionPassword();
-		    } else if (dPass.equals(pass)) {
-
-			HttpSession session = request.getSession();
-			session.setAttribute("username", uname);
-			session.setAttribute("role", "member");
-			session.setAttribute("verify", "unverified");
-			response.sendRedirect("subpage/authenticatedHome.jsp");
-
-		    }
 		}
+	    } else {
+		request.setAttribute("Incorrect", "Incorrect code");
+		request.getRequestDispatcher("verificationPage.jsp").forward(request, response);
 	    }
+
 	} catch (SQLException sqle) {
 	    response.sendRedirect("error404.jsp");
 	} catch (Exception ex) {

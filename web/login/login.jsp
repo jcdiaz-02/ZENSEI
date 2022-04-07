@@ -3,45 +3,39 @@
     Created on : 02 28, 22, 12:46:41 AM
     Author     : Admin
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
         <link rel="stylesheet" href="../assets/css/login-style.css">
-          
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
         <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
-        
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <title>UST-TGS</title>
-       
-        
+
+
     </head>
     <body>
-	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	    String uname = (String) session.getAttribute("username");
-	    if (uname != null) {
-		response.sendRedirect("../subpage/authenticatedHome.jsp");
-	    }
-	%>
-         <!-- navbar -->
+
+
+	<!-- navbar -->
         <div class="bar"> 
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                   <i class="fas fa-bars"></i>
+		<i class="fas fa-bars"></i>
             </label>
             <div class="nav-content">
                 <div class="nav-title">
@@ -58,24 +52,27 @@
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
-            
+
                 </div>
             </div>
         </div>
-         
+
+	<%
+	    session.setAttribute("identifier", "login");
+	%>
         <section class="login-section">
-            <form class="login-container" method="post" action="../LoginServlet">
+            <form class="login-container" method="post" action="../LoginVerification">
                 <h2>Welcome Back</h2>
                 <h3>Don't have an account yet? <a href="../signup/signup.jsp">Sign up</a></h3>
-                
-                
+
+
                 <div class="input-container">
                     <label for="uname"><b>Username</b></label>    
                     <div class="input">
                         <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>
                         <input type="text" placeholder="Enter Username" name="uname" required>
                     </div>
-                    
+
                     <label for="psw"><b>Password</b></label>
                     <div class="input">
                         <span class="material-icons input-icon" style="color:#23B461;">&#xe32a;</span>
@@ -83,10 +80,14 @@
                         <span class="material-icons-outlined psw-show">visibility_off</span>
                     </div> 
                 </div>
-                   
-                <button type="submit">LOGIN</button>
+
+
+                <button type="submit" name="button" value="login">LOGIN</button>
                 <a href="/">Forgot Password?</a>
             </form>
         </section>       
     </body>
 </html>
+
+
+

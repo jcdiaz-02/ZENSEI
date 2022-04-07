@@ -81,7 +81,26 @@
 	    <param-value>app</param-value>
 	</init-param>
     </servlet>
-    
+    <servlet>
+	<servlet-name>LoginVerification</servlet-name>
+	<servlet-class>LoginVerification</servlet-class>
+	<init-param>
+	    <param-name>DBdriver</param-name>
+	    <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+	</init-param>
+	<init-param>
+	    <param-name>DBurl</param-name>
+	    <param-value>jdbc:derby://localhost:1527/userDB</param-value>
+	</init-param>
+	<init-param>
+	    <param-name>DBusername</param-name>
+	    <param-value>app</param-value>
+	</init-param>
+	<init-param>
+	    <param-name>DBpassword</param-name>
+	    <param-value>app</param-value>
+	</init-param>
+    </servlet>
     <servlet>
 	<servlet-name>PersonalRecordServlet</servlet-name>
 	<servlet-class>PersonalRecordServlet</servlet-class>
@@ -175,7 +194,10 @@
 	<servlet-class>UserVerification</servlet-class>
     </servlet>
     
-    
+     <servlet-mapping>
+	<servlet-name>LoginVerification</servlet-name>
+	<url-pattern>/LoginVerification</url-pattern>
+    </servlet-mapping>    
     <servlet-mapping>
 	<servlet-name>UserVerification</servlet-name>
 	<url-pattern>/UserVerification</url-pattern>
