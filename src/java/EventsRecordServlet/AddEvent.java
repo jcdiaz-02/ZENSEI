@@ -50,11 +50,12 @@ public class AddEvent extends HttpServlet {
 
             if ("admin".equals(role)) {
                 // event input
-                String name = request.getParameter("eventName");
-                String desc = request.getParameter("eventDescription");
-                String date = request.getParameter("eventDate");
-
-                // event image
+                String name = request.getParameter("ename");
+                String desc = request.getParameter("edescription");
+                String date = request.getParameter("edate");
+               String eventImage = "none";
+                if (request.getParameter("imageInput") != "") {
+                                   // event image
                 response.setContentType("text/plain;charset=UTF-8");
                 ServletOutputStream os = response.getOutputStream();
                 ServletConfig sc = getServletConfig();
@@ -65,15 +66,18 @@ public class AddEvent extends HttpServlet {
                 String imageName = eventImageInput.getSubmittedFileName();
                 InputStream is = eventImageInput.getInputStream();
                 Files.copy(is, Paths.get(path + "\\Images\\" + imageName), StandardCopyOption.REPLACE_EXISTING);
-                String eventImage = "Images/" + imageName;
+                eventImage = "Images/" + imageName;
+                } 
+
+ 
 
                 String query = "INSERT INTO event_record (event_name, event_description, event_date, event_image) VALUES (?, ?, ?, ?)";
                 // List<String> var = new ArrayList<String>();
                 db.updateQuery(query, new String[] { name, desc, date, eventImage }, conn);
-                response.sendRedirect("EventPage.jsp");
+                response.sendRedirect("events/events-add.jsp");
             } else {
                 // not an admin cant add event
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("home.jsp");
             }
         } catch (Exception e) {
             e.printStackTrace();

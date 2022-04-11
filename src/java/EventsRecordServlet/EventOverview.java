@@ -6,21 +6,27 @@
 package EventsRecordServlet;
 
 import java.io.IOException;
-import javax.servlet.ServletException;
-
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
-import javax.servlet.ServletConfig;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Database.ConnectToDB;
 import EventsRecordKeeper.EventRecord;
-import java.util.Arrays;
-import javax.servlet.RequestDispatcher;
 
-@WebServlet(name = "DeleteEvent", urlPatterns = { "/DeleteEvent" })
-public class DeleteEvent extends HttpServlet {
+/**
+ *
+ * @author Oracle
+ */
+public class EventOverview extends HttpServlet {
+
     Connection conn;
     EventRecord eventRecord;
     ConnectToDB db;
@@ -38,41 +44,49 @@ public class DeleteEvent extends HttpServlet {
             e.printStackTrace();
         }
     }
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+     try {
+            HttpSession session = request.getSession();
+            String username = (String) session.getAttribute("username");
+            String role = (String) session.getAttribute("role");
+            role = "admin";
 
-        HttpSession session = request.getSession();
-        String username = (String) session.getAttribute("username");
-        String role = (String) session.getAttribute("role");
-        role = "admin";
-
-        String[] selectedrows = request.getParameterValues("selectedRows");
-        System.out.println(Arrays.toString(selectedrows));
-        String query = "DELETE FROM event_record WHERE event_record_id = ?";
-        try {
+            List<EventRecord> recordList = new ArrayList<EventRecord>();
+            String datenow;
             if ("admin".equals(role)) {
-                for (String record_id : selectedrows) {
-                    db.updateQuery(query, record_id, conn);
+                String tablename = "event_record";
+                ResultSet rs = db.getSortedTableRS(tablename, conn);
+
+                while (rs.next()) {
+                    EventRecord record = new EventRecord(rs.getInt(1), rs.getString(2), rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5));
+                    recordList.add(record);
                 }
+                // recordList.get(1).getEventName(); sample
+             datenow=  java.time.LocalDate.now().toString();
+               
+               
+            session.setAttribute("date", datenow);
+            session.setAttribute("eventList", recordList);
             }
-            // redirect back to view all event
-       response.sendRedirect("EventOverview");
+            
+            // give list of event to jsp
+            response.sendRedirect("subpage/events.jsp");
         } catch (Exception e) {
 
         }
     }
 
-    // #region
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
-    // + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -83,10 +97,10 @@ public class DeleteEvent extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -103,5 +117,5 @@ public class DeleteEvent extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-     // #endregion
+
 }

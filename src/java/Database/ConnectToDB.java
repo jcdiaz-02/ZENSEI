@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,16 +27,26 @@ public class ConnectToDB {
 
     public ResultSet getTableResultSet(String tablename, Connection conn) {
         try {
-            String query = "SELECT * FROM ?";
-            PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, tablename);
-            ResultSet rs = pstmt.executeQuery();
+           String query = "SELECT * FROM " + tablename;
+            Statement pstmt = conn.createStatement();
+            ResultSet rs = pstmt.executeQuery(query);
             return rs;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             return null;
         }
+    }
 
+    public ResultSet getSortedTableRS(String tablename, Connection conn) {
+        try {
+            String query = "SELECT * FROM " + tablename +" ORDER BY event_date DESC";
+            Statement pstmt = conn.createStatement();
+            ResultSet rs = pstmt.executeQuery(query);
+            return rs;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     public ResultSet getResultSet(String query, String[] var, Connection conn) throws SQLException {

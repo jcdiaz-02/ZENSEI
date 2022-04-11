@@ -55,7 +55,7 @@
                 <div class="nav-options" >
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
+                    <a class="option" href="../EventOverview">Events</a>
                     <a class="option" style="color:#B92432;" href="../subpage/contact.jsp">Contact</a>
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
@@ -100,7 +100,7 @@
             </div>
 
             <div class="contact-panel2">
-                <form class="contact-form" >
+                <form class="contact-form" method="post" action="../AddComment">
                     <div class="panel-container">
                         <div class="panel">
                             <label for="fname">First Name <span style="color:red;">*</span></label>

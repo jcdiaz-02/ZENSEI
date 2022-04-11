@@ -42,9 +42,9 @@ public class AddComment extends HttpServlet {
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
 
-            String comment = request.getParameter("comment");
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
+            String comment = request.getParameter("comments");
+            String firstName = request.getParameter("fname");
+            String lastName = request.getParameter("lname");
             String email = request.getParameter("email");
             String course = request.getParameter("course");
 

@@ -60,7 +60,7 @@ public class ViewAllEvent extends HttpServlet {
             }
             // give list of event to jsp
             session.setAttribute("eventList", recordList);
-            response.sendRedirect("ViewAllEventPage.jsp");
+            response.sendRedirect("events/events-all.jsp");
         } catch (Exception e) {
 
         }

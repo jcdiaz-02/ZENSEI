@@ -1,66 +1,63 @@
-<%-- 
-    Document   : home
-    Created on : 02 23, 22, 5:02:52 PM
-    Author     : Admin
---%>
+<%-- Document : home Created on : 02 23, 22, 5:02:52 PM Author : Admin --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <link rel="icon" href="assets/logo.svg">
         <link rel="stylesheet" href="assets/css/asset-sheet.css">
         <link rel="stylesheet" href="assets/css/navbar-style.css">
         <link rel="stylesheet" href="assets/css/home-style.css">
-        
-        
+
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap"
+              rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
     </head>
+
     <body>
-	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	    String uname = (String) session.getAttribute("username");
-	    if (uname != null) {
-		response.sendRedirect("subpage/authenticatedHome.jsp");
-	    }
-	%>
+        <% response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+            String uname = (String) session.getAttribute("username");
+            if (uname != null) {
+                response.sendRedirect("subpage/authenticatedHome.jsp");
+            }%>
         <!-- navbar -->
-       <div class="bar"> 
+        <div class="bar">
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                   <i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i>
             </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="/">
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
-                <div class="nav-options" >
-                    <a class="option" style="color:#B92432; "href="home.jsp">Home</a>
+                <div class="nav-options">
+                    <a class="option" style="color:#B92432; " href="home.jsp">Home</a>
                     <a class="option" href="subpage/about.jsp">About</a>
-                    <a class="option" href="subpage/events.jsp">Events</a>
+                    <a class="option" href="EventOverview">Events</a>
                     <a class="option" href="subpage/contact.jsp">Contact</a>
-                    <form  action="login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
+                    <form action="login/login.jsp">
+                        <input type="submit" value="Login" class="button" />
                     </form>
-            
+
                 </div>
             </div>
         </div>
-        
+
         <!-- 1st section/ home -->
         <section class="home-section">
             <div class="home-header">
@@ -76,4 +73,5 @@
             </div>
         </section>
     </body>
+
 </html>

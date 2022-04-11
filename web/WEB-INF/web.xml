@@ -2,7 +2,6 @@
 <web-app version="4.0"
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
 		<servlet-class>LoginServlet</servlet-class>
@@ -275,7 +274,22 @@
 		<servlet-name>UserVerification</servlet-name>
 		<servlet-class>UserVerification</servlet-class>
 	</servlet>
-
+	<servlet>
+		<servlet-name>EventOverview</servlet-name>
+		<servlet-class>EventsRecordServlet.EventOverview</servlet-class>
+		<init-param>
+			<param-name>DBurl</param-name>
+			<param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DBusername</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DBpassword</param-name>
+			<param-value>root</param-value>
+		</init-param>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginVerification</servlet-name>
 		<url-pattern>/LoginVerification</url-pattern>
@@ -344,16 +358,18 @@
 		<servlet-name>ViewCommentBox</servlet-name>
 		<url-pattern>/ViewCommentBox</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EventOverview</servlet-name>
+		<url-pattern>/EventOverview</url-pattern>
+	</servlet-mapping>
 	<session-config>
 		<session-timeout>
 	    30
 		</session-timeout>
 	</session-config>
-
 	<welcome-file-list>
 		<welcome-file>home.jsp</welcome-file>
 	</welcome-file-list>
-
 	<error-page>
 		<exception-type>Exceptions.AuthenticationExceptionUsername</exception-type>
 		<location>/errorPages/AuthenticationErrorUser.jsp</location>
