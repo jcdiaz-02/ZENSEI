@@ -87,6 +87,9 @@
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uname);
 			ResultSet records = pstmt.executeQuery();
+			if(records.next() == false){
+			response.sendRedirect("ViewAllRecord.jsp");
+			}
 			while (records.next()) {
 		%>
                 <div class="input-container">

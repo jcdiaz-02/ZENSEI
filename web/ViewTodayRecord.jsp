@@ -41,18 +41,25 @@
         <link rel="stylesheet" href="assets/css/asset-sheet.css">
         <link rel="stylesheet" href="assets/css/navbar-style.css">
         <link rel="stylesheet" href="assets/css/about-style.css">
-        <link rel="stylesheet" href="assets/css/viewallrecord-style.css">
+	<link rel="stylesheet" href="assets/css/records-all-style.css">
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=VT323&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+        <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-        <title>UST-TGS</title>
+
+        <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
+	<title>UST-TGS</title>
 
     </head>
     <body>
@@ -71,6 +78,10 @@
 	%>
         <!-- navbar -->
         <div class="bar"> 
+	    <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+		<i class="fas fa-bars"></i>
+            </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
@@ -93,10 +104,13 @@
         </div>
 
 	<!-- 1st section/ about -->
-        <section class="myaccount-section">
-            <div class="myaccount-container">
-		<table border="1">
-		    <thead>
+	<section class="all-records-section">
+            <div class="all-records-container">
+                <div class="all-records-head">
+		    <h2>Today's Records</h2>          
+                </div>
+		<table class="records-table">
+		    <tr>
 		    <td>Name</td>
 		    <td>Course</td>
 		    <td>Email</td>
@@ -110,7 +124,7 @@
 		    <td>Contact Number</td>
 		    <td>Address</td>
 		    <td>Verification</td>
-		    </thead>
+		    </tr>
 		    <% try {
 			    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
 			    LocalDate today = LocalDate.now();
@@ -168,30 +182,30 @@
 
 		</table>
 
-		<div>
-		    <form class="lg-form" method="POST" action ="subpage/myAccountPageAdmin.jsp">
-                        <button class="button1">Go back</button>
+		<div class="all-records-buttons"> 
+                    <form action="subpage/myAccountPageAdmin.jsp">
+                        <input type="submit" value="GO BACK"  class="button"/>
+                    </form>
+
+		    <button class="button" onclick="deleteOpenForm()">Delete </button>
+		    <button class="button" onclick="verifyOpenForm()">Verify</button>
+		    <button class="button" onclick="openForm()">Update </button>
+
+		    <form method="POST" action ="PDFServlet">
+			<button class="button" name="pdfbutton" value="alluserpdf">Download PDF</button>
 		    </form>
 
-		    <button class="button1" onclick="deleteOpenForm()">Delete Record</button>
-		    <button class="button1" onclick="verifyOpenForm()">Verify Record</button>
-		    <button class="button1" onclick="openForm()">Update Record</button>
-
-		    <form class="lg-form" method="POST" action ="PDFServlet">
-                        <button class="button1" name="pdfbutton" value="alluserpdftoday">Download All Record</button>
-
-		    </form>
-                    <form class="lg-form" method="POST" action ="LogoutServlet">
-                        <button class="button1">Logout</button>
-		    </form>
-                </div>	
+                    <form  action="LogoutServlet">
+                        <input type="submit" value="LOGOUT"  class="button"/>
+                    </form>
+                </div>  
 
 
 		<div class="form-popup" id="myForm">
 		    <form action="updateRecord.jsp" class="form-container">
 			<h1>Update Record</h1>
 
-			<label for="uname"><b>Username of record being updated</b></label>
+			<label for="uname"><b>Username of record being updated (verified usernames only)</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
 			<button type="submit" class="submit">Submit</button>

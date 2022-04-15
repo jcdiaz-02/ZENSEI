@@ -72,31 +72,31 @@ public class ChangePassServlet extends HttpServlet {
 		if (!cpsw.equals(psw)) {
 		    httpsession.setAttribute("error", "1");
 		    response.sendRedirect("");
-		}
-	    } else {
-		String query = "SELECT PASSWORD FROM APP.USERDB where EMAIL=?";
-		PreparedStatement pstmt = conn.prepareStatement(query);
-		pstmt.setString(1, email);
-		ResultSet records = pstmt.executeQuery();
-		if (records.next() == false) {
-
-		    query = "SELECT PASSWORD FROM APP.VERIFIEDDB where EMAIL=?";
-		    pstmt = conn.prepareStatement(query);
+		} else {
+		    String query = "SELECT PASSWORD FROM APP.USERDB where EMAIL=?";
+		    PreparedStatement pstmt = conn.prepareStatement(query);
 		    pstmt.setString(1, email);
-		    records = pstmt.executeQuery();
+		    ResultSet records = pstmt.executeQuery();
 		    if (records.next() == false) {
-			throw new AuthenticationExceptionUsername();
+
+			query = "SELECT PASSWORD FROM APP.VERIFIEDDB where EMAIL=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, email);
+			records = pstmt.executeQuery();
+			if (records.next() == false) {
+			    throw new AuthenticationExceptionUsername();
+			} else {
+			    query = "UPDATE APP.VERIFIEDDB set PASSWORD=?";
+			    pstmt = conn.prepareStatement(query);
+			    pstmt.setString(1, psw);
+			    pstmt.executeUpdate();
+			}
 		    } else {
-			query = "UPDATE APP.VERIFIEDDB set PASSWORD=?";
+			query = "UPDATE APP.USERDBs set PASSWORD=?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, psw);
 			pstmt.executeUpdate();
 		    }
-		} else {
-		    query = "UPDATE APP.USERDBs set PASSWORD=?";
-		    pstmt = conn.prepareStatement(query);
-		    pstmt.setString(1, psw);
-		    pstmt.executeUpdate();
 		}
 	    }
 	} catch (SQLException sqle) {
@@ -106,18 +106,17 @@ public class ChangePassServlet extends HttpServlet {
 	}
     }
 
-
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-/**
- * Handles the HTTP <code>GET</code> method.
- *
- * @param request servlet request
- * @param response servlet response
- * @throws ServletException if a servlet-specific error occurs
- * @throws IOException if an I/O error occurs
- */
-@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	processRequest(request, response);
     }
@@ -131,7 +130,7 @@ public class ChangePassServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	processRequest(request, response);
     }
@@ -142,7 +141,7 @@ public class ChangePassServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-	public String getServletInfo() {
+    public String getServletInfo() {
 	return "Short description";
     }// </editor-fold>
 

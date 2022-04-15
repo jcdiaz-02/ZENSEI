@@ -31,7 +31,7 @@
     </head>
     <body>
 	<%
-	 
+
 	    String button = (String) session.getAttribute("button");
 	%>
         <!-- navbar -->
@@ -62,8 +62,9 @@
 		<h1>Verify Your Identity</h1>
 		<% if (button.equals("signup")) {%>
 
-                <h2>For added security, we need to verify your email address. We have sent a verification code to <c:out value=${email}/></h2>
-                <h2>If the email does not arrive soon, check your spam folder or have us send it again.</h2>
+                <h2>For added security, we need to verify your email address. We have sent a verification  ${email} </h2>
+                
+		<h2>If the email does not arrive soon, check your spam folder or have us send it again.</h2>
 
 		<form action="SignUpServlet">
 		    <div class="input">
@@ -73,6 +74,8 @@
 		    <button class="button">CONTINUE</button>
 		</form>
 		<%} else if (button.equals("login")) {%>
+		<h2>For added security, we need to verify your access request. We have sent a verification code to ${email} </h2>
+                <h2>If the email does not arrive soon, check your spam folder or have us send it again.</h2>
 
 
 		<form action="LoginServlet">
@@ -83,10 +86,12 @@
 		    <button class="button">CONTINUE</button>
 		</form>
 		<%} else if (button.equals("forgot")) {%>
+		<h2>For added security, we need to verify your account request. We have sent a verification code to  ${email} </h2>
+                <h2>If the email does not arrive soon, check your spam folder or have us send it again.</h2>
 
-		<form action ="">
-		      <div class="input">
-		    <input type="text" placeholder="enter verification code" name="verify" required>
+		<form action ="ForgotPassVerification">
+		    <div class="input">
+			<input type="text" placeholder="enter verification code" name="verify" required>
 		    </div>
 		    <h3><%request.getAttribute("Incorrect");%></h3>
 		    <button class="button">CONTINUE</button>
