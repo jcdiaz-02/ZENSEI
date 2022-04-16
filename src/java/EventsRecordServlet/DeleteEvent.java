@@ -45,7 +45,6 @@ public class DeleteEvent extends HttpServlet {
         HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
         String role = (String) session.getAttribute("role");
-        role = "admin";
 
         String[] selectedrows = request.getParameterValues("selectedRows");
         System.out.println(Arrays.toString(selectedrows));
@@ -59,7 +58,7 @@ public class DeleteEvent extends HttpServlet {
             // redirect back to view all event
        response.sendRedirect("EventOverview");
         } catch (Exception e) {
-
+response.sendRedirect("errorPages/Error404.jsp");
         }
     }
 

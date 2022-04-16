@@ -46,7 +46,7 @@ public class AddEvent extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
-            role = "admin";
+            
 
             if ("admin".equals(role)) {
                 // event input
@@ -81,6 +81,7 @@ public class AddEvent extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
+          response.sendRedirect("errorPages/Error404.jsp");
         }
     }
 

@@ -16,8 +16,9 @@ import java.util.List;
 import Database.ConnectToDB;
 import EventsRecordKeeper.EventRecord;
 
-@WebServlet(name = "ViewAllEvent", urlPatterns = { "/ViewAllEvent" })
+@WebServlet(name = "ViewAllEvent", urlPatterns = {"/ViewAllEvent"})
 public class ViewAllEvent extends HttpServlet {
+
     Connection conn;
     EventRecord eventRecord;
     ConnectToDB db;
@@ -42,11 +43,9 @@ public class ViewAllEvent extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
-            role = "admin";
-
-            List<EventRecord> recordList = new ArrayList<EventRecord>();
 
             if ("admin".equals(role)) {
+                List<EventRecord> recordList = new ArrayList<EventRecord>();
                 String tablename = "event_record";
                 ResultSet rs = db.getTableResultSet(tablename, conn);
 
@@ -56,13 +55,14 @@ public class ViewAllEvent extends HttpServlet {
                             rs.getString(5));
                     recordList.add(record);
                 }
-                // recordList.get(1).getEventName(); sample
+                session.setAttribute("eventList", recordList);
+                response.sendRedirect("events/events-all.jsp");
+            } else {
+                response.sendRedirect("home.jsp");
             }
-            // give list of event to jsp
-            session.setAttribute("eventList", recordList);
-            response.sendRedirect("events/events-all.jsp");
-        } catch (Exception e) {
 
+        } catch (Exception e) {
+            response.sendRedirect("errorPages/Error404.jsp");
         }
     }
 
@@ -72,10 +72,10 @@ public class ViewAllEvent extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -86,10 +86,10 @@ public class ViewAllEvent extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -106,5 +106,5 @@ public class ViewAllEvent extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-     // #endregion
+    // #endregion
 }
