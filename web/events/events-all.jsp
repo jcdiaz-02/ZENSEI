@@ -46,6 +46,14 @@
     </head>
 
     <body>
+                	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	                String role = (String) session.getAttribute("role");
+
+	    if (role != "admin") {
+		response.sendRedirect("../home.jsp");
+	    }
+	%>
         <!--TODO: CONNECT TO DATABASE AND ACCESS ALL EVENTS DATA -->
         <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->

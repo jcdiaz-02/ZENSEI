@@ -45,9 +45,9 @@
     <body>
         <%
             response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-            String uname = (String) session.getAttribute("username");
-            if (uname != null) {
-                response.sendRedirect("authenticatedEvents.jsp");
+            String role = (String) session.getAttribute("role");
+            if (role == null) {
+                role = "guest";
             }
         %>
         <!-- TODO: ALLOW TO ACCESS DATABASE FOR CALENDAR -->
@@ -67,6 +67,27 @@
                     </a>
                 </div>
                 <div class="nav-options" >
+                    <%
+                        if (role.equalsIgnoreCase("member")) {
+                    %>
+                    <a class="option" href="authenticatedHome.jsp">Home</a>
+                    <a class="option" href="authenticatedAbout.jsp">About</a>
+                    <a class="option" style="color:#B92432;" href="../EventOverview">Events</a>
+                    <a class="option" href="authenticatedContacts.jsp">Contact</a>
+                    <form action="../MyAccountServlet">
+                        <input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="My Account"  class="button"/>
+                    </form>
+                    <%    } else if (role.equalsIgnoreCase("admin")) { %>
+                    <a class="option" href="authenticatedHome.jsp">Home</a>
+                    <a class="option" href="authenticatedAbout.jsp">About</a>
+                    <a class="option" style="color:#B92432;" href="../EventOverview">Events</a>
+                    <a class="option" href="authenticatedContacts.jsp">Contact</a>
+                    <form action="../MyAccountServlet">
+                        <input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="ADMIN"  class="button"/>
+                    </form>
+                    <% } else {%> 
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" style="color:#B92432;" href="../EventOverview">Events</a>
@@ -74,6 +95,7 @@
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
+                    <%}%>
 
                 </div>
             </div>
@@ -107,9 +129,9 @@
                         <li>
                             <div>
                                 <p><%= recordList.get(i).getName()%></p>
-                                <%if (recordList.get(i).getImgURL().contains("Images")){
-                                out.println("<img src="+"\"../"+recordList.get(i).getImgURL() +"\">");
-                                }%>
+                                <%if (recordList.get(i).getImgURL().contains("Images")) {
+                                        out.println("<img src=" + "\"../" + recordList.get(i).getImgURL() + "\">");
+                                    }%>
                             </div>
                         </li>    
                         <% }%>
@@ -118,13 +140,16 @@
 
                 <div class="upcoming-events-container">
                     <h2>Upcoming Events</h2>
+                    <%
+                        if (role.equalsIgnoreCase("admin")) {
+                    %>
                     <h3><a href="../ViewAllEvent">View All Events</a></h3>
+                    <%}%>
                     <div class="calendar-container"><div id="calendar"></div></div>
-                            <%
-            String role = (String) session.getAttribute("role");
-            role ="admin";
-            if (role == "admin") {
-        %>
+                        <%
+
+                            if (role.equalsIgnoreCase("admin")) {
+                        %>
                     <div class="event-buttons"> 
                         <form  action="../events/events-add.jsp">
                             <input type="submit" value="Add Event"  class="button"/>
@@ -469,7 +494,7 @@
 
             !function () {
                 var data = [
-                         <%
+            <%
                 for (int i = 0; i < recordList.size() - 1; i++) {
             %>
                     {date: "<%= recordList.get(i).getDate()%>", eventName: "<%= recordList.get(i).getName()%>", calendar: 'Work', color: 'orange'},

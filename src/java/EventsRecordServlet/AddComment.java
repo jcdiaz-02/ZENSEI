@@ -39,7 +39,6 @@ public class AddComment extends HttpServlet {
 
         try {
             HttpSession session = request.getSession();
-            String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
 
             String comment = request.getParameter("comments");
@@ -50,9 +49,14 @@ public class AddComment extends HttpServlet {
 
             String query = "INSERT INTO comment (comment, first_name, last_name, email, course) VALUES (?, ?, ?, ?, ?)";
             db.updateQuery(query, new String[] { comment, firstName, lastName, email, course }, conn);
-            response.sendRedirect("contactPage.jsp");
+            if(role =="admin"){
+                response.sendRedirect("subpage/authenticatedcontacts.jsp");
+            }else{
+                response.sendRedirect("subpage/contact.jsp");
+            }
             // redirect back to contact page
         } catch (Exception e) {
+             response.sendRedirect("errorPages/Error404.jsp");
         }
     }
 

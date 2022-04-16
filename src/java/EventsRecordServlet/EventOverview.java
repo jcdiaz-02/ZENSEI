@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import Database.ConnectToDB;
 import EventsRecordKeeper.EventRecord;
+import java.util.Arrays;
 
 /**
  *
@@ -67,7 +68,8 @@ public class EventOverview extends HttpServlet {
                 // recordList.get(1).getEventName(); sample
              datenow=  java.time.LocalDate.now().toString();
                
-               
+                System.out.println("is recordlist empty"+recordList == null);
+                System.out.println(recordList.get(0).getName());
             session.setAttribute("date", datenow);
             session.setAttribute("eventList", recordList);
             }
