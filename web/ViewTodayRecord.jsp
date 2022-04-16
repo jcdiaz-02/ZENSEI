@@ -1,41 +1,36 @@
-<%-- 
-    Document   : ViewTodaylRecord.jsp
-    Created on : 03 17, 22, 10:33:45 PM
-    Author     : Admin
---%>
-<%@page import="java.time.LocalDate"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
+<%-- Document : ViewTodaylRecord.jsp Created on : 03 17, 22, 10:33:45 PM Author : Admin --%>
+<%@page import="java.time.LocalDate" %>
+<%@page import="java.time.format.DateTimeFormatter" %>
+<%@page import="java.sql.PreparedStatement" %>
+<%@page import="java.sql.ResultSet" %>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%
-    String driver = "org.apache.derby.jdbc.ClientDriver";
+<%@page import="java.sql.DriverManager" %>
+<%@page import="java.sql.ResultSet" %>
+<%@page import="java.sql.Statement" %>
+<%@page import="java.sql.Connection" %>
+<% String driver = "org.apache.derby.jdbc.ClientDriver";
     String url = "jdbc:derby://localhost:1527/userDB";
     String username = "app";
     String password = "app";
     Connection conn;
     try {
-	Class.forName(driver);
-
+        Class.forName(driver);
     } catch (ClassNotFoundException e) {
-	e.printStackTrace();
+        e.printStackTrace();
     }
-    Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
-%>
+                                                                                            Connection connection = null;
+                                                                                            Statement statement = null;
+                                                                                            ResultSet resultSet = null; %>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1.0">
 
         <link rel="icon" href="assets/logo.svg">
         <link rel="stylesheet" href="assets/css/asset-sheet.css">
@@ -62,20 +57,16 @@
 	<title>UST-TGS</title>
 
     </head>
+
     <body>
-	<%
-	    response.setHeader("Cache-Control", "no-cache");
-	    response.setHeader("Cache-Control", "no-store");
-	    response.setHeader("Pragma", "no-cache");
-	    response.setDateHeader("Expires", 0);
-
-	    session.setAttribute("verify", session.getAttribute("verify"));
-
-	    if (session.getAttribute("username") == null) {
-		response.sendRedirect("login.jsp");
-	    }
-
-	%>
+        <% response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+            session.setAttribute("verify", session.getAttribute("verify"));
+            if (session.getAttribute("username") == null) {
+                                                                                                                response.sendRedirect("login.jsp");
+                                                                                                            } %>
         <!-- navbar -->
         <div class="bar"> 
 	    <input type="checkbox" id="check">
@@ -84,20 +75,26 @@
             </label>
             <div class="nav-content">
                 <div class="nav-title">
-                    <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <img class="nav-logo" src="assets/logo.svg"
+                         alt="UST-TGS logo">
+                    <a class="" href="/">
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
-                <div class="nav-options" >
-                    <a class="option" href="subpage/authenticatedHome.jsp">Home</a>
-                    <a class="option" href="subpage/authenticatedAbout.jsp">About</a>
-                    <a class="option" href="subpage/authenticatedEvents.jsp">Events</a>
-                    <a class="option" href="subpage/authenticatedContacts.jsp">Contact</a>
-		    <form action="MyAccountServlet">
-			<input type="hidden" name="verify" value="${verify}" />
-			<input type="submit" value="ADMIN"  class="button"/>
-		    </form>
+                <div class="nav-options">
+                    <a class="option"
+                       href="subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option"
+                       href="subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="EventOverview">Events</a>
+                    <a class="option"
+                       href="subpage/authenticatedContacts.jsp">Contact</a>
+                    <form action="MyAccountServlet">
+                        <input type="hidden" name="verify"
+                               value="${verify}" />
+                        <input type="submit" value="ADMIN"
+                               class="button" />
+                    </form>
 
                 </div>
             </div>
@@ -260,4 +257,5 @@
 	</div>
     </section>
 </body>
+
 </html>

@@ -53,7 +53,7 @@
                 <div class="nav-options" >
 		    <a class="option" href="authenticatedHome.jsp">Home</a>
                     <a class="option" style="color:#B92432;" href="authenticatedAbout.jsp">About</a>
-                    <a class="option" href="authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../EventOverview">Events</a>
                     <a class="option" href="authenticatedContacts.jsp">Contact</a>
 		    <%
 			if (role.equalsIgnoreCase("member")) {

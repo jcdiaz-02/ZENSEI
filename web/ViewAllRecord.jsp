@@ -1,36 +1,30 @@
-<%-- 
-    Document   : ViewTodayAllRecord.jsp
-    Created on : 03 15, 22, 10:33:45 PM
-    Author     : Admin
---%>
-<%@page import="java.sql.PreparedStatement"%>
-<%@page import="java.sql.ResultSet"%>
+<%-- Document : ViewTodayAllRecord.jsp Created on : 03 15, 22, 10:33:45 PM Author : Admin --%>
+<%@page import="java.sql.PreparedStatement" %>
+<%@page import="java.sql.ResultSet" %>
 
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 
-<%@page import="java.sql.DriverManager"%>
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.Statement"%>
-<%@page import="java.sql.Connection"%>
-<%
-    String driver = "org.apache.derby.jdbc.ClientDriver";
+<%@page import="java.sql.DriverManager" %>
+<%@page import="java.sql.ResultSet" %>
+<%@page import="java.sql.Statement" %>
+<%@page import="java.sql.Connection" %>
+<% String driver = "org.apache.derby.jdbc.ClientDriver";
     String url = "jdbc:derby://localhost:1527/userDB";
     String username = "app";
     String password = "app";
     Connection conn;
     try {
-	Class.forName(driver);
-
+        Class.forName(driver);
     } catch (ClassNotFoundException e) {
-	e.printStackTrace();
+        e.printStackTrace();
     }
     Connection connection = null;
-    Statement statement = null;
-    ResultSet resultSet = null;
-%>
+                                                                            Statement statement = null;
+                                                                            ResultSet resultSet = null; %>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,20 +53,17 @@
         <title>UST-TGS</title>
 
     </head>
+
     <body>
-	<%
-	    response.setHeader("Cache-Control", "no-cache");
-	    response.setHeader("Cache-Control", "no-store");
-	    response.setHeader("Pragma", "no-cache");
-	    response.setDateHeader("Expires", 0);
-
-	    session.setAttribute("verify", session.getAttribute("verify"));
-
-	    if (session.getAttribute("username") == null) {
-		response.sendRedirect("login.jsp");
-	    }
-
-	%>
+        <% response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+            session.setAttribute("verify",
+                    session.getAttribute("verify"));
+            if (session.getAttribute("username") == null) {
+                                                                                                response.sendRedirect("login.jsp");
+                                                                                            } %>
         <!-- navbar -->
         <div class="bar"> 
 	    <input type="checkbox" id="check">
@@ -267,4 +258,5 @@
 	</div>
     </section>
 </body>
+
 </html>

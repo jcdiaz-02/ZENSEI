@@ -1,0 +1,11 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "dependencies/commons-codec-1.9.jar",
+        "dependencies/itextpdf-5.5.9.jar",
+        "dependencies/javax.mail.jar",
+        "dependencies/mysql-connector-java-8.0.21.jar",
+        "dependencies/jaf-1.1.1/activation.jar",
+        "dependencies/jakarta.servlet-api.jar"
+    ]
+}

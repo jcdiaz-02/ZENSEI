@@ -35,6 +35,14 @@
         <title>UST-TGS</title>
     </head>
     <body>
+        	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	                String role = (String) session.getAttribute("role");
+
+	    if (role != "admin") {
+		response.sendRedirect("../home.jsp");
+	    }
+	%>
         <!--TODO: CONNECT ADD EVENT TO DATABASE ONLY AVAILABLE TO ADMIN-->
         <!-- navbar -->
         <div class="bar"> 
@@ -68,7 +76,7 @@
                    <h2>Add Event</h2>          
                 </div>
                         
-                <form class="add-events-form" action="../home.jsp">
+                <form class="add-events-form" action="../AddEvent" enctype="multipart/form-data" method="post">
                     <div class="input">
                         <label for="ename"><b>Event Name:</b></label>    
                         <input type="text" placeholder="Enter Event Name" name="ename" required>
@@ -82,8 +90,12 @@
                     <div class="input">
                         <label for="edate"><b>Event Date:</b></label>
                         <input type="date" placeholder="Enter Event Date" name="edate" required>
-                    </div> 
+                    </div>
                     
+                    <div class="input">
+                                <label for="eventImage"><b>Event Image:</b></label>
+                                <input name="imageInput" type="file"  accept="image/*">
+                    </div> 
                     <div class="add-event-buttons"> 
                             <input type="button" onclick="location.href='../subpage/events.jsp';" value="GO BACK" class="button" />
                             <input type="submit" value="SUBMIT"  class="button"/>

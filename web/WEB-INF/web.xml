@@ -181,6 +181,86 @@
         </init-param>
     </servlet>
     <servlet>
+        <servlet-name>AddComment</servlet-name>
+        <servlet-class>EventsRecordServlet.AddComment</servlet-class>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>AddEvent</servlet-name>
+        <servlet-class>EventsRecordServlet.AddEvent</servlet-class>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteEvent</servlet-name>
+        <servlet-class>EventsRecordServlet.DeleteEvent</servlet-class>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewAllEvent</servlet-name>
+        <servlet-class>EventsRecordServlet.ViewAllEvent</servlet-class>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewCommentBox</servlet-name>
+        <servlet-class>EventsRecordServlet.ViewCommentBox</servlet-class>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
         <servlet-name>MyAccountServlet</servlet-name>
         <servlet-class>MyAccountServlet</servlet-class>
     </servlet>
@@ -193,6 +273,34 @@
         <servlet-class>UserVerification</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EventOverview</servlet-name>
+        <servlet-class>EventsRecordServlet.EventOverview</servlet-class>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:mysql://localhost:3306/GamingArchives</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteComment</servlet-name>
+        <servlet-class>EventsRecordServlet.DeleteComment</servlet-class>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>root</param-value>
+        </init-param>
+    </servlet>
+        <servlet>
         <servlet-name>ChangePassServlet</servlet-name>
         <servlet-class>ChangePassServlet</servlet-class>
         <init-param>
@@ -285,6 +393,34 @@
         <url-pattern>/DeleteRecordServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>AddComment</servlet-name>
+        <url-pattern>/AddComment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEvent</servlet-name>
+        <url-pattern>/AddEvent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEvent</servlet-name>
+        <url-pattern>/DeleteEvent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllEvent</servlet-name>
+        <url-pattern>/ViewAllEvent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCommentBox</servlet-name>
+        <url-pattern>/ViewCommentBox</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventOverview</servlet-name>
+        <url-pattern>/EventOverview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteComment</servlet-name>
+        <url-pattern>/DeleteComment</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
         <servlet-name>ChangePassServlet</servlet-name>
         <url-pattern>/ChangePassServlet</url-pattern>
     </servlet-mapping>
@@ -296,10 +432,10 @@
         <servlet-name>ForgotPassVerification</servlet-name>
         <url-pattern>/ForgotPassVerification</url-pattern>
     </servlet-mapping>
-    <session-config>
+        <session-config>
         <session-timeout>
 	    30
-	</session-timeout>
+		</session-timeout>
     </session-config>
     <welcome-file-list>
         <welcome-file>home.jsp</welcome-file>

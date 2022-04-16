@@ -1,12 +1,9 @@
-<%-- 
-    Document   : viewPersonalRecordunverified
-    Created on : 02 28, 22, 12:46:41 AM
-    Author     : Admin
---%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%-- Document : viewPersonalRecordunverified Created on : 02 28, 22, 12:46:41 AM Author : Admin --%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,24 +33,25 @@
         <title>UST-TGS</title>
 
     </head>
+
     <body>
         <!-- navbar -->
-        <div class="bar"> 
+        <div class="bar">
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="/">
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
-                <div class="nav-options" >
+                <div class="nav-options">
                     <a class="option" href="subpage/authenticatedHome.jsp">Home</a>
                     <a class="option" href="subpage/authenticatedAbout.jsp">About</a>
-                    <a class="option" href="subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="EventOverview">Events</a>
                     <a class="option" href="subpage/authenticatedContacts.jsp">Contact</a>
                     <form style="color:#B92432;" action="myAccountPage.jsp">
-			<input type="hidden" name="verify" value="${verify}" />
-			<input type="submit" value="My Account"  class="button"/>
+                        <input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="My Account" class="button" />
                     </form>
 
                 </div>
@@ -117,4 +115,5 @@
             </div>
         </section>
     </body>
+
 </html>
