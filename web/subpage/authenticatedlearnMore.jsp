@@ -41,7 +41,7 @@
         <div class="bar"> 
             <div class="nav-content">
                 <div class="nav-title">
-                    <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
+                    <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
                     <a class="" href="/"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>

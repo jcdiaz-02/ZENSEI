@@ -56,6 +56,7 @@
 
 
                 <div class="input-container">
+		    
                     <form class="lg-form" method="POST" action="AddRecordServlet">
 
                         <h1>Name: </h1><input type="text" placeholder="Enter Name" name="myname"><br>
@@ -74,16 +75,21 @@
                         <h1>Student Number: </h1><input type="text" placeholder="Enter Student Number"
                                                         name="snumber"><br>
 
-                        <h1>Contact Number: </h1><input type="text" placeholder="Enter Conatct Number"
-                                                        name="cnumber"><br>
+			<h1>Student Number: </h1><input type="text" placeholder="Enter Student Number" name="snumber"><br>
+
+			<h1>Contact Number: </h1><input type="text" placeholder="Enter Conatct Number" name="cnumber"><br>
 
                         <h1>Favorite Game: </h1><input type="text" placeholder="Enter Favorite Game"
                                                        name="favgame"><br>
 
-                        <h1>Address: </h1><input type="text" placeholder="Enter Address" name="address"><br>
+			<h1>Address: </h1><input type="text" placeholder="Enter Address" name="address"><br>
 
-                        <button type="submit">SUBMIT</button>
+			<button type="submit">SUBMIT</button>
                     </form>
+		    
+		    <form class="lg-form" action="subpage/myAccountPageVerified.jsp" class="lg-form">
+			<input type="submit" value="GO BACK"  class="button"/>
+		    </form>
                 </div>
 
 

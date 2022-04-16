@@ -15,22 +15,28 @@
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
         <link rel="stylesheet" href="../assets/css/about-style.css">
-        <link rel="stylesheet" href="../assets/css/myaccountpage-style.css">
+	<link rel="stylesheet" href="../assets/css/profile-page-style.css">
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=VT323&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+        <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-        <title>UST-TGS</title>
+	<title>UST-TGS</title>
 
     </head>
     <body>
         <!-- navbar -->
+	    
         <div class="bar"> 
             <div class="nav-content">
                 <div class="nav-title">
@@ -54,14 +60,13 @@
         </div>
 
 	<!-- 1st section/ about -->
-        <section class="myaccount-section">
-            <div class="myaccount-container">
-                <%
+        <section class="profile-section">
+            <div class="profile-container">
+		<%
 		    response.setHeader("Cache-Control", "no-cache");
 		    response.setHeader("Cache-Control", "no-store");
 		    response.setHeader("Pragma", "no-cache");
 		    response.setDateHeader("Expires", 0);
-		    session.setAttribute("verify", session.getAttribute("verify"));
 		    String uname = (String) session.getAttribute("username");
 
 		    if (uname == null) {
@@ -69,20 +74,19 @@
 		    }
 
                 %>
-                <div>
-                    <form class="lg-form" method="POST" action ="../PersonalRecordServlet">
 
-                        <button class="button" name="uname" <c:out value="${username}"/>>View Personal Record</button>
-                    </form>
+		<button class="button"onclick="location.href = '../PersonalRecordServlet';" name="uname"  value = "<c:out value="${username}"/>"  >
+		    <span class="material-icons-outlined">badge</span> 
+		    View Personal Record</button>
+
+		<button class="button" onclick="location.href = '../LogoutServlet';">
+		    <span class="material-icons-outlined">power_settings_new</span>
+		    Logout</button>
+
+		<div class="profile-verify-msg">
+                    <span class="material-icons" style="color:red;">cancel</span>
+                    <p> Your account has not been verified.</p>
                 </div>
-		<div>
-
-                    <form class="lg-form" method="POST" action="../LogoutServlet">
-                        <button class="button">Logout</button>
-                    </form>
-                </div>
-
-                <h1> Your account is not yet verified</h1>
 
 	    </div>
 	</div>

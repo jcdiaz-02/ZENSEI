@@ -300,6 +300,50 @@
             <param-value>root</param-value>
         </init-param>
     </servlet>
+        <servlet>
+        <servlet-name>ChangePassServlet</servlet-name>
+        <servlet-class>ChangePassServlet</servlet-class>
+        <init-param>
+            <param-name>DBdriver</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:derby://localhost:1527/userDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>app</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgotPass</servlet-name>
+        <servlet-class>ForgotPass</servlet-class>
+        <init-param>
+            <param-name>DBdriver</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBurl</param-name>
+            <param-value>jdbc:derby://localhost:1527/userDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBusername</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>DBpassword</param-name>
+            <param-value>app</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgotPassVerification</servlet-name>
+        <servlet-class>.ForgotPassVerification</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginVerification</servlet-name>
         <url-pattern>/LoginVerification</url-pattern>
@@ -376,7 +420,19 @@
         <servlet-name>DeleteComment</servlet-name>
         <url-pattern>/DeleteComment</url-pattern>
     </servlet-mapping>
-    <session-config>
+        <servlet-mapping>
+        <servlet-name>ChangePassServlet</servlet-name>
+        <url-pattern>/ChangePassServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPass</servlet-name>
+        <url-pattern>/ForgotPass</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgotPassVerification</servlet-name>
+        <url-pattern>/ForgotPassVerification</url-pattern>
+    </servlet-mapping>
+        <session-config>
         <session-timeout>
 	    30
 		</session-timeout>

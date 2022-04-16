@@ -78,15 +78,20 @@
         <section class="login-section">
             <div class="login-container">
 
-                <% try {
-                        conn = DriverManager.getConnection(url, username, password);
-                        String uname = request.getParameter("uname");
-                        session.setAttribute("primaryusername", uname);
-                        String query = "SELECT * FROM APP.VERIFIEDDB where USERNAME=?";
-                        PreparedStatement pstmt = conn.prepareStatement(query);
-                        pstmt.setString(1, uname);
-                        ResultSet records = pstmt.executeQuery();
-                                                                                                        while (records.next()) {%>
+		<% try {
+			conn = DriverManager.getConnection(url, username, password);
+			
+			String uname = request.getParameter("uname");
+			session.setAttribute("primaryusername",uname);
+			String query = "SELECT * FROM APP.VERIFIEDDB where USERNAME=?";
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uname);
+			ResultSet records = pstmt.executeQuery();
+			if(records.next() == false){
+			response.sendRedirect("ViewAllRecord.jsp");
+			}
+			while (records.next()) {
+		%>
                 <div class="input-container">
                     <form class="lg-form" method="POST"
                           action="UpdateRecordServlet">

@@ -58,7 +58,9 @@ public class PersonalRecordServlet extends HttpServlet {
 	    throws ServletException, IOException {
 
 	try {
-	    String uname = request.getParameter("uname");
+	    HttpSession session = request.getSession();
+
+	    String uname = (String) session.getAttribute("uname");
 	    String query = "SELECT * FROM APP.USERDB where USERNAME=?";
 	    PreparedStatement pstmt = conn.prepareStatement(query);
 	    pstmt.setString(1, uname);
@@ -69,10 +71,10 @@ public class PersonalRecordServlet extends HttpServlet {
 		pstmt = conn.prepareStatement(query1);
 		pstmt.setString(1, uname);
 		records = pstmt.executeQuery();
+
 		if (records.next() == false) {
 		    throw new AuthenticationExceptionUsername();
 		} else {
-		    HttpSession session = request.getSession();
 
 		    session.setAttribute("verify", "verified");
 		    session.setAttribute("name", records.getString("NAME"));
@@ -92,8 +94,7 @@ public class PersonalRecordServlet extends HttpServlet {
 		}
 	    } else {
 
-		HttpSession session = request.getSession();
-
+		
 		String pass = records.getString("PASSWORD");
 		String toemail = records.getString("EMAIL");
 
