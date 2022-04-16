@@ -54,8 +54,8 @@ public class UserVerification extends HttpServlet {
 
 	String subject = "verification";
 	String messageText = "Verification code is: " + randomNumber;//messageString;
-	String fromemail = "errol.pascual.cics@ust.edu.ph";//sender email & pas
-	String frompassword = "***REMOVED***";
+	String fromemail = "";//sender email & pas
+	String frompassword = "";
 
 	//session.setDebug(true);
 	try {
