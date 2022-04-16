@@ -47,7 +47,7 @@
                 <div class="nav-options" >
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" style="color:#B92432;" href="about.jsp">About</a>
-                    <a class="option" href="events.jsp">Events</a>
+                    <a class="option" href="../EventOverview">Events</a>
                     <a class="option" href="contact.jsp">Contact</a>
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
