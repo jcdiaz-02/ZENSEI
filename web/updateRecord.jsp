@@ -90,7 +90,7 @@
 			if(records.next() == false){
 			response.sendRedirect("ViewAllRecord.jsp");
 			}
-			while (records.next()) {
+			else {
 		%>
                 <div class="input-container">
                     <form class="lg-form" method="POST" action="UpdateRecordServlet">

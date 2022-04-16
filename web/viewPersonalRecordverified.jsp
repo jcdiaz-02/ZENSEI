@@ -82,7 +82,7 @@
             <div class="personal-records-container">
 
                 <h3> View Personal Record </h3>
-		<form class="personal-records-info-container0" action="/">
+		<class class="personal-records-info-container0" >
 
                     <div class='personal-records-profile-container'>
                         <span class="material-icons personal-records-photo">
@@ -178,10 +178,12 @@
                     <div class="personal-records-buttons"> 
                         <input type="button" onclick="location.href = 'subpage/myAccountPageVerified.jsp';" value="GO BACK" class="button" />
                         <input type="button" onclick="location.href = 'LogoutServlet';" value="LOGOUT" class="button" />
-			<button name="pdfbutton" onclick="location.href = 'PDFServlet';" value="ownpdf" class="button"> Print PDF</button>
 
+			<form method="POST" action ="PDFServlet">
+			    <button class="button"  name="pdfbutton" value="ownpdf" class="button">Download PDF</button>
+			</form>
 		    </div>   
-
+		</class>
             </div>
         </section>
     </body>
