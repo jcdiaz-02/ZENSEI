@@ -46,7 +46,6 @@ public class DeleteComment extends HttpServlet {
      HttpSession session = request.getSession();
         String username = (String) session.getAttribute("username");
         String role = (String) session.getAttribute("role");
-        role = "admin";
         String[] selectedrows = request.getParameterValues("selectedRows");
         System.out.println(Arrays.toString(selectedrows));
         String query = "DELETE FROM comment WHERE id_comment = ?";

@@ -44,7 +44,7 @@ public class ViewCommentBox extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
-            role = "admin";
+            
 
             List<CommentBox> commentList = new ArrayList<CommentBox>();
             if ("admin".equals(role)) {
