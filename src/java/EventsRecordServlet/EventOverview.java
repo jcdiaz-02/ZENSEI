@@ -51,7 +51,6 @@ public class EventOverview extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
-            role = "admin";
 
             List<EventRecord> recordList = new ArrayList<EventRecord>();
             String datenow;
