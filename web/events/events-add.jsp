@@ -35,6 +35,14 @@
         <title>UST-TGS</title>
     </head>
     <body>
+        	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	                String role = (String) session.getAttribute("role");
+
+	    if (role != "admin") {
+		response.sendRedirect("../home.jsp");
+	    }
+	%>
         <!--TODO: CONNECT ADD EVENT TO DATABASE ONLY AVAILABLE TO ADMIN-->
         <!-- navbar -->
         <div class="bar"> 
