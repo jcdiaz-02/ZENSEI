@@ -8,7 +8,8 @@ public class CommentBox {
     private String course;
     private String email;
 
-    public CommentBox(String comment, String firstName, String lastName, String course, String email) {
+    public CommentBox(int id,String comment, String firstName, String lastName, String email, String course) {
+        this.id = id;
         this.comment = comment;
         this.firstName = firstName;
         this.lastName = lastName;

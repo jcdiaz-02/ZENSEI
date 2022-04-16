@@ -128,8 +128,6 @@
                     
                     <div class="panel2">
                         <input type="submit" value="SUBMIT"  class="button"/>
-                        <a href="">Comments/Suggestions Box</a>
-                        <span class="material-icons-outlined"> &#xe8af;</span>
                     </div>
                 </form>
                 

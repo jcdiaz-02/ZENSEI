@@ -35,9 +35,9 @@
 	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	    String uname = (String) session.getAttribute("username");
 	    String role = (String) session.getAttribute("role");
-	    if (uname == null) {
-		response.sendRedirect("home.jsp");
-	    }
+            if(role == null){
+                role = "guest";
+            }
 	%>
         <!--TODO: CONNECT A CONTACT SERVLET-->
         <!-- navbar -->
@@ -111,7 +111,7 @@
             </div>
 
             <div class="contact-panel2">
-                <form class="contact-form" >
+                <form class="contact-form" method="post" action="../AddComment" >
                     <div class="panel-container">
                         <div class="panel">
                             <label for="fname">First Name <span style="color:red;">*</span></label>
@@ -139,7 +139,7 @@
 
                     <div class="panel2">
                         <input type="submit" value="SUBMIT"  class="button"/>
-                        <a href="">Comments/Suggestions Box</a>
+                        <a href="../ViewCommentBox">Comments/Suggestions Box</a>
                         <span class="material-icons-outlined"> &#xe8af;</span>
                     </div>
                 </form>
