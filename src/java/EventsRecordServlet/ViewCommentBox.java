@@ -47,7 +47,7 @@ public class ViewCommentBox extends HttpServlet {
             
 
             List<CommentBox> commentList = new ArrayList<CommentBox>();
-            if ("admin".equals(role)) {
+            if ("admin".equalsIgnoreCase(role)) {
                 String tablename = "comment";
                 ResultSet rs = db.getTableResultSet(tablename, conn);
 
@@ -56,13 +56,12 @@ public class ViewCommentBox extends HttpServlet {
                             rs.getString(5), rs.getString(6));
                     commentList.add(comments);
                 }
-                System.out.println(commentList.get(0).getCourse());
             session.setAttribute("CommentList", commentList);
             response.sendRedirect("subpage/viewAllComments.jsp");
             }
            response.sendRedirect("home.jsp");
         } catch (Exception e) {
-          
+            System.out.println(e);
         }
     }
 

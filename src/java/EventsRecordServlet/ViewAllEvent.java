@@ -44,7 +44,7 @@ public class ViewAllEvent extends HttpServlet {
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
 
-            if ("admin".equals(role)) {
+            if ("admin".equalsIgnoreCase(role)) {
                 List<EventRecord> recordList = new ArrayList<EventRecord>();
                 String tablename = "event_record";
                 ResultSet rs = db.getTableResultSet(tablename, conn);

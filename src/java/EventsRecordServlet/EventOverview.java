@@ -51,10 +51,8 @@ public class EventOverview extends HttpServlet {
             HttpSession session = request.getSession();
             String username = (String) session.getAttribute("username");
             String role = (String) session.getAttribute("role");
-
             List<EventRecord> recordList = new ArrayList<EventRecord>();
             String datenow;
-            if ("admin".equals(role)) {
                 String tablename = "event_record";
                 ResultSet rs = db.getSortedTableRS(tablename, conn);
 
@@ -65,14 +63,15 @@ public class EventOverview extends HttpServlet {
                     recordList.add(record);
                 }
                 // recordList.get(1).getEventName(); sample
-             datenow=  java.time.LocalDate.now().toString();
+             
                
                 System.out.println("is recordlist empty"+recordList == null);
                 System.out.println(recordList.get(0).getName());
-            session.setAttribute("date", datenow);
-            session.setAttribute("eventList", recordList);
-            }
+    
             
+            datenow=  java.time.LocalDate.now().toString();
+                    session.setAttribute("date", datenow);
+            session.setAttribute("eventList", recordList);
             // give list of event to jsp
             response.sendRedirect("subpage/events.jsp");
         } catch (Exception e) {

@@ -48,7 +48,7 @@ public class AddEvent extends HttpServlet {
             String role = (String) session.getAttribute("role");
             
 
-            if ("admin".equals(role)) {
+            if ("admin".equalsIgnoreCase(role)) {
                 // event input
                 String name = request.getParameter("ename");
                 String desc = request.getParameter("edescription");

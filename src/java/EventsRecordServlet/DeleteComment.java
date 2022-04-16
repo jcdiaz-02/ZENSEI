@@ -50,7 +50,7 @@ public class DeleteComment extends HttpServlet {
         System.out.println(Arrays.toString(selectedrows));
         String query = "DELETE FROM comment WHERE id_comment = ?";
         try {
-            if ("admin".equals(role)) {
+            if ("admin".equalsIgnoreCase(role)) {
                 for (String record_id : selectedrows) {
                     db.updateQuery(query, record_id, conn);
                 }
