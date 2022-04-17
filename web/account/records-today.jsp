@@ -1,8 +1,10 @@
 <%-- 
-    Document   : ViewTodayAllRecord.jsp
-    Created on : 03 15, 22, 10:33:45 PM
+    Document   : records-today
+    Created on : 03 19, 22, 10:45:23 PM
     Author     : Admin
 --%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
 
@@ -29,17 +31,18 @@
     Statement statement = null;
     ResultSet resultSet = null;
 %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="assets/logo.svg">
-        <link rel="stylesheet" href="assets/css/asset-sheet.css">
-        <link rel="stylesheet" href="assets/css/navbar-style.css">
-        <link rel="stylesheet" href="assets/css/records-all-style.css">
-
+        <link rel="icon" href="../assets/logo.svg">
+        <link rel="stylesheet" href="../assets/css/asset-sheet.css">
+        <link rel="stylesheet" href="../assets/css/navbar-style.css">
+        <link rel="stylesheet" href="../assets/css/records-all-style.css">
+        <link rel="stylesheet" href="../assets/css/modal-style.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,9 +58,9 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
+        <script language="JavaScript" type="text/javascript" src="../assets/scripts/modal.js"></script>  
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
-
     </head>
     <body>
 	<%
@@ -73,42 +76,42 @@
 	    }
 
 	%>
+        <!--TODO: CONNECT TO DATABASE AND ACCESS ALL RECORDS DATA -->
+        <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->
         <div class="bar"> 
-	    <input type="checkbox" id="check">
+            <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-		<i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i>
+            </label>
+            <div class="nav-content">
+                <div class="nav-title">
+                    <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
+                    <a class="" href="../home.jsp"> 
+                        <h1>UST Thomasian Gaming Society</h1>
+                    </a>
+                </div>
+                <div class="nav-options" >
+                    <a class="option" href="../home.jsp">Home</a>
+                    <a class="option" href="../subpage/about.jsp">About</a>
+                    <a class="option" href="../subpage/events.jsp">Events</a>
+                    <a class="option" href="../subpage/contact.jsp">Contact</a>
+		    <form action="MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="ADMIN"  class="button"/>
+		    </form>
 
-		<div class="nav-content">
-		    <div class="nav-title">
-			<img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
-			<a class="" href="/"> 
-			    <h1>UST Thomasian Gaming Society</h1>
-			</a>
-		    </div>
-		    <div class="nav-options" >
-			<a class="option" href="subpage/authenticatedHome.jsp">Home</a>
-			<a class="option" href="subpage/authenticatedAbout.jsp">About</a>
-			<a class="option" href="subpage/authenticatedEvents.jsp">Events</a>
-			<a class="option" href="subpage/authenticatedContacts.jsp">Contact</a>
-			<form action="MyAccountServlet">
-			    <input type="hidden" name="verify" value="${verify}" />
-			    <input type="submit" value="ADMIN"  class="button"/>
-			</form>
-
-
-		    </div>
-		</div>
+                </div>
+            </div>
         </div>
-
-	<!-- 1st section/ about -->
 
         <section class="all-records-section">
             <div class="all-records-container">
                 <div class="all-records-head">
-		    <h2>All Records</h2>          
+                    <h2>Today's Records</h2>          
                 </div>
-		<div class="table-container">
+
+                <div class="table-container">
                     <table class="records-table">
 			<tr>
 			    <td>Name</td>
@@ -126,9 +129,13 @@
 			    <td>Verification</td>
 			</tr>
 			<% try {
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+				LocalDate today = LocalDate.now();
+				String todaydate = dtf.format(today);
 				conn = DriverManager.getConnection(url, username, password);
-				String query = "SELECT * FROM APP.USERDB";
+				String query = "SELECT * FROM APP.USERDB where DATE=?";
 				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, todaydate);
 				ResultSet records = pstmt.executeQuery();
 				while (records.next()) {
 			%>
@@ -149,8 +156,9 @@
 			</tr>
 			<%
 			    }
-			    String query1 = "SELECT * FROM APP.VERIFIEDDB";
+			    String query1 = "SELECT * FROM APP.VERIFIEDDB where DATE=?";
 			    pstmt = conn.prepareStatement(query1);
+			    pstmt.setString(1, todaydate);
 			    records = pstmt.executeQuery();
 			    while (records.next()) {
 			%>
@@ -178,35 +186,26 @@
 		    </table>
                 </div>       
 
-		<div class="all-records-buttons"> 
-                    <form action="subpage/myAccountPageAdmin.jsp">
+                <div class="all-records-buttons"> 
+                    <form  action="javascript:history.back()">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-		    <form onclick ="deleteOpenForm()">
-			<button class="button" onclick="">Delete</button>
-		    </form>
-		    <form onclick="verifyOpenForm()" >
-			<button class="button"  onclick="verifyOpenForm()">Verify </button>
-		    </form>
-		    <form onclick="openForm()" >
-			<button class="button"  onclick="openForm()">Update</button>
-		    </form>
+		    <button class="button" onclick="deleteOpenForm()">Delete </button>
+		    <button class="button" onclick="verifyOpenForm()">Verify</button>
+		    <button class="button" onclick="openForm()">Update </button>
 
-		    <form method="POST" action ="PDFServlet">
-			<button class="button"  name="pdfbutton" value="alluserpdf">Download PDF</button>
-		    </form>
+                    <button id="modalBtn1"  onclick="OpenModal1()" class="button"/>GENERATE PDF</button>
+
 
                     <form  action="LogoutServlet">
                         <input type="submit" value="LOGOUT"  class="button"/>
                     </form>
                 </div>  
-
 		<div class="form-popup" id="myForm">
-		    <form action="updateRecord.jsp" class="form-container">
+		    <form action="records-update.jsp" class="form-container">
 			<h1>Update Record</h1>
 
-			<label for="uname"><b>Username of record being updated </b></label>
-			<b> (verified usernames only) </b>
+			<label for="uname"><b>Username of record being updated (verified usernames only)</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
 			<button type="submit" class="submit">Submit</button>
@@ -215,7 +214,7 @@
 		</div>
 
 		<div class="form-popup" id="verifyForm">
-		    <form action="TransferRecordServlet" class="form-container">
+		    <form action="../TransferUserServlet" class="form-container">
 			<h1>Verify Record</h1>
 
 			<label for="uname"><b>Username of record being verified</b></label>
@@ -226,45 +225,61 @@
 		    </form>
 		</div>
 		<div class="form-popup" id="deleteForm">
-		    <form action="DeleteRecordServlet" class="form-container">
+		    <form action="../DeleteRecordServlet" class="form-container">
 			<h1>Delete Record</h1>
 
 			<label for="uname"><b>Username of record being deleted</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
 			<button type="submit" class="submit">Submit</button>
-			<button type="button" class="cancel" onclick="deleteCloseForm()">Cancel</button>
+			<button type="button" class="cancel" onclick="verifyCloseForm()">Cancel</button>
 		    </form>
 		</div>
 		<script>
 		    function openForm() {
-			event.preventDefault()
 			document.getElementById("myForm").style.display = "block";
 		    }
 		    function closeForm() {
-			event.preventDefault()
 			document.getElementById("myForm").style.display = "none";
 		    }
 		    function verifyOpenForm() {
-			event.preventDefault()
 			document.getElementById("verifyForm").style.display = "block";
 		    }
 		    function verifyCloseForm() {
-			event.preventDefault()
 			document.getElementById("verifyForm").style.display = "none";
 		    }
 		    function deleteOpenForm() {
-			event.preventDefault()
 			document.getElementById("deleteForm").style.display = "block";
 		    }
 		    function deleteCloseForm() {
-			event.preventDefault()
 			document.getElementById("deleteForm").style.display = "none";
 		    }
 
 		</script>
-	    </div>
-	</div>
-    </section>
-</body>
+            </div>
+        </section>
+
+
+
+        <section id="modalSection" class="modal-section">
+            <div class="modal-content">
+                <h3 class="modal-header">ARE YOU SURE?</h3>
+                <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
+                <span class="modal-buttoncon">
+                    <span onclick="Close()" class="close modal-button">Cancel</span>
+                    <span class="modal-button">Delete</span> 
+                </span>
+            </div>
+        </section>
+
+        <section id="modalSection1" class="modal-section">
+            <div class="modal-content">
+                <h3 class="modal-header">SUCCESS!</h3>
+                <p class="modal-msg">Your PDF has been generated.</p>   
+                <form method="POST" action ="../PDFServlet">
+		    <button class="button" name="pdfbutton" value="alluserpdf">Download PDF</button>
+		</form>
+            </div>
+        </section>    
+    </body>
 </html>

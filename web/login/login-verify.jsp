@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
         <link rel="stylesheet" href="../assets/css/verify-style.css">
+        <link rel="stylesheet" href="../assets/css/modal-style.css">
           
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +27,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         
+         <script language="JavaScript" type="text/javascript" src="../assets/scripts/modal.js"></script>  
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
     </head>
@@ -41,7 +43,7 @@
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="../home.jsp"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -49,7 +51,7 @@
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="../subpage/contact.jsp">Contact</a>
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
@@ -80,10 +82,21 @@
                 </div>
                 
                 <div class="submit-container">
-                    <button type="submit">SUBMIT</button>
+                    <button id="modalBtn" type="submit">SUBMIT</button>
                     
                 </div>
             </form>   
         </section>
+        
+          <section id="modalSection" class="modal-section">
+                <div class="modal-content">
+                    <h3 class="modal-header">SUCCESS!</h3>
+                    <p class="modal-msg">Your account has been officially verified.</p>   
+                    <span class="modal-buttoncon">
+<!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
+                        <span onclick="Home()" class="modal-button">Got it!</span> 
+                    </span>
+                </div>
+            </section>
     </body>
 </html>

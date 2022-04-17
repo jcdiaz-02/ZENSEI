@@ -1,9 +1,10 @@
 <%-- 
-    Document   : myAccountPageAdmin
-    Created on : 03 15, 22, 10:33:45 PM
+    Document   : profile-page-admin
+    Created on : 03 19, 22, 3:47:47 AM
     Author     : Admin
 --%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,11 +15,10 @@
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
-        <link rel="stylesheet" href="../assets/css/about-style.css">
         <link rel="stylesheet" href="../assets/css/profile-page-style.css">
 
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
         <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&family=Poppins&display=swap" rel="stylesheet">
@@ -31,8 +31,6 @@
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-	<title>UST-TGS</title>
-
     </head>
     <body>
 	<%
@@ -43,26 +41,27 @@
 		response.sendRedirect("home.jsp");
 	    }
 	%>
+        <!--TODO: CONNECT ACCOUNT AND CHECK IF VERIFIED OR NOT--> 
         <!-- navbar -->
         <div class="bar"> 
-	    <input type="checkbox" id="check">
+            <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="../home.jsp"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="authenticatedHome.jsp">Home</a>
-                    <a class="option" href="authenticatedAbout.jsp">About</a>
-                    <a class="option" href="authenticatedEvents.jsp">Events</a>
-                    <a class="option" href="authenticatedContacts.jsp">Contact</a>
-                    <form style="color:#B92432;" action="myAccountPageAdmin.jsp">
-
+                    <a class="option" href="../home.jsp">Home</a>
+                    <a class="option" href="../subpage/about.jsp">About</a>
+                    <a class="option" href="../subpage/events.jsp">Events</a>
+                    <a class="option" href="../subpage/contact.jsp">Contact</a>
+                    <form style="color:#B92432;" action="MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
                         <input type="submit" value="ADMIN"  class="button"/>
                     </form>
 
@@ -70,15 +69,19 @@
             </div>
         </div>
 
-	<!-- 1st section/ about -->
+
         <section class="profile-section">
             <div class="profile-container">
-
-		<button type="button" onclick="location.href = '../ViewAllRecord.jsp';" class="button" name="uname" value="<c:out value="${username}"/>">
+                <button type="button" onclick="location.href = '../PersonalRecordServlet';" name="uname" value ="<c:out value="${username}"/>"  class="button">
+		    <span class="material-icons-outlined">badge</span> 
+		    View Personal Record
+                </button>
+		    
+		<button type="button" onclick="location.href = 'records-all.jsp';" class="button" name="uname" value="<c:out value="${username}"/>">
 		    <span class="material-icons">done_all</span>
 		    View All Records</button>
 
-		<button type="button" onclick="location.href = '../ViewTodayRecord.jsp';" class="button">
+		<button type="button" onclick="location.href = 'records-today.jsp';" class="button">
 		    <span class="material-icons">event_available</span>
 		    View Today's Record</button>
 
@@ -92,7 +95,9 @@
 
 
 
-	    </div>
-	</section>
+
+            </div>
+        </section>       
     </body>
 </html>
+

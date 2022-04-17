@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 * {
-   
+
     margin: 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -17,14 +17,13 @@ and open the template in the editor.
 }
 
 body,html{
-     overflow: auto;
+    overflow: auto;
+    -ms-overflow-style: none;
     height: 100%;
 }
 
 
-
 body{
-
     background-image: url("../background.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -72,9 +71,15 @@ body{
     width: 4rem;
 }
 
+
+.bar .logo-container .nav-logo2{
+    display: none;
+}
+
 .bar .nav-title{ 
     align-items: center;
     display: flex; 
+
     font-family: var(--font2);
 }
 
@@ -90,17 +95,17 @@ body{
     font-family: var(--font1);
     font-size: 1.2rem;
     font-weight: 600; 
-  
+
 }
 
 .bar .nav-options .option{
     color: black;
     padding: 0 1rem;
     text-decoration: none;
-    transition: all 0.3s;  
+    /*    transition: all 0.3s;  */
 }
 
-.bar .nav-options .button{
+.bar .button{
     align-items: center;
     background: var(--brown1);
     border: 1px solid var(--brown1);
@@ -116,42 +121,98 @@ body{
 }
 
 
+.modal-section {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    -ms-overflow:auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
 
 @media (max-width: 1050px){
     .checkbtn{
+        position: absolute;
         display:block;
-        margin-left: 2rem;
     }
-    
+
     #check:checked ~ .nav-content{
         left: 0;
- 
+
     }
-    
+
+    .bar{
+        padding: 2rem;
+    }
+
+    .bar .logo-container{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .bar .logo-container .nav-logo2{
+        display: inline;
+
+    }
+
+    .bar .nav-logo{
+        display: none;
+    }
+
     .bar .nav-content{
         position:fixed;
         top: 6rem;
         flex-direction: column;
         justify-content:flex-start;
         align-items: flex-start;
-        background: var(--brown3);
+        background: var(--brown1);
         height: 100%;
         width: 100%;
         left: -100%;
         transition: 0.5s ease;
+
     }
-    
-   .bar .nav-options{
+
+    .bar .nav-title{ 
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+
+    .bar .nav-title h1{
+        font-size: 1.5rem;
+    }
+
+    .bar .nav-options{
         display: flex;
         flex-direction: column;
         align-items:  flex-start;
         width: 100%;
     }
-    
+
     .nav-content .nav-options .option{
-        padding: 1rem 2rem;
-        
+        padding: 1.2rem 2rem;
     }
-    
+
+    .bar .button-nav-form{
+        width: 100%; 
+    }
+    .bar .button{
+        font-size: 1.2rem;
+        text-align: left;
+        padding: 0 2rem;
+        height: 80px;
+        width:100%;
+        margin: 0;
+        border: 0;
+        border-radius: 0;
+        background: var(--brown2);
+    }
 }
 

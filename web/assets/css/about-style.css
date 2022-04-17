@@ -9,16 +9,15 @@ and open the template in the editor.
 */
 
 .about-section{
-    -ms-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, 0);
     background: white;
     border-radius: 40px;
-    height: 45rem;
-    margin: 0;
+    margin-top: 7rem;
     position: absolute;
+    padding: 2rem 3rem;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 95rem;   
+    transform: translate(-50%, 0);
+    width: 80%;   
 }
 
 .about-section .about-container{
@@ -27,12 +26,13 @@ and open the template in the editor.
     justify-content: space-around;
     margin: auto;
     height: 100%;
-    width: 95%;        
+    width: 100%;        
 }
 
 .about-section .about-container .about-panel {
     display: flex;
     justify-content: space-between;
+    margin: 2rem 0;
 }
 
 .about-section .about-container .about-panel .about-icon{
@@ -63,3 +63,51 @@ and open the template in the editor.
     text-align: justify;
 }
 
+@media (max-width: 1300px){
+    .about-section{
+        width: 90%;
+    }
+}
+
+@media (max-width: 1050px){
+    .about-section{
+        width: 95%;
+    }
+
+    .about-section .about-container .about-panel {
+        margin: 1rem 0;
+    }
+
+
+}
+
+@media (max-width: 900px){
+    .about-section{     
+        margin-top: 7rem;
+        transform: translate(-50%, 0);
+        top: 0;
+    }
+    .about-section .about-container .about-panel .about-text h2{
+        font-size: 1.2rem;
+        margin-left: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-section .about-container .about-panel .about-text{
+        font-size: 1rem;
+    }
+
+    .about-section .about-container .about-panel .about-icon{
+        position: absolute;
+        font-size: 24px;
+        height: 50px;
+        width: 50px;
+    }
+}   
+
+@media (max-width: 620px){
+    .about-section{
+        border-radius: 20px;
+        padding: 1.2rem;
+    }
+}

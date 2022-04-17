@@ -1,12 +1,9 @@
 <%-- 
-    Document   : signup
+    Document   : login
     Created on : 02 28, 22, 12:46:41 AM
     Author     : Admin
 --%>
-
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,7 +13,7 @@
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
-        <link rel="stylesheet" href="../assets/css/signup-style.css">
+        <link rel="stylesheet" href="../assets/css/login-style.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,17 +24,23 @@
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-
-        <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
+
+
     </head>
     <body>
+
+
 	<!-- navbar -->
         <div class="bar"> 
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+		<i class="fas fa-bars"></i>
+            </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="../home.jsp"> 
+                    <a class="" href="/"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -46,58 +49,39 @@
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="../subpage/events.jsp">Events</a>
                     <a class="option" href="../subpage/contact.jsp">Contact</a>
-                    <form action="../login/login.jsp">
+                    <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
 
                 </div>
             </div>
         </div>
+
 	<%
-	    session.setAttribute("identifier", "signup");
+	    session.setAttribute("identifier", "login");
 	%>
-        <section class="signup-section">
-            <form class="signup-container" method="post" action="../UserVerification">
-                <h2>Sign Up</h2>
-                <h3>Already registered? <a href="../login/login.jsp">Login</a></h3>
-		
+        <section class="login-section">
+            <form class="login-container" method="post" action="../LoginVerification">
+                <h2>Forgot Password</h2>
+<!--                <h3>Don't have an account yet? <a href="../signup/signup.jsp">Sign up</a></h3>-->
+
+
                 <div class="input-container">
-
-                    <label for="email"><b>Email</b></label>    
+                    <label for="uname"><b>Email</b></label>    
                     <div class="input">
-                        <input type="text" placeholder="Enter Email" name="email" required>
-                    </div>
-
-                    <label for="uname"><b>Username</b></label>
-                    <div class="input">
-                        <input type="text" placeholder="Enter Username" name="uname" required>
-
-                    </div>
-
-                    <label for="psw"><b>Password</b></label>
-                    <div class="input">
-
-                        <input type="password" placeholder="Enter Password" name="psw" required>
-                        <span class="material-icons-outlined psw-show">visibility_off</span>
-                    </div>
-
-                    <div class="input">
-                        <input type="password" placeholder="Confirm Password" name="cpsw" required>
-                        <span class="material-icons-outlined psw-show">&#xe8f5;</span>
+<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
+                        <input type="email" placeholder="Enter Email (ust.edu.ph)" name="email" required>
                     </div>
 
                 </div>
 
 
-                <div class="privacy-policy"> 
-                    <input type="checkbox" id="privacy-policy" name="privacy-policy" value='' >
-                    <label for="privacy-policy"> 
-                        I have read and agreed to the website's <a href="privacypolicy.jsp">Privacy Policy</a>
-                    </label>
-                </div>
-                <button type="submit" name="button" value="signup">SIGN UP</button>
-
+                <button type="submit" class="button" name="button" value="SEND">SEND</button>
+                <a href="/">Go Back to Login</a>
             </form>
         </section>       
     </body>
 </html>
+
+
+

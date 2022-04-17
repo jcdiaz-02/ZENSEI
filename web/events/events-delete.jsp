@@ -8,29 +8,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
         <link rel="stylesheet" href="../assets/css/events-all-style.css">
-  
-          
+        <link rel="stylesheet" href="../assets/css/modal-style.css">
+
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+
         <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
-        
-        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+
+<!--        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>-->
         <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    
+        <script language="JavaScript" type="text/javascript" src="../assets/scripts/modal.js"></script>
+        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-         
+
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
     </head>
@@ -39,12 +41,12 @@
         <div class="bar"> 
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                   <i class="fas fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="../home.jsp"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -56,60 +58,75 @@
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
-            
+
                 </div>
             </div>
         </div>
-        
+
         <section class="all-events-section">
             <div class="all-events-container">
                 <div class="all-events-head">
-                   <h2>All Events</h2>          
+                    <h2>Delete Event</h2>          
                 </div>
-                
+
                 <div class="table-container">
                     <table class="events-table">
                         <tr>
-                          <th class="event-id">Event ID</th>
-                          <th>Event Name</th> 
-                          <th>Event Description</th>
-                          <th>Event Date</th>
-                          <th>Select</th>
+                            <th class="event-id">Event ID</th>
+                            <th>Event Name </th> 
+                            <th>Event Description</th>
+                            <th>Event Date</th>
+                            <th>Select</th>
                         </tr>
-                        <% for(int x= 0; x<20; x++) 
-                        { %> 
+                        <% for (int x = 0; x < 20; x++) {%> 
                         <tr>
-                          <td><%=Integer.toString(x) %></td>
-                          <td>test</td>
-                          <td>test</td>
-                          <td>test</td>
-                          <td>
-                              <label class="checkbox-container">
-                                  <input type="checkbox" id="" name="" value="" >
-                                  <span class="checkmark"></span>
-                              </label>
-                          </td>
+                            <td><%=Integer.toString(x)%></td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>test</td>
+                            <td>
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="" name="" value="" >
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
                         </tr>
-                       <% }%>
-                     
+                        <% }%>
+
                     </table>
                 </div>       
-              
+
                 <div class="all-event-buttons"> 
                     <form  action="../subpage/events.jsp">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-                    
+
+                   
+                    <button id="modalBtn"  class="button"/>DELETE</button>
+                 
+
                     <form  action="../login/login.jsp">
-                        <input type="submit" value="OLD TO NEW"  class="button"/>
-                    </form>
-                    
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="NEW TO OLD"  class="button"/>
+                        <input type="submit" value="LOGOUT"  class="button"/>
                     </form>
                 </div>                      
             </div>
+                        
         </section>
 
+         
+                        <section id="modalSection" class="modal-section">
+                            <div class="modal-content">
+                                <h3 class="modal-header">ARE YOU SURE?</h3>
+                                <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
+                                <span class="modal-buttoncon">
+                                    <span onclick="Close()" class="close modal-button">Cancel</span>
+                                    <span class="modal-button">Delete</span> 
+                                </span>
+                            </div>
+                        </section>
+                        
+   
     </body>
+    
+  
 </html>

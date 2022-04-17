@@ -12,13 +12,12 @@ and open the template in the editor.
     -ms-transform: translate(-50%, -50%);
     background: white;
     border-radius: 40px;
-    height: 45rem;
     margin: 0;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 50rem; 
+    width: 40rem; 
     box-shadow: 20px 20px var(--brown1);
 
 }
@@ -27,7 +26,7 @@ and open the template in the editor.
     display: flex;
     flex-direction: column;
     align-items:  center;
-    margin: 30px auto;
+    margin: 3rem auto;
     width: 95%;
 }
 
@@ -56,13 +55,15 @@ and open the template in the editor.
 }
 
 .login-section .login-container .input-container{
-    width: 60%;
+    width: 80%;
     height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 3rem 0;
+    margin: 2rem 0;
 }
+
+
 
 .login-section .login-container .input-container label{
     color: var(--brown2);
@@ -83,7 +84,7 @@ and open the template in the editor.
     border-radius: 10px;
     height: 5rem;
     margin-bottom: 2rem;
-
+    
 }
 
 .login-section .login-container .input-container .input .input-icon{
@@ -103,7 +104,7 @@ and open the template in the editor.
     font-size: 24px;
     font-family: var(--font1);
     height: 5rem;
-    width: 100%; 
+    width: 100%;
     padding: 20px 70px;
    
 }
@@ -118,13 +119,11 @@ and open the template in the editor.
 .login-section .login-container  button{
    background: #AE9279;
    border: none;
-   border-radius: 10px;
-   
-   transform: translate(35%, 0%);
+   border-radius: 10px;   
    color: #ffffff;
    font-family: var(--font2);
    font-size: 3rem;
    height: 5rem;
    margin-bottom: 20px;
-   width: 60%;
+   width: 80%;
 }
