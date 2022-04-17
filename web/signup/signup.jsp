@@ -65,7 +65,7 @@
                     
                     <label for="email"><b>Email</b></label>    
                     <div class="input">
-                        <input type="text" placeholder="Enter Email" name="email" required>
+                        <input type="text" pattern="[a-z0-9._%+-]+@ust.edu.ph$" placeholder="Enter Email" name="email" required>
                     </div>
                     
                     <label for="uname"><b>Username</b></label>
