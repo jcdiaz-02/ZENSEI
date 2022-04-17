@@ -77,14 +77,14 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="../subpage/contact.jsp">Contact</a>
-                      <form action="MyAccountServlet">
+                    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="../subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
+                    <form style="color:#B92432;" action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
-			<input type="submit" value="ADMIN"  class="button"/>
-		    </form>
+                        <input type="submit" value="ADMIN"  class="button"/>
+                    </form>
                 </div>
             </div>
         </div>
@@ -201,7 +201,9 @@
 		<div class="form-popup" id="verifyForm">
 		    <form action="../TransferRecordServlet" class="form-container">
 			<h1>Verify Record</h1>
-
+			<%
+			    session.setAttribute("ident", "all");
+			%>
 			<label for="uname"><b>Username of record being verified</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
@@ -209,11 +211,13 @@
 			<button type="button" class="cancel" onclick="verifyCloseForm()">Cancel</button>
 		    </form>
 		</div>
-			    
+
 		<div class="form-popup" id="deleteForm">
 		    <form action="../DeleteRecordServlet" class="form-container">
 			<h1>Delete Record</h1>
-
+			<%
+			    session.setAttribute("ident", "all");
+			%>
 			<label for="uname"><b>Username of record being deleted</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
@@ -223,27 +227,27 @@
 		</div>
 		<script>
 		    function openForm() {
-			event.preventDefault()
+			event.preventDefault();
 			document.getElementById("myForm").style.display = "block";
 		    }
 		    function closeForm() {
-			event.preventDefault()
+			event.preventDefault();
 			document.getElementById("myForm").style.display = "none";
 		    }
 		    function verifyOpenForm() {
-			event.preventDefault()
+			event.preventDefault();
 			document.getElementById("verifyForm").style.display = "block";
 		    }
 		    function verifyCloseForm() {
-			event.preventDefault()
+			event.preventDefault();
 			document.getElementById("verifyForm").style.display = "none";
 		    }
 		    function deleteOpenForm() {
-			event.preventDefault()
+			event.preventDefault();
 			document.getElementById("deleteForm").style.display = "block";
 		    }
 		    function deleteCloseForm() {
-			event.preventDefault()
+			event.preventDefault();
 			document.getElementById("deleteForm").style.display = "none";
 		    }
 

@@ -50,7 +50,7 @@
                 <div class="nav-options" >
                     <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
                     <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
-                    <a class="option" href=".../subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../subpage/authenticatedEvents.jsp">Events</a>
                     <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
                     <form style="color:#B92432;" action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />

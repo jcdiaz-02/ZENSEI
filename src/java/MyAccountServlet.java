@@ -29,9 +29,9 @@ public class MyAccountServlet extends HttpServlet {
 	    if (verify.equals("verified")) {
 
 		if (role.equals("admin")) {
-		    response.sendRedirect("subpage/myAccountPageAdmin.jsp");
+		    response.sendRedirect("account/profile-page-admin.jsp");
 		} else if (role.equals("member")) {
-		    response.sendRedirect("subpage/myAccountPageVerified.jsp");
+		    response.sendRedirect("accoount/profile-page.jsp");
 		}
 
 	    } else if (verify.equals("unverified")) {

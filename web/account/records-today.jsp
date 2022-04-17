@@ -96,7 +96,7 @@
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="../subpage/events.jsp">Events</a>
                     <a class="option" href="../subpage/contact.jsp">Contact</a>
-		    <form action="MyAccountServlet">
+		    <form action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />
 			<input type="submit" value="ADMIN"  class="button"/>
 		    </form>
@@ -214,9 +214,11 @@
 		</div>
 
 		<div class="form-popup" id="verifyForm">
-		    <form action="../TransferUserServlet" class="form-container">
+		    <form action="../TransferRecordServlet" class="form-container">
 			<h1>Verify Record</h1>
-
+			<%
+			    session.setAttribute("ident", "today");
+			%>
 			<label for="uname"><b>Username of record being verified</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
@@ -228,6 +230,9 @@
 		    <form action="../DeleteRecordServlet" class="form-container">
 			<h1>Delete Record</h1>
 
+			<%
+			    session.setAttribute("ident", "today");
+			%>
 			<label for="uname"><b>Username of record being deleted</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
@@ -237,21 +242,27 @@
 		</div>
 		<script>
 		    function openForm() {
+			event.preventDefault();
 			document.getElementById("myForm").style.display = "block";
 		    }
 		    function closeForm() {
+			event.preventDefault();
 			document.getElementById("myForm").style.display = "none";
 		    }
 		    function verifyOpenForm() {
+			event.preventDefault();
 			document.getElementById("verifyForm").style.display = "block";
 		    }
 		    function verifyCloseForm() {
+			event.preventDefault();
 			document.getElementById("verifyForm").style.display = "none";
 		    }
 		    function deleteOpenForm() {
+			event.preventDefault();
 			document.getElementById("deleteForm").style.display = "block";
 		    }
 		    function deleteCloseForm() {
+			event.preventDefault();
 			document.getElementById("deleteForm").style.display = "none";
 		    }
 
