@@ -70,7 +70,7 @@
                     <label for="uname"><b>Email</b></label>    
                     <div class="input">
 <!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
-                        <input type="email" placeholder="Enter Email (ust.edu.ph)" name="email" required>
+                        <input type="email" pattern="[a-z0-9._%+-]+@ust.edu.ph$" placeholder="Enter Email (ust.edu.ph)" name="email" required>
                     </div>
 
                 </div>
