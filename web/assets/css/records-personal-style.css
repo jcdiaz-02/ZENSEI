@@ -43,6 +43,20 @@ and open the template in the editor.
     padding: 1rem 4rem;
 }
 
+.personal-records-section-2{
+    -ms-transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 40px;
+    font-family: var(--font5);
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60rem; 
+    padding: 1rem 4rem;
+}
+
 .personal-records-container{
     width: 100%;
     text-align: center;
@@ -79,7 +93,7 @@ and open the template in the editor.
 .personal-records-container h3{
     font-family: var(--font5);
     font-size: 2rem;
- 
+    margin-bottom: 1rem;
 }
 
 .personal-records-info-container0{
@@ -156,5 +170,6 @@ and open the template in the editor.
     height: 3rem;
     padding: 0px 50px;
     margin-right: 3rem;
+    margin-bottom: 2rem;
 }
 

@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 04 13, 22, 7:22:01 PM
+    Author     : Admin
+*/
+
+
+
+.modal-content {
+    -ms-transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    margin: auto;
+    border: 1px solid #888;
+    width: 25rem;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: space-around;*/
+    align-items: center;
+}
+
+.modal-header{
+    font-family: var(--font2);
+    font-size: 2.5rem;
+    padding: 30px 30px 0 30px;
+
+}
+
+.modal-msg{
+    font-family: var(--font5);
+    font-size: 1.2rem;
+    margin: 20px 0 20px 0;
+    padding: 0 30px 0 30px;
+    text-align: center;
+}
+
+.modal-buttoncon{
+    display: flex;
+    width: 100%;
+    justify-content: space-around; 
+    border-top: 1px solid grey;
+    
+}
+
+.modal-button{
+    font-family: var(--font2);
+    font-size: 2rem;
+    cursor: pointer;
+    text-align: center;
+    width: 50%;
+    padding: 20px;
+}
+
+.close, .home-btn{
+    border-right: 1px solid grey;
+}

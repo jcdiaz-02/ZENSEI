@@ -61,12 +61,12 @@
             </div>
         </div>
 
-        <section class="personal-records-section-1">
+        <section class="personal-records-section-2">
             <div class="personal-records-container">
-                <h3> View Personal Record </h3>
+                <h3> Update Record</h3>
                 <form class="personal-records-info-container0" action="/">
 
-                    <div class='personal-records-profile-container'>
+<!--                    <div class='personal-records-profile-container'>
                         <span class="material-icons personal-records-photo">
                             account_circle
                         </span>
@@ -76,90 +76,94 @@
                             <span class='dpt'>COMPUTER SCIENCE</span>
                         </span>
 
-                    </div>
+                    </div>-->
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Email:</label>
-                        <input type='email' id='email' name='email' value='email (ust.edu.ph)' readonly> 
+                        <input type='email' id='email' name='email' placeholder='email (ust.edu.ph)'> 
 
                     </div>
 
                     <div class='personal-records-info-container1'> 
                         <label for=''>Username:</label>
 
-                        <input type='text' id='uname' name='uname' value='username' readonly> 
-                        <span class="material-icons edit-icon">
+                        <input type='text' id='uname' name='uname' placeholder='username'> 
+<!--                        <span class="material-icons edit-icon">
                             edit
-                        </span>
+                        </span>-->
 
                     </div>
 
 
-                    <div class='personal-records-info-container1'> 
-                        <label for=''>Password:</label>
-
-                        <input type='password' id='password' name='password' value='username' readonly> 
-                        <span class="material-icons edit-icon">
-                            edit
-                        </span>
+                    <div class='personal-records-info-container1'>
+                        <label for=''>Name:</label>
+                        <input type='text' id='name' name='email' placeholder='Juan Dela Cruz' > 
 
                     </div>
+
+
+                    <div class='personal-records-info-container1'>
+                        <label for=''>Course:</label>
+                        <input type='text' id='course' name='email' placeholder='Computer Science' > 
+
+                    </div>
+
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Age:</label>
-                        <input type='number' id='age' name='age' value='00' readonly> 
+                        <input type='number' id='age' name='age' placeholder='00'> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Birthday</label>
-                        <input type='date' id='birthday' name='birthday' value='2001-01-01' readonly> 
+                        <input type='date' id='birthday' name='birthday' placeholder='2001-01-01' > 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Gender:</label>
-                        <input type='text' id='gender' name='gender' value='male' readonly> 
+                        <input type='text' id='gender' name='gender' placeholder='male' > 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Student Number:</label>
-                        <input type='number' id='studentnum' name='studentnum' value='2019123456' readonly> 
+                        <input type='number' id='studentnum' name='studentnum' placeholder='2019123456' > 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Favorite Game:</label>
-                        <input type='text' id='favgame' name='favgame' value='among us' readonly> 
+                        <input type='text' id='favgame' name='favgame' placeholder='among us' > 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Contact Number:</label>
-                        <input type='number' id='contactnum' name='contactnum' value='09161234567' readonly> 
+                        <input type='number' id='contactnum' name='contactnum' placeholder='09161234567'> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Address:</label>
-                        <input type='text' id='address' name='address' value='address' readonly> 
+                        <input type='text' id='address' name='address' placeholder='address' > 
 
                     </div>
 
 
 
 
-                    <span class='verification-container'>
+<!--                    <span class='verification-container'>
                         <span class="material-icons verification-icon" style="color:green;">
                             check_circle
                         </span> 
                         Your account has been verified.
-                    </span>
+                    </span>-->
 
                     <div class="personal-records-buttons"> 
                         <input type="button" onclick="location.href = '../account/profile-page.jsp';" value="GO BACK" class="button" />
-                        <input type="button" id="modalBtn" value="GENERATE PDF" class="button" />
+                        <input type="submit" id="modalBtn" value="UPDATE" class="button" />
                         <input type="button" onclick="location.href = '../home.jsp';" value="LOGOUT" class="button" />
                     </div>   
                 </form> 

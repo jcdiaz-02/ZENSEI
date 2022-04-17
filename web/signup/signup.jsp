@@ -37,7 +37,7 @@
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="../home.jsp"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
+                    <a class="option" href="../subpage/contact.jsp">Contact</a>
                     <form action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
