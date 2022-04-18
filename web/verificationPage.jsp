@@ -30,13 +30,10 @@
 
     </head>
     <body>
-        <%
-            session.setAttribute("uname", session.getAttribute("uname"));
-            session.setAttribute("psw", session.getAttribute("pass"));
-            session.setAttribute("email", session.getAttribute("email"));
-            session.setAttribute("code", session.getAttribute("code"));
-            String button = (String) session.getAttribute("button");
-        %>
+	<%
+
+	    String button = (String) session.getAttribute("button");
+	%>
         <!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">
@@ -49,7 +46,7 @@
                 <div class="nav-options" >
                     <a class="option" href="home.jsp">Home</a>
                     <a class="option" href="/subpage/about.jsp">About</a>
-                    <a class="option" href="EventOverview">Events</a>
+                    <a class="option" href="/subpage/events.jsp">Events</a>
                     <a class="option" href="/subpage/contact.jsp">Contact</a>
                     <form style="color:#B92432;" action="login.jsp">
                         <input type="submit" value="Login"  class="button"/>

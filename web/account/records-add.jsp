@@ -49,12 +49,13 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
+                    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="../subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
+                    <form style="color:#B92432;" action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="ADMIN"  class="button"/>
                     </form>
 
                 </div>
@@ -66,17 +67,17 @@
                 <h3> Add Record</h3>
                 <form class="personal-records-info-container0" action="/">
 
-<!--                    <div class='personal-records-profile-container'>
-                        <span class="material-icons personal-records-photo">
-                            account_circle
-                        </span>
-                        
-                        <span class='name-container'>
-                            <span class='name'>NAME</span>
-                            <span class='dpt'>COMPUTER SCIENCE</span>
-                        </span>
-
-                    </div>-->
+		    <!--                    <div class='personal-records-profile-container'>
+					    <span class="material-icons personal-records-photo">
+						account_circle
+					    </span>
+					    
+					    <span class='name-container'>
+						<span class='name'>NAME</span>
+						<span class='dpt'>COMPUTER SCIENCE</span>
+					    </span>
+		    
+					</div>-->
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Email:</label>
@@ -88,9 +89,9 @@
                         <label for=''>Username:</label>
 
                         <input type='text' id='uname' name='uname' placeholder='username'> 
-<!--                        <span class="material-icons edit-icon">
-                            edit
-                        </span>-->
+			<!--                        <span class="material-icons edit-icon">
+						    edit
+						</span>-->
 
                     </div>
 
@@ -154,12 +155,12 @@
 
 
 
-<!--                    <span class='verification-container'>
-                        <span class="material-icons verification-icon" style="color:green;">
-                            check_circle
-                        </span> 
-                        Your account has been verified.
-                    </span>-->
+		    <!--                    <span class='verification-container'>
+					    <span class="material-icons verification-icon" style="color:green;">
+						check_circle
+					    </span> 
+					    Your account has been verified.
+					</span>-->
 
                     <div class="personal-records-buttons"> 
                         <input type="button" onclick="location.href = '../account/profile-page.jsp';" value="GO BACK" class="button" />
@@ -169,16 +170,16 @@
                 </form> 
             </div>
         </section>
-        
-         <section id="modalSection" class="modal-section">
-                <div class="modal-content">
-                    <h3 class="modal-header">SUCCESS!</h3>
-                    <p class="modal-msg">Your PDF has been generated.</p>   
-                    <span class="modal-buttoncon">
-<!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
-                        <span onclick="Home()" class="modal-button">Download</span> 
-                    </span>
-                </div>
-            </section>
+
+	<section id="modalSection" class="modal-section">
+	    <div class="modal-content">
+		<h3 class="modal-header">SUCCESS!</h3>
+		<p class="modal-msg">Your PDF has been generated.</p>   
+		<span class="modal-buttoncon">
+		    <!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
+		    <span onclick="Home()" class="modal-button">Download</span> 
+		</span>
+	    </div>
+	</section>
     </body>
 </html>

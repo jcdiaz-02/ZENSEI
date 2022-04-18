@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,7 +55,9 @@ public class DeleteRecordServlet extends HttpServlet {
 	    throws ServletException, IOException {
 
 	try {
+	    HttpSession session = request.getSession();
 	    String uname = request.getParameter("uname");
+	    String ident = (String) session.getAttribute("ident");
 
 	    String query = "DELETE FROM APP.USERDB where USERNAME = ?";
 	    PreparedStatement pst = conn.prepareStatement(query);
@@ -65,7 +68,11 @@ public class DeleteRecordServlet extends HttpServlet {
 	    pst = conn.prepareStatement(query1);
 	    pst.setString(1, uname);
 	    pst.executeUpdate();
-	    response.sendRedirect("subpage/myAccountPageAdmin.jsp");
+	    if (ident.equals("all")) {
+		response.sendRedirect("account/records-all.jsp");
+	    } else if (ident.equals("today")) {
+		response.sendRedirect("account/records-today.jsp");
+	    }
 
 	} catch (SQLException sqle) {
 	    response.sendRedirect("errPages/Error404.jsp");

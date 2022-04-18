@@ -4,8 +4,30 @@
     Author     : Admin
 --%>
 
+
+<%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%
+    String driver = "org.apache.derby.jdbc.ClientDriver";
+    String url = "jdbc:derby://localhost:1527/userDB";
+    String username = "app";
+    String password = "app";
+    Connection conn;
+    try {
+	Class.forName(driver);
+
+    } catch (ClassNotFoundException e) {
+	e.printStackTrace();
+    }
+    Connection connection = null;
+    Statement statement = null;
+    ResultSet resultSet = null;
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,6 +55,10 @@
         <title>UST-TGS</title>
     </head>
     <body>
+
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	%>  
         <!--TODO: CONNECT TO DATABASE TO ACCESS PERSONAL RECORD -->
         <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->
@@ -49,12 +75,13 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
+		    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="../subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
+                    <form style="color:#B92432;" action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="ADMIN"  class="button"/>
                     </form>
 
                 </div>
@@ -63,122 +90,101 @@
 
         <section class="personal-records-section-2">
             <div class="personal-records-container">
+		<% try {
+			conn = DriverManager.getConnection(url, username, password);
+
+			String uname = request.getParameter("uname");
+			session.setAttribute("primaryusername", uname);
+			String query = "SELECT * FROM APP.VERIFIEDDB where USERNAME=?";
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uname);
+			ResultSet records = pstmt.executeQuery();
+			if (records.next() == false) {
+			    response.sendRedirect("records-all.jsp");
+			} else {
+			    do {
+				System.out.println("");
+
+
+		%>
                 <h3> Update Record</h3>
-                <form class="personal-records-info-container0" action="/">
+                <form class="personal-records-info-container0" method="POST" action="UpdateRecordServlet">
+		    <div class="personal-records-info-container1">
+			<h1>Email: </h1><input type="email" placeholder="<%=records.getString("EMAIL")%>" name="email">
+		    </div>
 
-<!--                    <div class='personal-records-profile-container'>
-                        <span class="material-icons personal-records-photo">
-                            account_circle
-                        </span>
-                        
-                        <span class='name-container'>
-                            <span class='name'>NAME</span>
-                            <span class='dpt'>COMPUTER SCIENCE</span>
-                        </span>
+		    <div class="personal-records-info-container1">
+			<h1>Username: </h1><input type="text" placeholder="<%=records.getString("USERNAME")%>" name="uname">
+		    </div>
 
-                    </div>-->
+		    <div class="personal-records-info-container1">
+			<h1>Password: </h1><input type="text" placeholder="<%=records.getString("PASSWORD")%>" name="pass">
+		    </div>
+		    <div class="personal-records-info-container1">
 
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Email:</label>
-                        <input type='email' id='email' name='email' placeholder='email (ust.edu.ph)'> 
+			<h1>Name: </h1><input type="text" placeholder="<%=records.getString("NAME")%>" name="myname">
+		    </div>
+		    <div class="personal-records-info-container1">
 
-                    </div>
+			<h1>Course: </h1><input type="text" placeholder="<%=records.getString("COURSE")%>" name="course">
+		    </div>
+		    <div class="personal-records-info-container1">
 
-                    <div class='personal-records-info-container1'> 
-                        <label for=''>Username:</label>
+			<h1>Age: </h1><input type="number" placeholder="<%=records.getString("AGE")%>" name="age">
+		    </div>
 
-                        <input type='text' id='uname' name='uname' placeholder='username'> 
-<!--                        <span class="material-icons edit-icon">
-                            edit
-                        </span>-->
+		    <div class="personal-records-info-container1">
 
-                    </div>
+			<h1>Birthday: </h1><input type="date" placeholder="<%=records.getString("BIRTHDAY")%>" name="birthday">
+		    </div>
 
+		    <div class="personal-records-info-container1">
 
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Name:</label>
-                        <input type='text' id='name' name='email' placeholder='Juan Dela Cruz' > 
+			<h1>Gender: </h1><input type="text" placeholder="<%=records.getString("GENDER")%>" name="gender">
+		    </div>
 
-                    </div>
+		    <div class="personal-records-info-container1">
 
+			<h1>Student Number: </h1><input type="number" placeholder="<%=records.getString("STUDENTNUMBER")%>" name="snumber">
+		    </div>
 
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Course:</label>
-                        <input type='text' id='course' name='email' placeholder='Computer Science' > 
+		    <div class="personal-records-info-container1">
 
-                    </div>
+			<h1>Favorite Game: </h1><input type="text" placeholder="<%=records.getString("FAVORITEGAME")%>" name="favgame">
+		    </div>
 
+		    <div class="personal-records-info-container1">
 
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Age:</label>
-                        <input type='number' id='age' name='age' placeholder='00'> 
+			<h1>Contact Number: </h1><input type="number" placeholder="<%=records.getString("CONTACTNUMBER")%>" name="cnumber">
+		    </div>
 
-                    </div>
+		    <div class="personal-records-info-container1">
 
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Birthday</label>
-                        <input type='date' id='birthday' name='birthday' placeholder='2001-01-01' > 
+			<h1>Address: </h1><input type="text" placeholder="<%=records.getString("ADDRESS")%>" name="homeaddress">
+		    </div>
+		    <div class="personal-records-info-container1">
 
-                    </div>
+			<h1>Role: </h1><input type="text" placeholder="<%=records.getString("ROLE")%>" name="userrole">
+		    </div>
 
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Gender:</label>
-                        <input type='text' id='gender' name='gender' placeholder='male' > 
-
-                    </div>
-
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Student Number:</label>
-                        <input type='number' id='studentnum' name='studentnum' placeholder='2019123456' > 
-
-                    </div>
-
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Favorite Game:</label>
-                        <input type='text' id='favgame' name='favgame' placeholder='among us' > 
-
-                    </div>
-
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Contact Number:</label>
-                        <input type='number' id='contactnum' name='contactnum' placeholder='09161234567'> 
-
-                    </div>
-
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Address:</label>
-                        <input type='text' id='address' name='address' placeholder='address' > 
-
-                    </div>
-
-
-
-
-<!--                    <span class='verification-container'>
-                        <span class="material-icons verification-icon" style="color:green;">
-                            check_circle
-                        </span> 
-                        Your account has been verified.
-                    </span>-->
-
-                    <div class="personal-records-buttons"> 
-                        <input type="button" onclick="location.href = '../account/profile-page.jsp';" value="GO BACK" class="button" />
+		    <div class="personal-records-buttons"> 
+                        <input type="button" onclick="location.href = 'records-all.jsp';" value="GO BACK" class="button" />
                         <input type="submit" id="modalBtn" value="UPDATE" class="button" />
-                        <input type="button" onclick="location.href = '../home.jsp';" value="LOGOUT" class="button" />
-                    </div>   
+                        <button type="button" onclick="location.href = '../LogoutServlet';" class="button">
+			    <span class="material-icons-outlined">power_settings_new</span>
+			    Logout</button>
+		    </div>   
+		    <%
+				} while (records.next());
+
+			    }
+			    records.close();
+			} catch (Exception e) {
+			    e.printStackTrace();
+			}%>
+
                 </form> 
             </div>
         </section>
-        
-         <section id="modalSection" class="modal-section">
-                <div class="modal-content">
-                    <h3 class="modal-header">SUCCESS!</h3>
-                    <p class="modal-msg">Your PDF has been generated.</p>   
-                    <span class="modal-buttoncon">
-<!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
-                        <span onclick="Home()" class="modal-button">Download</span> 
-                    </span>
-                </div>
-            </section>
     </body>
 </html>

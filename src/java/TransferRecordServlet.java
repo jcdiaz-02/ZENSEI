@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -52,16 +53,19 @@ public class TransferRecordServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	try {
-	  DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+	    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
 	    LocalDate today = LocalDate.now();
 	    String date = dtf.format(today);
+
+	    HttpSession session = request.getSession();
+	    String ident = (String) session.getAttribute("ident");
 
 	    String uname = request.getParameter("uname");
 	    String query = "SELECT * FROM APP.USERDB where USERNAME = ?";
 	    PreparedStatement pst = conn.prepareStatement(query);
 	    pst.setString(1, uname);
 	    ResultSet records = pst.executeQuery();
-            records.next();
+	    records.next();
 
 	    String pass = records.getString("PASSWORD");
 	    String email = records.getString("EMAIL");
@@ -79,9 +83,11 @@ public class TransferRecordServlet extends HttpServlet {
 	    pst.setString(4, "member");
 	    pst.setString(5, date);
 	    pst.executeUpdate();
-
-	    response.sendRedirect("subpage/myAccountPageAdmin.jsp");
-	   
+	    if (ident.equals("all")) {
+		response.sendRedirect("account/records-all.jsp");
+	    } else if (ident.equals("today")) {
+		response.sendRedirect("account/records-today.jsp");
+	    }
 	} catch (SQLException sqle) {
 	    response.sendRedirect("errPages/Error404.jsp");
 	}

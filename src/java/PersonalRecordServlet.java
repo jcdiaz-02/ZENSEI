@@ -90,7 +90,7 @@ public class PersonalRecordServlet extends HttpServlet {
 		    session.setAttribute("cnumber", records.getString("CONTACTNUMBER"));
 		    session.setAttribute("address", records.getString("ADDRESS"));
 
-		    response.sendRedirect("viewPersonalRecordverified.jsp");
+		    response.sendRedirect("account/records-personal-1.jsp");
 		}
 	    } else {
 
@@ -101,7 +101,7 @@ public class PersonalRecordServlet extends HttpServlet {
 		session.setAttribute("email", toemail);
 		session.setAttribute("username", uname);
 		session.setAttribute("password", pass);
-		response.sendRedirect("viewPersonalRecordunverified.jsp");
+		response.sendRedirect("account/records-personal-0.jsp");
 	    }
 
 	} catch (SQLException sqle) {

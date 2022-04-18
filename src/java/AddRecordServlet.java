@@ -95,7 +95,7 @@ public class AddRecordServlet extends HttpServlet {
 	    pst.setString(12, u);
 
 	    pst.executeUpdate();
-	    response.sendRedirect("subpage/myAccountPageVerified.jsp");
+	    response.sendRedirect("account/profile-page.jsp");
 
 	} catch (SQLException sqle) {
 	    response.sendRedirect("errPages/Error404.jsp");
