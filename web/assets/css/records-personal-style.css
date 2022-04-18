@@ -44,15 +44,14 @@ and open the template in the editor.
 }
 
 .personal-records-section-2{
-    -ms-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, 0%);
     background: white;
     border-radius: 40px;
     font-family: var(--font5);
-    margin: 0;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 7rem;
+    transform: translate(-50%, 0%);
     width: 60rem; 
     padding: 1rem 4rem;
 }
