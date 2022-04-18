@@ -126,7 +126,7 @@
                     View Personal Record
                 </button>
 
-                <button type="button" onclick="location.href = '../addRecord.jsp';"  name="uname" value="<c:out value="${username}"/>" ${ records.getString("AGE") != null ? 'disabled="disabled"': ''}" class="button">
+                <button type="button" onclick="location.href = 'addRecord.jsp';"  name="uname" value="<c:out value="${username}"/>" ${ records.getString("AGE") != null ? 'disabled="disabled"': ''}" class="button">
                     <span class="material-icons-outlined">person_add_alt</span>
                     Add Record
                 </button>

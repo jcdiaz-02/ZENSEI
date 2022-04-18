@@ -65,55 +65,64 @@
             <div class="personal-records-container">
 
 		<form class="personal-records-info-container0" method="POST" action="../UpdateRecordServlet">
-                    <div class='personal-records-info-container1'>
-			<h1>Name: </h1><input type="text" placeholder="Enter Name" name="myname"><br>
+		    <div class='personal-records-info-container1'>
+			<h1>Email: </h1><input required  pattern="[a-z0-9._%+-]+@ust.edu.ph$" type="text" placeholder="Enter Email (@ust.edu.ph)" name="email"><br>
+                    </div>
+
+		    <div class='personal-records-info-container1'>
+			<h1>Name: </h1><input required type="text" placeholder="Enter Name" name="myname"><br>
                     </div>
 
                     <div class='personal-records-info-container1'>
-			<h1>Username: </h1><input type="text" placeholder= "Enter Username"name="uname"><br>
+			<h1>Username: </h1><input required type="text" placeholder= "Enter Username"name="uname"><br>
 		    </div>
 
                     <div class='personal-records-info-container1'>
-			<h1>Password: </h1><input type="text" placeholder="Enter Password" name="pass"><br>
+			<h1>Password: </h1><input required type="text" placeholder="Enter Password" name="pass"><br>
 		    </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Course: </h1><input type="text" placeholder="Enter Course" name="course"><br>
+			<h1>Course: </h1><input required type="text" placeholder="Enter Course" name="course"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Age: </h1><input type="number" placeholder="Enter Age" name="age"><br>
+			<h1>Age: </h1><input required type="number" placeholder="Enter Age" name="age"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Birthday: </h1><input type="date" placeholder="Enter Birthday" name="birthday"><br>
+			<h1>Birthday: </h1><input required type="date" placeholder="Enter Birthday" name="birthday"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Gender: </h1><input type="text" placeholder="Enter Gender" name="gender"><br>
+			<h1>Gender: </h1><input required type="text" placeholder="Enter Gender" name="gender"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Student Number: </h1><input type="number" placeholder="Enter Student Number" name="snumber"><br>
+			<h1>Student Number: </h1><input required type="number" placeholder="Enter Student Number" name="snumber"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Contact Number: </h1><input type="number" placeholder="Enter Contact Number" name="cnumber"><br>
+			<h1>Contact Number: </h1><input required type="number" placeholder="Enter Contact Number" name="cnumber"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Favorite Game: </h1><input type="text" placeholder="Enter Favorite Game" name="favgame"><br>
+			<h1>Favorite Game: </h1><input required type="text" placeholder="Enter Favorite Game" name="favgame"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Address: </h1><input type="text" placeholder="Enter Address" name="address"><br>
+			<h1>Address: </h1><input required type="text" placeholder="Enter Address" name="address"><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Role: </h1><input type="text" placeholder="Enter Role" name="userrole"><br>
+			<h1>Role: </h1>
+			<select id="userrole" name="userrole">
+			    <option value="member">Member</option>
+			    <option value="admin">Admin</option>
+			</select>
+
 		    </div>
 
-		
+
 		    <div class="personal-records-buttons"> 
 			<input type="button" onclick="location.href = 'profile-page-admin.jsp';" value="GO BACK" class="button" />
 

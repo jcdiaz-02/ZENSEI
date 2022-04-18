@@ -86,7 +86,7 @@
 		    <span class="material-icons">event_available</span>
 		    View Today's Record</button>
 
-		<button type="button" onclick="location.href = '../addRecordAdmin.jsp';" class="button">
+		<button type="button" onclick="location.href = 'addRecordAdmin.jsp';" class="button">
 		    <span class="material-icons-outlined">person_add_alt</span>
 		    Add Record</button>
 

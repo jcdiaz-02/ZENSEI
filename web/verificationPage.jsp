@@ -48,7 +48,7 @@
                     <a class="option" href="/subpage/about.jsp">About</a>
                     <a class="option" href="/subpage/events.jsp">Events</a>
                     <a class="option" href="/subpage/contact.jsp">Contact</a>
-                    <form style="color:#B92432;" action="login.jsp">
+                    <form style="color:#B92432;" action="login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
 
@@ -66,7 +66,7 @@
                 <% if (button.equals("signup")) {%>
                 <div class="verify-signup-code"> 
                     <p>We have sent a verification code to your email-</p>
-                    <p class="verify-email" ><c:out value="${email}"/></p>
+                    <p class="verify-email" >${email}</p>
                 </div>
 
                 <form class="input-container" action="SignUpServlet">
@@ -75,7 +75,7 @@
                         <input type="text" placeholder="enter verification code" name="verify" required>
                     </div>
                     <h3><%request.getAttribute("Incorrect");%></h3>
-                    <button class="button">CONTINUE</button>
+                    <button class="button1">CONTINUE</button>
                 </form>
 
 
@@ -83,7 +83,7 @@
 
                 <div class="verify-login-code">
                     <p>For added security, we need to verify your email address. We have sent a verification code to  
-                        <span class="verify-email">juan.delacruz.cics@ust.edu.ph</span>
+                        <span class="verify-email">${email}</span>
                     </p>
 
                     <p>If the email does not arrive soon, check your spam folder or have us <a>send it again.</a></p>
@@ -95,13 +95,12 @@
                     <div class="input">
                         <input type="text" placeholder="enter verification code" name="verify" required>
                     </div>
-                    <h3><%request.getAttribute("Incorrect");%></h3>
-                    <button class="button">CONTINUE</button>
+		    <button class="button">CONTINUE</button>
                 </form>
+
                 <%}%>
 
             </div>
-        </div>
-    </section>
-</body>
+	</section>
+    </body>
 </html>

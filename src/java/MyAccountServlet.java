@@ -31,7 +31,7 @@ public class MyAccountServlet extends HttpServlet {
 		if (role.equals("admin")) {
 		    response.sendRedirect("account/profile-page-admin.jsp");
 		} else if (role.equals("member")) {
-		    response.sendRedirect("accoount/profile-page.jsp");
+		    response.sendRedirect("account/profile-page.jsp");
 		}
 
 	    } else if (verify.equals("unverified")) {

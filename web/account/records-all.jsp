@@ -165,7 +165,7 @@
                 </div>       
 
                 <div class="all-records-buttons"> 
-                    <form  action="javascript:history.back()">
+                    <form  action="profile-page-admin.jsp">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
 		    <form onclick ="deleteOpenForm()">
