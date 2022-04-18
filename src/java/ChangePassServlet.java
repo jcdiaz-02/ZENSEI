@@ -64,14 +64,14 @@ public class ChangePassServlet extends HttpServlet {
 	response.setContentType("text/html;charset=UTF-8");
 	try {
 	    HttpSession httpsession = request.getSession();
-	    String email = (String) request.getAttribute("email");
+	    String email = (String) httpsession.getAttribute("email");
 	    String psw = request.getParameter("psw");
 	    String cpsw = request.getParameter("cpsw");
 
 	    if (psw != null & cpsw != null) {
 		if (!cpsw.equals(psw)) {
 		    httpsession.setAttribute("error", "1");
-		    response.sendRedirect("");
+		    response.sendRedirect("login/password-change.jsp");
 		} else {
 		    String query = "SELECT PASSWORD FROM APP.USERDB where EMAIL=?";
 		    PreparedStatement pstmt = conn.prepareStatement(query);
@@ -86,16 +86,21 @@ public class ChangePassServlet extends HttpServlet {
 			if (records.next() == false) {
 			    throw new AuthenticationExceptionUsername();
 			} else {
-			    query = "UPDATE APP.VERIFIEDDB set PASSWORD=?";
+			    query = "UPDATE APP.VERIFIEDDB set PASSWORD=? where EMAIL=?";
 			    pstmt = conn.prepareStatement(query);
 			    pstmt.setString(1, psw);
+			    pstmt.setString(2, email);
 			    pstmt.executeUpdate();
+			    response.sendRedirect("home.jsp");
+
 			}
 		    } else {
-			query = "UPDATE APP.USERDBs set PASSWORD=?";
+			query = "UPDATE APP.USERDB set PASSWORD=? where EMAIL=?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, psw);
+			pstmt.setString(2, email);
 			pstmt.executeUpdate();
+			response.sendRedirect("home.jsp");
 		    }
 		}
 	    }

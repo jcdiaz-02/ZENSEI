@@ -58,25 +58,29 @@
         </div>
 
 	<%
-	    session.setAttribute("identifier", "login");
-	%>
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String uname = (String) session.getAttribute("username");
+	    if (uname != null) {
+		response.sendRedirect("subpage/authenticatedHome.jsp");
+	    }
+        %>
         <section class="login-section">
-            <form class="login-container" method="post" action="../LoginVerification">
+            <form class="login-container" method="post" action="../ChangePassServlet">
                 <h2>Change Password</h2>
-<!--                <h3>Don't have an account yet? <a href="../signup/signup.jsp">Sign up</a></h3>-->
+		<!--                <h3>Don't have an account yet? <a href="../signup/signup.jsp">Sign up</a></h3>-->
 
 
                 <div class="input-container">
                     <label for="uname"><b>New Password</b></label>    
                     <div class="input">
-<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
+			<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
                         <input type="password" placeholder="Enter New Password" name="psw" required>
                     </div>
-                    
+
                     <label for="uname"><b>Confirm Password</b></label>    
                     <div class="input">
-<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
-                        <input type="password" placeholder="Confirm Password" name="psw" required>
+			<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
+                        <input type="password" placeholder="Confirm Password" name="cpsw" required>
                     </div>
 
                 </div>

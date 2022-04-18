@@ -87,7 +87,16 @@
                 </div>
             </div>
         </div>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String sessionuname = (String) session.getAttribute("username");
+	    //session.setAttribute("verify", session.getAttribute("verify"));
 
+	    String role = (String) session.getAttribute("role");
+	    if (sessionuname == null) {
+		response.sendRedirect("home.jsp");
+	    }
+	%>
         <section class="personal-records-section-2">
             <div class="personal-records-container">
 		<% try {

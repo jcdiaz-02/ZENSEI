@@ -36,7 +36,7 @@ public class ForgotPassVerification extends HttpServlet {
 	    String verify = request.getParameter("verify");
 
 	    if (code.equals(verify)) {
-		response.sendRedirect("");
+		response.sendRedirect("login/password-change.jsp");
 	    } else if (!code.equals(verify)) {
 		response.sendRedirect("verificationPage.jsp");
 	    }

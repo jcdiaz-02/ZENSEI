@@ -234,8 +234,10 @@
     </servlet>
     <servlet>
         <servlet-name>ForgotPassVerification</servlet-name>
-        <servlet-class>.ForgotPassVerification</servlet-class>
+        <servlet-class>ForgotPassVerification</servlet-class>
     </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>LoginVerification</servlet-name>
         <url-pattern>/LoginVerification</url-pattern>
