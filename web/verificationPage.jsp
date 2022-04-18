@@ -30,13 +30,10 @@
 
     </head>
     <body>
-        <%
-            session.setAttribute("uname", session.getAttribute("uname"));
-            session.setAttribute("psw", session.getAttribute("pass"));
-            session.setAttribute("email", session.getAttribute("email"));
-            session.setAttribute("code", session.getAttribute("code"));
-            String button = (String) session.getAttribute("button");
-        %>
+	<%
+
+	    String button = (String) session.getAttribute("button");
+	%>
         <!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">

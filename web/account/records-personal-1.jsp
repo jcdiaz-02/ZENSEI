@@ -33,6 +33,14 @@
         <title>UST-TGS</title>
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	    String uname = (String) session.getAttribute("username");
+	    String role = (String) session.getAttribute("role");
+	    if (uname == null) {
+		response.sendRedirect("home.jsp");
+	    }
+	%>
         <!--TODO: CONNECT TO DATABASE TO ACCESS PERSONAL RECORD -->
         <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->
@@ -49,13 +57,23 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
-                    </form>
+                    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="../subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
+		    <%
+			if (role.equalsIgnoreCase("member")) {
+		    %>
+		    <form action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="My Account"  class="button"/>
+		    </form>
+		    <%    } else if (role.equalsIgnoreCase("admin")) { %>
+		    <form action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="ADMIN"  class="button"/>
+		    </form>
+		    <% }%>  
 
                 </div>
             </div>
@@ -64,30 +82,30 @@
         <section class="personal-records-section-1">
             <div class="personal-records-container">
                 <h3> View Personal Record </h3>
-                <form class="personal-records-info-container0" action="/">
+		<form class="personal-records-info-container0" action="/">
 
                     <div class='personal-records-profile-container'>
                         <span class="material-icons personal-records-photo">
                             account_circle
                         </span>
-                        
+
                         <span class='name-container'>
-                            <span class='name'>NAME</span>
-                            <span class='dpt'>COMPUTER SCIENCE</span>
+                            <span class='name'>${name}</span>
+                            <span class='dpt'>${course}</span>
                         </span>
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Email:</label>
-                        <input type='email' id='email' name='email' value='email (ust.edu.ph)' readonly> 
+                        <input type='email' id='email' name='email' value='${email}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'> 
                         <label for=''>Username:</label>
 
-                        <input type='text' id='uname' name='uname' value='username' readonly> 
+                        <input type='text' id='uname' name='uname' value='${username}' readonly> 
                         <span class="material-icons edit-icon">
                             edit
                         </span>
@@ -98,7 +116,7 @@
                     <div class='personal-records-info-container1'> 
                         <label for=''>Password:</label>
 
-                        <input type='password' id='password' name='password' value='username' readonly> 
+                        <input type='password' id='password' name='password' value='${password}' readonly> 
                         <span class="material-icons edit-icon">
                             edit
                         </span>
@@ -107,47 +125,45 @@
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Age:</label>
-                        <input type='number' id='age' name='age' value='00' readonly> 
+                        <input type='text' id='age' name='age' value='${age}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Birthday</label>
-                        <input type='date' id='birthday' name='birthday' value='2001-01-01' readonly> 
+                        <input type='text' id='birthday' name='birthday' value='${birthday}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Gender:</label>
-                        <input type='text' id='gender' name='gender' value='male' readonly> 
+                        <input type='text' id='gender' name='gender' value='${gender}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Student Number:</label>
-                        <input type='number' id='studentnum' name='studentnum' value='2019123456' readonly> 
+                        <input type='text' id='studentnum' name='studentnum' value='${snumber}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Favorite Game:</label>
-                        <input type='text' id='favgame' name='favgame' value='among us' readonly> 
+                        <input type='text' id='favgame' name='favgame' value='${favgame}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Contact Number:</label>
-                        <input type='number' id='contactnum' name='contactnum' value='09161234567' readonly> 
+                        <input type='text' id='contactnum' name='contactnum' value='${cnumber}' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'>
                         <label for=''>Address:</label>
-                        <input type='text' id='address' name='address' value='address' readonly> 
+                        <input type='text' id='address' name='address' value='${address}' readonly> 
 
                     </div>
-
-
 
 
                     <span class='verification-container'>
@@ -158,23 +174,33 @@
                     </span>
 
                     <div class="personal-records-buttons"> 
-                        <input type="button" onclick="location.href = '../account/profile-page.jsp';" value="GO BACK" class="button" />
-                        <input type="button" id="modalBtn" value="GENERATE PDF" class="button" />
-                        <input type="button" onclick="location.href = '../home.jsp';" value="LOGOUT" class="button" />
-                    </div>   
+			<%
+			    if (role.equalsIgnoreCase("member")) {
+			%>
+			<input type="button" onclick="location.href = 'profile-page.jsp';" value="GO BACK" class="button" />
+			<%
+			} else if (role.equalsIgnoreCase("admin")) {
+			%>
+			<input type="button" onclick="location.href = 'profile-page-admin.jsp';" value="GO BACK" class="button" />
+			<%}%>
+			<input type="button" id="modalBtn" value="GENERATE PDF" class="button" />
+			<input type="button" onclick="location.href = '../LogoutServlet';" value="LOGOUT" class="button" />
+		    </div>   
                 </form> 
             </div>
         </section>
-        
-         <section id="modalSection" class="modal-section">
-                <div class="modal-content">
-                    <h3 class="modal-header">SUCCESS!</h3>
-                    <p class="modal-msg">Your PDF has been generated.</p>   
-                    <span class="modal-buttoncon">
-<!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
-                        <span onclick="Home()" class="modal-button">Download</span> 
-                    </span>
-                </div>
-            </section>
+
+	<section id="modalSection" class="modal-section">
+	    <div class="modal-content">
+		<h3 class="modal-header">SUCCESS!</h3>
+		<p class="modal-msg">Your PDF has been generated.</p>   
+		<span class="modal-buttoncon">
+		    <!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
+		    <form method="POST" action ="../PDFServlet">
+			<button class="modal-button"  name="pdfbutton" value="ownpdf">Download PDF</button>
+		    </form>
+		</span>
+	    </div>
+	</section>
     </body>
 </html>

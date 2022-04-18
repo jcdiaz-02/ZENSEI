@@ -3,9 +3,34 @@
     Created on : 03 19, 22, 10:45:23 PM
     Author     : Admin
 --%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%
+    String driver = "org.apache.derby.jdbc.ClientDriver";
+    String url = "jdbc:derby://localhost:1527/userDB";
+    String username = "app";
+    String password = "app";
+    Connection conn;
+    try {
+	Class.forName(driver);
+
+    } catch (ClassNotFoundException e) {
+	e.printStackTrace();
+    }
+    Connection connection = null;
+    Statement statement = null;
+    ResultSet resultSet = null;
+%>
 
 <!DOCTYPE html>
 <html>
@@ -38,6 +63,19 @@
         <title>UST-TGS</title>
     </head>
     <body>
+	<%
+	    response.setHeader("Cache-Control", "no-cache");
+	    response.setHeader("Cache-Control", "no-store");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
+
+	    session.setAttribute("verify", session.getAttribute("verify"));
+
+	    if (session.getAttribute("username") == null) {
+		response.sendRedirect("login.jsp");
+	    }
+
+	%>
         <!--TODO: CONNECT TO DATABASE AND ACCESS ALL RECORDS DATA -->
         <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->
@@ -58,9 +96,10 @@
                     <a class="option" href="../subpage/about.jsp">About</a>
                     <a class="option" href="../subpage/events.jsp">Events</a>
                     <a class="option" href="../subpage/contact.jsp">Contact</a>
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
-                    </form>
+		    <form action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+			<input type="submit" value="ADMIN"  class="button"/>
+		    </form>
 
                 </div>
             </div>
@@ -72,64 +111,162 @@
                     <h2>Today's Records</h2>          
                 </div>
 
-                <h3><a class="record-select" href="">Select Record</a></h3>          
                 <div class="table-container">
                     <table class="records-table">
-                        <tr>
-                            <th>No.</th>
-                            <th>Student Num</th> 
-                            <th>Email</th>
-                            <th>Course</th>
-                            <th>Username</th>
-                            <th>Name</th> 
-                            <th>Gender</th>
-                            <th>Birthday</th>
-                            <th>Age</th>
-                            <th>Contact #</th> 
-                            <th>Address</th>
-                            <th>Favorite Game</th>
-                            <th><span class="material-icons">verified_user</span></th>
-                        </tr>
+			<tr>
+			    <td>Name</td>
+			    <td>Course</td>
+			    <td>Email</td>
+			    <td>Username</td>
+			    <td>Password</td>
+			    <td>Age</td>
+			    <td>Birthday</td>
+			    <td>Gender</td>
+			    <td>Student Number</td>
+			    <td>Favorite Game</td>
+			    <td>Contact Number</td>
+			    <td>Address</td>
+			    <td>Verification</td>
+			</tr>
+			<% try {
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
+				LocalDate today = LocalDate.now();
+				String todaydate = dtf.format(today);
+				conn = DriverManager.getConnection(url, username, password);
+				String query = "SELECT * FROM APP.USERDB where DATE=?";
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				pstmt.setString(1, todaydate);
+				ResultSet records = pstmt.executeQuery();
+				while (records.next()) {
+			%>
+			<tr>
+			    <td>null</td>
+			    <td>null</td>
+			    <td><%=records.getString("EMAIL")%></td>
+			    <td><%=records.getString("USERNAME")%></td>
+			    <td><%=records.getString("PASSWORD")%></td>
+			    <td>null</td>
+			    <td>null</td>
+			    <td>null</td>
+			    <td>null</td>
+			    <td>null</td>
+			    <td>null</td>
+			    <td>null</td>
+			    <td>UNVERIFIED</td>	 
+			</tr>
+			<%
+			    }
+			    String query1 = "SELECT * FROM APP.VERIFIEDDB where DATE=?";
+			    pstmt = conn.prepareStatement(query1);
+			    pstmt.setString(1, todaydate);
+			    records = pstmt.executeQuery();
+			    while (records.next()) {
+			%>
+			<tr>
+			    <td><%=records.getString("NAME")%></td>
+			    <td><%=records.getString("COURSE")%></td>
+			    <td><%=records.getString("EMAIL")%></td>
+			    <td><%=records.getString("USERNAME")%></td>
+			    <td><%=records.getString("PASSWORD")%></td>
+			    <td><%=records.getString("AGE")%></td>
+			    <td><%=records.getString("BIRTHDAY")%></td>
+			    <td><%=records.getString("GENDER")%></td>
+			    <td><%=records.getString("STUDENTNUMBER")%></td>
+			    <td><%=records.getString("FAVORITEGAME")%></td>
+			    <td><%=records.getString("CONTACTNUMBER")%></td>
+			    <td><%=records.getString("ADDRESS")%></td>
+			    <td>VERIFIED</td>	 
+			</tr>
+			<%
+				}
+			    } catch (Exception e) {
+				e.printStackTrace();
+			    }%>
 
-                        <% for (int x = 0; x < 20; x++) {%> 
-                        <tr>
-                            <td><%=Integer.toString(x)%></td>
-                            <td>2019123456</td>
-                            <td>test.test.cics@ust.edu.ph</td>
-                            <td>Computer Science</td>
-                            <td>TestGuy</td>
-                            <td>Test Test T. Guy</td>
-                            <td>test</td>
-                            <td>00/00/0000</td>
-                            <td>00</td>
-                            <td>00000000000</td>
-                            <td>545-T Test St. Test City</td>
-                            <td>Among Us</td>
-                            <td><span class="material-icons" style="color:green;">check_circle</span></td>
-                        </tr>
-                        <% }%>
-
-                    </table>
+		    </table>
                 </div>       
 
                 <div class="all-records-buttons"> 
                     <form  action="javascript:history.back()">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="UPDATE RECORD"  class="button"/>
-                    </form>
-
-                    <button id="modalBtn"  class="button"/>DELETE</button>
+		    <button class="button" onclick="deleteOpenForm()">Delete </button>
+		    <button class="button" onclick="verifyOpenForm()">Verify</button>
+		    <button class="button" onclick="openForm()">Update </button>
 
                     <button id="modalBtn1"  onclick="OpenModal1()" class="button"/>GENERATE PDF</button>
 
 
-                    <form  action="../subpage/records.jsp">
+                    <form  action="LogoutServlet">
                         <input type="submit" value="LOGOUT"  class="button"/>
                     </form>
-                </div>                      
+                </div>  
+		<div class="form-popup" id="myForm">
+		    <form action="records-update.jsp" class="form-container">
+			<h1>Update Record</h1>
+
+			<label for="uname"><b>Username of record being updated (verified usernames only)</b></label>
+			<input type="text" placeholder="Enter Username" name="uname" required>
+
+			<button type="submit" class="submit">Submit</button>
+			<button type="button" class="cancel" onclick="closeForm()">Cancel</button>
+		    </form>
+		</div>
+
+		<div class="form-popup" id="verifyForm">
+		    <form action="../TransferRecordServlet" class="form-container">
+			<h1>Verify Record</h1>
+			<%
+			    session.setAttribute("ident", "today");
+			%>
+			<label for="uname"><b>Username of record being verified</b></label>
+			<input type="text" placeholder="Enter Username" name="uname" required>
+
+			<button type="submit" class="submit">Submit</button>
+			<button type="button" class="cancel" onclick="verifyCloseForm()">Cancel</button>
+		    </form>
+		</div>
+		<div class="form-popup" id="deleteForm">
+		    <form action="../DeleteRecordServlet" class="form-container">
+			<h1>Delete Record</h1>
+
+			<%
+			    session.setAttribute("ident", "today");
+			%>
+			<label for="uname"><b>Username of record being deleted</b></label>
+			<input type="text" placeholder="Enter Username" name="uname" required>
+
+			<button type="submit" class="submit">Submit</button>
+			<button type="button" class="cancel" onclick="verifyCloseForm()">Cancel</button>
+		    </form>
+		</div>
+		<script>
+		    function openForm() {
+			event.preventDefault();
+			document.getElementById("myForm").style.display = "block";
+		    }
+		    function closeForm() {
+			event.preventDefault();
+			document.getElementById("myForm").style.display = "none";
+		    }
+		    function verifyOpenForm() {
+			event.preventDefault();
+			document.getElementById("verifyForm").style.display = "block";
+		    }
+		    function verifyCloseForm() {
+			event.preventDefault();
+			document.getElementById("verifyForm").style.display = "none";
+		    }
+		    function deleteOpenForm() {
+			event.preventDefault();
+			document.getElementById("deleteForm").style.display = "block";
+		    }
+		    function deleteCloseForm() {
+			event.preventDefault();
+			document.getElementById("deleteForm").style.display = "none";
+		    }
+
+		</script>
             </div>
         </section>
 
@@ -150,10 +287,9 @@
             <div class="modal-content">
                 <h3 class="modal-header">SUCCESS!</h3>
                 <p class="modal-msg">Your PDF has been generated.</p>   
-                <span class="modal-buttoncon">
-                    <!--                        <span onclick="Home()" class="close modal-button">Home</span>-->
-                    <span onclick="Home()" class="modal-button">Download</span> 
-                </span>
+                <form method="POST" action ="../PDFServlet">
+		    <button class="button" name="pdfbutton" value="alluserpdf">Download PDF</button>
+		</form>
             </div>
         </section>    
     </body>

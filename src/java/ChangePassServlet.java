@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
+import Exceptions.AuthenticationExceptionPassword;
 import Exceptions.AuthenticationExceptionUsername;
+import Exceptions.NullValueException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -11,11 +13,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +24,17 @@ import javax.servlet.http.HttpSession;
  *
  * @author merki
  */
-public class UpdateRecordServlet extends HttpServlet {
+public class ChangePassServlet extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     String username;
     String password;
 
@@ -53,76 +61,47 @@ public class UpdateRecordServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-
+	response.setContentType("text/html;charset=UTF-8");
 	try {
-	    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
-	    LocalDate now = LocalDate.now();
-	    String date = dtf.format(now);
-	    HttpSession session = request.getSession();
-	    String u = (String) session.getAttribute("primaryusername");
+	    HttpSession httpsession = request.getSession();
+	    String email = (String) request.getAttribute("email");
+	    String psw = request.getParameter("psw");
+	    String cpsw = request.getParameter("cpsw");
 
-	    String butt = request.getParameter("recbutton");
-	    String uname = request.getParameter("uname");
-	    String name = request.getParameter("myname");
-	    String pass = request.getParameter("pass");
-	    String email = request.getParameter("email");
-	    String age = request.getParameter("age");
-	    String birthday = request.getParameter("birthday");
-	    String course = request.getParameter("course");
-	    String address = request.getParameter("homeaddress");
-	    String snumber = request.getParameter("snumber");
-	    String cnumber = request.getParameter("cnumber");
-	    String favgame = request.getParameter("favgame");
-	    String gender = request.getParameter("gender");
-	    String role = request.getParameter("userrole");
+	    if (psw != null & cpsw != null) {
+		if (!cpsw.equals(psw)) {
+		    httpsession.setAttribute("error", "1");
+		    response.sendRedirect("");
+		} else {
+		    String query = "SELECT PASSWORD FROM APP.USERDB where EMAIL=?";
+		    PreparedStatement pstmt = conn.prepareStatement(query);
+		    pstmt.setString(1, email);
+		    ResultSet records = pstmt.executeQuery();
+		    if (records.next() == false) {
 
-	    if (butt.equals("update")) {
-		String query = "UPDATE APP.VERIFIEDDB set NAME=?, COURSE=?, AGE=?, BIRTHDAY=?, GENDER=?, STUDENTNUMBER=?, "
-			+ "FAVORITEGAME=?, CONTACTNUMBER=?, ADDRESS=?, ROLE=?, EMAIL=?, USERNAME=?, PASSWORD=?, DATE=? where USERNAME =?";
-		PreparedStatement pst = conn.prepareStatement(query);
-
-		pst.setString(1, name);
-		pst.setString(2, course);
-		pst.setString(3, age);
-		pst.setString(4, birthday);
-		pst.setString(5, gender);
-		pst.setString(6, snumber);
-		pst.setString(7, favgame);
-		pst.setString(8, cnumber);
-		pst.setString(9, address);
-		pst.setString(10, role);
-		pst.setString(11, email);
-		pst.setString(12, uname);
-		pst.setString(13, pass);
-		pst.setString(14, date);
-		pst.setString(15, u);
-		pst.executeUpdate();
-		response.sendRedirect("account/records-all.jsp");
-	    } else if (butt.equals("add")) {
-		String query = "INSERT INTO APP.VERIFIEDDB(NAME, COURSE, AGE, BIRTHDAY, GENDER, STUDENTNUMBER, "
-			+ "FAVORITEGAME, CONTACTNUMBER, ADDRESS, ROLE, EMAIL, USERNAME, PASSWORD, DATE)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement pst = conn.prepareStatement(query);
-		pst.setString(1, name);
-		pst.setString(2, course);
-		pst.setString(3, age);
-		pst.setString(4, birthday);
-		pst.setString(5, gender);
-		pst.setString(6, snumber);
-		pst.setString(7, favgame);
-		pst.setString(8, cnumber);
-		pst.setString(9, address);
-		pst.setString(10, role);
-		pst.setString(11, email);
-		pst.setString(12, uname);
-		pst.setString(13, pass);
-		pst.setString(14, date);
-		pst.executeUpdate();
-		response.sendRedirect("account/records-add.jsp");
+			query = "SELECT PASSWORD FROM APP.VERIFIEDDB where EMAIL=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, email);
+			records = pstmt.executeQuery();
+			if (records.next() == false) {
+			    throw new AuthenticationExceptionUsername();
+			} else {
+			    query = "UPDATE APP.VERIFIEDDB set PASSWORD=?";
+			    pstmt = conn.prepareStatement(query);
+			    pstmt.setString(1, psw);
+			    pstmt.executeUpdate();
+			}
+		    } else {
+			query = "UPDATE APP.USERDBs set PASSWORD=?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, psw);
+			pstmt.executeUpdate();
+		    }
+		}
 	    }
-
 	} catch (SQLException sqle) {
 	    response.sendRedirect("error404.jsp");
-	} catch (IOException ex) {
+	} catch (Exception ex) {
 	    ex.printStackTrace();
 	}
     }

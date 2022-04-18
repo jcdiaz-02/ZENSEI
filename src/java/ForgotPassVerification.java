@@ -5,16 +5,8 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,58 +16,33 @@ import javax.servlet.http.HttpSession;
  *
  * @author merki
  */
-@WebServlet(name = "DeleteRecordServlet", urlPatterns = {"/DeleteRecordServlet"})
-public class DeleteRecordServlet extends HttpServlet {
+public class ForgotPassVerification extends HttpServlet {
 
-    String username;
-    String password;
-
-    Connection conn;
-
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-	username = config.getInitParameter("DBusername");
-	password = config.getInitParameter("DBpassword");
-	super.init(config);
-	try {
-	    Class.forName(config.getInitParameter("DBdriver"));
-	    String url = config.getInitParameter("DBurl");
-	    conn = DriverManager.getConnection(url, username, password);
-	} catch (SQLException sqle) {
-	    System.out.println("SQLException error occured - "
-		    + sqle.getMessage());
-	} catch (ClassNotFoundException nfe) {
-	    System.out.println("ClassNotFoundException error occured - "
-		    + nfe.getMessage());
-	}
-
-    }
-
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-
+	response.setContentType("text/html;charset=UTF-8");
 	try {
-	    HttpSession session = request.getSession();
-	    String uname = request.getParameter("uname");
-	    String ident = (String) session.getAttribute("ident");
+	    HttpSession httpsession = request.getSession();
+	    String code = (String) httpsession.getAttribute("code");
+	    String verify = request.getParameter("verify");
 
-	    String query = "DELETE FROM APP.USERDB where USERNAME = ?";
-	    PreparedStatement pst = conn.prepareStatement(query);
-	    pst.setString(1, uname);
-	    pst.executeUpdate();
-
-	    String query1 = "DELETE FROM APP.VERIFIEDDB where USERNAME = ?";
-	    pst = conn.prepareStatement(query1);
-	    pst.setString(1, uname);
-	    pst.executeUpdate();
-	    if (ident.equals("all")) {
-		response.sendRedirect("account/records-all.jsp");
-	    } else if (ident.equals("today")) {
-		response.sendRedirect("account/records-today.jsp");
+	    if (code.equals(verify)) {
+		response.sendRedirect("");
+	    } else if (!code.equals(verify)) {
+		response.sendRedirect("verificationPage.jsp");
 	    }
 
-	} catch (SQLException sqle) {
-	    response.sendRedirect("errPages/Error404.jsp");
+	} catch (Exception ex) {
+	    ex.printStackTrace();
 	}
     }
 

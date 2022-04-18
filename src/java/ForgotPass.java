@@ -3,36 +3,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-import Exceptions.AuthenticationExceptionPassword;
 import Exceptions.AuthenticationExceptionUsername;
-import Exceptions.NullValueException;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.Random;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author merki
  */
-@WebServlet(name = "PersonalRecordServlet", urlPatterns = {"/PersonalRecordServlet"})
-public class PersonalRecordServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/ForgotPass"})
+public class ForgotPass extends HttpServlet {
 
     String username;
     String password;
-
     Connection conn;
 
     @Override
@@ -54,64 +57,81 @@ public class PersonalRecordServlet extends HttpServlet {
 
     }
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+	response.setContentType("text/html;charset=UTF-8");
+	Random r = new Random();
+	String randomNumber = String.format("%04d", r.nextInt(1001));
+	String email = request.getParameter("email");
+	String subject = "verification";
+	String messageText = "Verification code is: " + randomNumber;//messageString;
+	String fromemail = "";//sender email & pas
+	String frompassword = "";
 
+	//session.setDebug(true);
 	try {
-	    HttpSession session = request.getSession();
-
-	    String uname = (String) session.getAttribute("uname");
-	    String query = "SELECT * FROM APP.USERDB where USERNAME=?";
+	    String query = "SELECT EMAIL FROM APP.USERDB where EMAIL=?";
 	    PreparedStatement pstmt = conn.prepareStatement(query);
-	    pstmt.setString(1, uname);
+	    pstmt.setString(1, email);
 	    ResultSet records = pstmt.executeQuery();
 	    if (records.next() == false) {
-
-		String query1 = "SELECT * FROM APP.VERIFIEDDB where USERNAME=?";
-		pstmt = conn.prepareStatement(query1);
-		pstmt.setString(1, uname);
+		query = "SELECT EMAIL FROM APP.VERIFIEDDB where EMAIL=?";
+		pstmt = conn.prepareStatement(query);
+		pstmt.setString(1, email);
 		records = pstmt.executeQuery();
-
 		if (records.next() == false) {
 		    throw new AuthenticationExceptionUsername();
-		} else {
-
-		    session.setAttribute("verify", "verified");
-		    session.setAttribute("name", records.getString("NAME"));
-		    session.setAttribute("course", records.getString("COURSE"));
-		    session.setAttribute("email", records.getString("EMAIL"));
-		    session.setAttribute("username", uname);
-		    session.setAttribute("password", records.getString("PASSWORD"));
-		    session.setAttribute("age", records.getString("AGE"));
-		    session.setAttribute("birthday", records.getString("BIRTHDAY"));
-		    session.setAttribute("gender", records.getString("GENDER"));
-		    session.setAttribute("snumber", records.getString("STUDENTNUMBER"));
-		    session.setAttribute("favgame", records.getString("FAVORITEGAME"));
-		    session.setAttribute("cnumber", records.getString("CONTACTNUMBER"));
-		    session.setAttribute("address", records.getString("ADDRESS"));
-
-		    response.sendRedirect("account/records-personal-1.jsp");
 		}
 	    } else {
 
-		
-		String pass = records.getString("PASSWORD");
-		String toemail = records.getString("EMAIL");
-
-		session.setAttribute("email", toemail);
-		session.setAttribute("username", uname);
-		session.setAttribute("password", pass);
-		response.sendRedirect("account/records-personal-0.jsp");
 	    }
+	    Properties properties = new Properties();
+	    properties.setProperty("mail.transport.protocol", "smtp");
+	    properties.setProperty("mail.smtp.host", "smtp.gmail.com");
+	    properties.put("mail.debug", "true");
+	    properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+	    properties.put("mail.smtp.auth", "true");
+	    properties.put("mail.smtp.starttls.enable", "true");
+	    properties.put("mail.smtp.port", "587");
 
-	} catch (SQLException sqle) {
-	    response.sendRedirect("error404.jsp");
-	} catch (Exception ex) {
-	    ex.printStackTrace();
+	    Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+		@Override
+		protected PasswordAuthentication getPasswordAuthentication() {
+		    return new PasswordAuthentication(fromemail, frompassword);
+		}
+	    });
+	    Transport transport = session.getTransport();
+	    InternetAddress addressFrom = new InternetAddress(fromemail);
+	    MimeMessage message = new MimeMessage(session);
+	    message.setSender(addressFrom);
+	    message.setSubject(subject);
+	    message.setContent(messageText, "text/plain");
+	    message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+
+	    transport.connect();
+	    transport.sendMessage(message, message.getAllRecipients());
+	    transport.close();
+	    request.setAttribute("email", email);
+	    request.setAttribute("button", "forgot");
+	    response.sendRedirect(
+		    "subpage/verificationPage.jsp");
+	} catch (MessagingException mex) {
+	    System.out.println("send failed, exception: " + mex);
+	} catch (SQLException e) {
+	    System.out.println(" exception: " + e);
 	}
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

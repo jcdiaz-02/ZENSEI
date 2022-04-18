@@ -31,33 +31,38 @@ public class UserVerification extends HttpServlet {
 	    throws ServletException, IOException {
 	HttpSession httpsession = request.getSession();
 
-	    String uname = "";
-	    String psw = "";
-	    String button = "";
-	    String email = "";
-	    String identifier = (String) httpsession.getAttribute("identifier");
-	    System.out.println(identifier);
-	    if (identifier.equals("login")) {
-		uname = (String) httpsession.getAttribute("uname");
-		psw = (String) httpsession.getAttribute("psw");
-		button = (String) httpsession.getAttribute("button");
-		email = (String) httpsession.getAttribute("email");
-	    } else if (identifier.equals("signup")) {
-		uname = request.getParameter("uname");
-		psw = request.getParameter("psw");
-		button = request.getParameter("button");
-		email = request.getParameter("email");
-	 }
+	String uname = "";
+	String psw = "";
+	String button = "";
+	String email = "";
+	String identifier = (String) httpsession.getAttribute("identifier");
+	System.out.println(identifier);
+	if (identifier.equals("login")) {
+	    uname = (String) httpsession.getAttribute("uname");
+	    psw = (String) httpsession.getAttribute("psw");
+	    button = (String) httpsession.getAttribute("button");
+	    email = (String) httpsession.getAttribute("email");
+	} else if (identifier.equals("signup")) {
+	    uname = request.getParameter("uname");
+	    psw = request.getParameter("psw");
+	    String cpsw = request.getParameter("cpsw");
+	    button = request.getParameter("button");
+	    email = request.getParameter("email");
+	    if (psw != null & cpsw != null) {
+		if (!cpsw.equals(psw)) {
+		    httpsession.setAttribute("error", "1");
+		    response.sendRedirect("signup/signup.jsp");
+		}
+	    }
+	}
 
 	Random r = new Random();
 	String randomNumber = String.format("%04d", r.nextInt(1001));
 
 	String subject = "verification";
 	String messageText = "Verification code is: " + randomNumber;//messageString;
-	String fromemail = "";//sender email & pas
-	String frompassword = "";
-
-	//session.setDebug(true);
+	String fromemail = "merkielbernz.llaneta.iics@ust.edu.ph";//sender email & pas
+	String frompassword = "09155822217Me";
 	try {
 
 	    Properties properties = new Properties();
@@ -75,6 +80,8 @@ public class UserVerification extends HttpServlet {
 		    return new PasswordAuthentication(fromemail, frompassword);
 		}
 	    });
+	    session.setDebug(true);
+
 	    Transport transport = session.getTransport();
 	    InternetAddress addressFrom = new InternetAddress(fromemail);
 	    MimeMessage message = new MimeMessage(session);

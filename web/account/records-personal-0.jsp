@@ -51,12 +51,13 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="/">Contact</a>
-                    <form  action="../login/login.jsp">
-                        <input type="submit" value="Login"  class="button"/>
+		    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
+                    <a class="option" href="../subpage/authenticatedEvents.jsp">Events</a>
+                    <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
+                    <form style="color:#B92432;" action="../MyAccountServlet">
+			<input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="My Account"  class="button"/>
                     </form>
 
                 </div>
@@ -65,21 +66,27 @@
 
         <section class="personal-records-section-0">
             <div class="personal-records-container">
+		<%
+		    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+		    String uname = (String) session.getAttribute("username");
+
+		    if (uname == null) {
+			response.sendRedirect("home.jsp");
+		    }
+                %>
                 <h3> View Personal Record </h3>
                 <form class="personal-records-info-container0" action="/">
                     <div class='personal-records-info-container1'>
                         <label for=''>Email:</label>
-                        <input type='email' id='email' name='email' value='email (ust.edu.ph)' readonly> 
+                        <input type='email' id='email' name='email' value='<c:out value="${email}"/>' readonly> 
 
                     </div>
 
                     <div class='personal-records-info-container1'> 
                         <label for=''>Username:</label>
 
-                        <input type='text' id='uname' name='uname' value='username' readonly> 
-                        <span class="material-icons edit-icon">
-                            edit
-                        </span>
+                        <input type='text' id='uname' name='uname' value='<c:out value="${username}"/>' readonly> 
+
 
                     </div>
 
@@ -87,24 +94,22 @@
                     <div class='personal-records-info-container1'> 
                         <label for=''>Password:</label>
 
-                        <input type='password' id='password' name='password' value='username' readonly> 
-                        <span class="material-icons edit-icon">
-                            edit
-                        </span>
+                        <input type='text' id='password' name='password' value='<c:out value="${password}"/>' readonly> 
+
 
                     </div>
-                        
+
                     <span class='verification-container'>
                         <span class="material-icons verification-icon" style="color:red;">
-                        cancel
+			    cancel
                         </span> 
                         Your account has not been verified.
                     </span>
 
                     <div class="personal-records-buttons"> 
-                            <input type="button" onclick="location.href='../account/profile-page.jsp';" value="GO BACK" class="button" />
-                            <input type="button" onclick="location.href='../home.jsp';" value="LOGOUT" class="button" />
-                    </div>   
+			<input type="button" onclick="location.href = 'profile-page.jsp';" value="GO BACK" class="button" />
+			<input type="button" onclick="location.href = '../LogoutServlet';" value="LOGOUT" class="button" />
+                    </div>    
                 </form> 
             </div>
         </section>
