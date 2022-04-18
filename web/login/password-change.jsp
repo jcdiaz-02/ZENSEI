@@ -65,23 +65,29 @@
 	    }
         %>
         <section class="login-section">
-            <form class="login-container" method="post" action="../ForgotPass">
-                <h2>Forgot Password</h2>
+            <form class="login-container" method="post" action="../ChangePassServlet">
+                <h2>Change Password</h2>
 		<!--                <h3>Don't have an account yet? <a href="../signup/signup.jsp">Sign up</a></h3>-->
 
 
                 <div class="input-container">
-                    <label for="uname"><b>Email</b></label>    
+                    <label for="uname"><b>New Password</b></label>    
                     <div class="input">
 			<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
-                        <input type="email" pattern="[a-z0-9._%+-]+@ust.edu.ph$" placeholder="Enter Email (ust.edu.ph)" name="email" required>
+                        <input type="password" placeholder="Enter New Password" name="psw" required>
+                    </div>
+
+                    <label for="uname"><b>Confirm Password</b></label>    
+                    <div class="input">
+			<!--                        <span class="material-icons input-icon" style="color:#FF5757;">&#xe887;</span>-->
+                        <input type="password" placeholder="Confirm Password" name="cpsw" required>
                     </div>
 
                 </div>
 
 
-                <button type="submit" class="button" name="button" value="forgot">SEND</button>
-                <a href="/">Go Back to Login</a>
+                <button type="submit" class="button" name="button" value="CONFIRM">CONFIRM</button>
+
             </form>
         </section>       
     </body>

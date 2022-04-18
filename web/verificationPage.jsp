@@ -98,6 +98,25 @@
 		    <button class="button">CONTINUE</button>
                 </form>
 
+		<%} else if (button.equals("forgot")) {%>
+
+                <div class="verify-login-code">
+                    <p>For added security, we need to verify your change pass request. We have sent a verification code to  
+                        <span class="verify-email">${email}</span>
+                    </p>
+
+                    <p>If the email does not arrive soon, check your spam folder or have us <a>send it again.</a></p>
+
+                </div>  
+
+                <form class="input-container" action="ForgotPassVerification">
+                    <label for="vcode"><b>Validate OTP</b></label>    
+                    <div class="input">
+                        <input type="text" placeholder="enter verification code" name="verify" required>
+                    </div>
+		    <button class="button">CONTINUE</button>
+                </form>
+
                 <%}%>
 
             </div>

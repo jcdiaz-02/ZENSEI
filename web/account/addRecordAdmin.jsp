@@ -37,7 +37,14 @@
     <body>
 	<%
 	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	%>         
+	    String uname = (String) session.getAttribute("username");
+	    //session.setAttribute("verify", session.getAttribute("verify"));
+
+	    String role = (String) session.getAttribute("role");
+	    if (uname == null) {
+		response.sendRedirect("home.jsp");
+	    }
+	%>       
 	<!-- navbar -->
         <div class="bar"> 
             <div class="nav-content">

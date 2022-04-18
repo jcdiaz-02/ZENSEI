@@ -26,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -72,10 +73,12 @@ public class ForgotPass extends HttpServlet {
 	Random r = new Random();
 	String randomNumber = String.format("%04d", r.nextInt(1001));
 	String email = request.getParameter("email");
+	String button = request.getParameter("button");
+
 	String subject = "verification";
 	String messageText = "Verification code is: " + randomNumber;//messageString;
-	String fromemail = "";//sender email & pas
-	String frompassword = "";
+	String fromemail = "merkielbernz.llaneta.iics@ust.edu.ph";//sender email & pas
+	String frompassword = "09155822217Me";
 
 	//session.setDebug(true);
 	try {
@@ -120,10 +123,14 @@ public class ForgotPass extends HttpServlet {
 	    transport.connect();
 	    transport.sendMessage(message, message.getAllRecipients());
 	    transport.close();
-	    request.setAttribute("email", email);
-	    request.setAttribute("button", "forgot");
+
+	    HttpSession httpsession = request.getSession();
+
+	    httpsession.setAttribute("code", randomNumber);
+	    httpsession.setAttribute("email", email);
+	    httpsession.setAttribute("button", button);
 	    response.sendRedirect(
-		    "subpage/verificationPage.jsp");
+		    "verificationPage.jsp");
 	} catch (MessagingException mex) {
 	    System.out.println("send failed, exception: " + mex);
 	} catch (SQLException e) {
