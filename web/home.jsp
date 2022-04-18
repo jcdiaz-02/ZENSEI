@@ -1,12 +1,9 @@
-<%-- 
-    Document   : home
-    Created on : 02 23, 22, 5:02:52 PM
-    Author     : Admin
---%>
+<%-- Document : home Created on : 02 23, 22, 5:02:52 PM Author : Admin --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,6 +24,7 @@
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
     </head>
+
     <body>
         <%
             response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
@@ -53,10 +51,10 @@
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
-                <div class="nav-options" >
-                    <a class="option" style="color:#B92432; "href="home.jsp">Home</a>
+                <div class="nav-options">
+                    <a class="option" style="color:#B92432; " href="home.jsp">Home</a>
                     <a class="option" href="subpage/about.jsp">About</a>
-                    <a class="option" href="subpage/events.jsp">Events</a>
+                    <a class="option" href="EventOverview">Events</a>
                     <a class="option" href="subpage/contact.jsp">Contact</a>
                     <form class="button-nav-form" action="login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
@@ -68,10 +66,6 @@
 
         <!-- 1st section/ home -->
         <section class="home-section">
-            <%
-                response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-
-            %>
             <div class="home-header">
                 <img class="home-logo" src="assets/logo.svg">
                 <div class="home-title">
@@ -88,4 +82,5 @@
             </div>
         </section>
     </body>
+
 </html>

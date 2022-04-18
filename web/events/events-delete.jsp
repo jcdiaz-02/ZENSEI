@@ -3,7 +3,8 @@
     Created on : 03 13, 22, 2:16:56 AM
     Author     : Admin
 --%>
-
+<%@page import="java.util.List" %>
+<%@page import="EventsRecordKeeper.EventRecord" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,6 +26,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
+        <script src="../assets/scripts/sort-table.js"></script>   
 <!--        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
         <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>-->
         <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -35,8 +37,18 @@
 
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
+        <% List<EventRecord> recordList = (List) session.getAttribute("eventList");
+        %>
     </head>
     <body>
+                	<%
+	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	                String role = (String) session.getAttribute("role");
+
+	  if (!role.equalsIgnoreCase("admin")) {
+		response.sendRedirect("../home.jsp");
+	    }
+	%>
         <!--TODO: CONNECT DELETE EVENT TO DATABASE ONLY AVAILABLE TO ADMIN-->
         <div class="bar"> 
             <input type="checkbox" id="check">
@@ -70,25 +82,35 @@
                 </div>
 
                 <div class="table-container">
-                    <table class="events-table">
+                    <table class="events-table js-sort-table">
                         <tr>
                             <th class="event-id">Event ID</th>
-                            <th>Event Name </th> 
+                            <th>Event Name</th> 
                             <th>Event Description</th>
                             <th>Event Date</th>
                             <th>Select</th>
                         </tr>
-                        <% for (int x = 0; x < 20; x++) {%> 
+                        <% for (int i = 0; i < recordList.size(); i++) {%>
                         <tr>
-                            <td><%=Integer.toString(x)%></td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
                             <td>
-                                <label class="checkbox-container">
-                                    <input type="checkbox" id="" name="" value="" >
-                                    <span class="checkmark"></span>
-                                </label>
+                                <%= recordList.get(i).getId()%>
+                            </td>
+                            <td>
+                                <%= recordList.get(i).getName()%>
+                            </td>
+                            <td>
+                                <%= recordList.get(i).getDescription()%>
+                            </td>
+                            <td>
+                                <%= recordList.get(i).getDate()%>
+                            </td>
+                            <td>
+                                <form id="myform" action="../DeleteEvent"  method="get">
+                                    <label class="checkbox-container">
+                                        <input form="myform" type="checkbox" id="rows" name="selectedRows" value="<%= recordList.get(i).getId()%>">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </form>
                             </td>
                         </tr>
                         <% }%>
@@ -100,9 +122,7 @@
                     <form  action="../subpage/events.jsp">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-
-                   
-                    <button id="modalBtn"  class="button"/>DELETE</button>
+                    <input id="modalBtn" form="myform" type="submit" value="DELETE"  class="button"/>
                  
 
                     <form  action="../login/login.jsp">

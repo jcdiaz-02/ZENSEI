@@ -94,7 +94,7 @@
                 <div class="nav-options" >
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" href="../subpage/events.jsp">Events</a>
+                    <a class="option" href="../EventOverview">Events</a>
                     <a class="option" href="../subpage/contact.jsp">Contact</a>
 		    <form action="../MyAccountServlet">
 			<input type="hidden" name="verify" value="${verify}" />

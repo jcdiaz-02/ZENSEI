@@ -1,7 +1,7 @@
 <%-- Document : events-all Created on : 03 11, 22, 10:32:21 PM Author : Admin --%>
 
 <%@page import="java.util.List" %>
-<%@page import="EventsRecordKeeper.EventRecord" %>
+<%@page import="EventsRecordKeeper.CommentBox" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 
 
@@ -41,19 +41,19 @@
 
         <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
         <title>UST-TGS</title>
-        <% List<EventRecord> recordList = (List) session.getAttribute("eventList");
-        %>
     </head>
 
     <body>
-                	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	                String role = (String) session.getAttribute("role");
+        <%
+            response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+            String role = (String) session.getAttribute("role");
+             List<CommentBox> commentList = (List) session.getAttribute("CommentList");
+            role = "admin";
 
-	  if (!role.equalsIgnoreCase("admin")) {
-		response.sendRedirect("../home.jsp");
-	    }
-	%>
+            if (role != "admin") {
+                response.sendRedirect("../home.jsp");
+            }
+        %>
         <!--TODO: CONNECT TO DATABASE AND ACCESS ALL EVENTS DATA -->
         <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->
@@ -65,7 +65,7 @@
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="../home.jsp"> 
+                    <a class="" href="/">
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -85,41 +85,53 @@
         <section class="all-events-section">
             <div class="all-events-container">
                 <div class="all-events-head">
-                    <h2>All Events</h2>
+                    <h2>All Comments</h2>
                 </div>
 
                 <div class="table-container">
                     <table class="events-table js-sort-table">
                         <tr>
-                            <th class="event-id">Event ID</th>
-                            <th>Event Name</th>
-                            <th>Event Description</th>
-                            <th>Event Date</th>
+                            <th class="event-id">Comment ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Comment</th>
+                            <th>Select</th>
                         </tr>
-                        <% for (int i = 0; i < recordList.size(); i++) {%>
+                        <% if (commentList != null) {
+                                for (int i = 0; i < commentList.size(); i++) {%>
                         <tr>
                             <td>
-                                <%= recordList.get(i).getId()%>
+                                <%= commentList.get(i).getId()%>
                             </td>
                             <td>
-                                <%= recordList.get(i).getName()%>
+                                <%= commentList.get(i).getFirstName()%> <%= commentList.get(i).getLastName()%>
                             </td>
                             <td>
-                                <%= recordList.get(i).getDescription()%>
+                                <%= commentList.get(i).getEmail()%>
                             </td>
                             <td>
-                                <%= recordList.get(i).getDate()%>
+                                <%= commentList.get(i).getComment()%>
+                            </td>
+                                                        <td>
+                                <form id="myform" action="../DeleteComment"  method="get">
+                                    <label class="checkbox-container">
+                                        <input form="myform" type="checkbox" id="rows" name="selectedRows" value="<%= commentList.get(i).getId()%>">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </form>
                             </td>
                         </tr>
-                        <% }%>
+                        <% }
+                            }%>
 
                     </table>
                 </div>
 
                 <div class="all-event-buttons">
-                    <form action="../subpage/events.jsp">
+                    <form action="../subpage/authenticatedContacts.jsp">
                         <input type="submit" value="GO BACK" class="button" />
                     </form>
+                    <input form="myform" type="submit" value="DELETE SELECTED"  class="button"/>
                 </div>
             </div>
         </section>
