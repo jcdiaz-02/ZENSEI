@@ -17,8 +17,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap"
-              rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Amaranth&family=Quicksand&family=VT323&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
@@ -27,21 +26,28 @@
     </head>
 
     <body>
-        <% response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+        <%
+            response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
             String uname = (String) session.getAttribute("username");
             if (uname != null) {
                 response.sendRedirect("subpage/authenticatedHome.jsp");
-            }%>
-        <!-- navbar -->
-        <div class="bar">
+            }
+        %>
+       <!-- navbar -->
+        <div class="bar"> 
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
+
+            <div class="logo-container" >
+                <a href="../home.jsp"><img class="nav-logo nav-logo2" src="assets/logo.svg" ></a>
+            </div>
+            
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/">
+                    <a class="" href="home.jsp"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -50,8 +56,8 @@
                     <a class="option" href="subpage/about.jsp">About</a>
                     <a class="option" href="EventOverview">Events</a>
                     <a class="option" href="subpage/contact.jsp">Contact</a>
-                    <form action="login/login.jsp">
-                        <input type="submit" value="Login" class="button" />
+                    <form class="button-nav-form" action="login/login.jsp">
+                        <input type="submit" value="Login"  class="button"/>
                     </form>
 
                 </div>
@@ -69,7 +75,10 @@
             </div>
             <div class="home-sub">
                 <h5>UNIVERSITY OF SANTO TOMAS' GAMING ORGANIZATION</h5>
-                <button class="button " href="/">LEARN MORE</button>
+                <form action="subpage/about.jsp">
+                    <button class="button" type="submit" >LEARN MORE</button>
+                </form>
+
             </div>
         </section>
     </body>

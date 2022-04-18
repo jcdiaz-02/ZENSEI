@@ -13,8 +13,6 @@ and open the template in the editor.
     -ms-transform: translate(-50%, -50%);
     background: white;
     border-radius: 40px;
-    height: 45rem;
-    margin: 0;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -154,6 +152,18 @@ and open the template in the editor.
    font-size: 3rem;
    height: 5rem;
    width: 100%;
+}
+
+.verify-section .verify-container .input-container button{
+   background: var(--brown1);
+   border: none;
+   border-radius: 10px;
+   color: #ffffff;
+   font-family: var(--font2);
+   font-size: 3rem;
+   height: 5rem;
+   width: 100%;
+   margin-top: 2rem;
 }
 
 .verify-section .verify-container .submit-container a{

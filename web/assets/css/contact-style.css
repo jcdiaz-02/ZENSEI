@@ -9,18 +9,19 @@ and open the template in the editor.
 */
 
 .contact-section{
-    -ms-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, 0);
     /*background: white;*/
     display: flex;
-    height: 40rem;
+    height: 70%;
     justify-content: space-between;
-    margin: 0;
+    margin-top: 10rem;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 90rem;   
+    transform: translate(-50%, 0);
+    width: 80%; 
 }
+
+
 
 .contact-section .contact-panel1{ 
     background: var(--brown1);

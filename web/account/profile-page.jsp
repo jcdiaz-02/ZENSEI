@@ -1,6 +1,6 @@
 <%-- 
-    Document   : events-add
-    Created on : 03 12, 22, 9:49:42 PM
+    Document   : profile-page
+    Created on : 03 19, 22, 2:59:24 AM
     Author     : Admin
 --%>
 
@@ -14,7 +14,7 @@
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
-        <link rel="stylesheet" href="../assets/css/events-add-style.css">
+        <link rel="stylesheet" href="../assets/css/profile-page-style.css">
   
           
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,25 +30,14 @@
     
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-         
-        <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
-        <title>UST-TGS</title>
     </head>
     <body>
-        	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	    String role = (String) session.getAttribute("role");
-
-	    if (!role.equalsIgnoreCase("admin")) {
-		response.sendRedirect("../home.jsp");
-	    }
-	%>
-        <!--TODO: CONNECT ADD EVENT TO DATABASE ONLY AVAILABLE TO ADMIN-->
+        <!--TODO: CONNECT ACCOUNT AND CHECK IF VERIFIED OR NOT--> 
         <!-- navbar -->
         <div class="bar"> 
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                   <i class="fas fa-bars"></i>
+                <i class="fas fa-bars"></i>
             </label>
             <div class="nav-content">
                 <div class="nav-title">
@@ -60,54 +49,51 @@
                 <div class="nav-options" >
                     <a class="option" href="../home.jsp">Home</a>
                     <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" style="color:#B92432;" href="../subpage/events.jsp">Events</a>
+                    <a class="option" href="../subpage/events.jsp">Events</a>
                     <a class="option" href="../subpage/contact.jsp">Contact</a>
                     <form  action="../login/login.jsp">
                         <input type="submit" value="Login"  class="button"/>
                     </form>
-            
+
                 </div>
             </div>
         </div>
         
-        <section class="add-events-section">
-            <div class="add-events-container">
-                <div class="add-events-head">
-                   <h2>Add Event</h2>          
-                </div>
-                        
-                <form class="add-events-form" action="../AddEvent" enctype="multipart/form-data" method="post">
-                    <div class="input">
-                        <label for="ename"><b>Event Name:</b></label>    
-                        <input type="text" placeholder="Enter Event Name" name="ename" required>
-                    </div>
-
-                    <div class="input">
-                        <label for="edescription"><b>Event Description:</b></label>
-                        <input type="text" placeholder="Enter Event Description" name="edescription" required>
-                    </div> 
-                    
-                    <div class="input">
-                        <label for="edate"><b>Event Date:</b></label>
-                        <input type="date" placeholder="Enter Event Date" name="edate" required>
-                    </div>
-                    
-                    <div class="input">
-                                <label for="eventImage"><b>Event Image:</b></label>
-                                <input name="imageInput" type="file"  accept="image/*">
-                    </div> 
-                    <div class="add-event-buttons"> 
-                            <input type="button" onclick="location.href='../subpage/events.jsp';" value="GO BACK" class="button" />
-                            <input type="submit" value="SUBMIT"  class="button"/>
-                            <input type="button" onclick="location.href='../home.jsp';" value="LOGOUT" class="button" />
-                    </div>   
-                </form>
-            
+        
+        <section class="profile-section">
+            <div class="profile-container">
+                <!-- IF ACCOUNT NOT VERIFIED -->
+                <button type="button" onclick="location.href='../account/records-personal-0.jsp';" class="button" style="display:none;">
+                    <span class="material-icons-outlined">badge</span> 
+                    View Personal Record
+                </button>
                 
-
+                <!-- IF ACCOUNT VERIFIED -->
+                <button type="button" onclick="location.href='../account/records-personal-1.jsp';" class="button">
+                    <span class="material-icons-outlined">badge</span> 
+                    View Personal Record
+                </button>
+                
+                <button type="button" onclick="location.href='';" class="button">
+                    <span class="material-icons-outlined">person_add_alt</span>
+                    Add Record
+                </button>
+                
+                <button type="button" onclick="location.href='';" class="button">
+                    <span class="material-icons-outlined">power_settings_new</span>
+                    Logout
+                </button>
+                
+                <div class="profile-verify-msg">
+                    <span class="material-icons" style="color:green;">check_circle</span>
+                    <p> Your account has been verified and you can now add your record.</p>
+                </div>
+                
+                <div class="profile-verify-msg" style="display:none;">
+                    <span class="material-icons" style="color:red;">cancel</span>
+                    <p> Your account has not been verified.</p>
+                </div>
             </div>
-            
-           
-        </section>
+        </section>       
     </body>
 </html>

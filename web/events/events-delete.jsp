@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
         <link rel="stylesheet" href="../assets/css/events-all-style.css">
+        <link rel="stylesheet" href="../assets/css/modal-style.css">
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,11 +26,12 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide&effect=anaglyph">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
-        <script src="../assets/scripts/sort-table.js"></script>        
-        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+        <script src="../assets/scripts/sort-table.js"></script>   
+<!--        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>-->
         <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-
+        <script language="JavaScript" type="text/javascript" src="../assets/scripts/modal.js"></script>
+        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
@@ -51,12 +53,12 @@
         <div class="bar"> 
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </label>
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
-                    <a class="" href="/"> 
+                    <a class="" href="../home.jsp"> 
                         <h1>UST Thomasian Gaming Society</h1>
                     </a>
                 </div>
@@ -76,7 +78,7 @@
         <section class="all-events-section">
             <div class="all-events-container">
                 <div class="all-events-head">
-                    <h2>All Events</h2>          
+                    <h2>Delete Event</h2>          
                 </div>
 
                 <div class="table-container">
@@ -120,10 +122,26 @@
                     <form  action="../subpage/events.jsp">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-                    <input form="myform" type="submit" value="DELETE SELECTED"  class="button"/>
+                    <input form="myform" type="submit" value="DELETE"  class="button"/>
                 </div>                      
             </div>
+                        
         </section>
 
+         
+                        <section id="modalSection" class="modal-section">
+                            <div class="modal-content">
+                                <h3 class="modal-header">ARE YOU SURE?</h3>
+                                <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
+                                <span class="modal-buttoncon">
+                                    <span onclick="Close()" class="close modal-button">Cancel</span>
+                                    <span class="modal-button">Delete</span> 
+                                </span>
+                            </div>
+                        </section>
+                        
+   
     </body>
+    
+  
 </html>
