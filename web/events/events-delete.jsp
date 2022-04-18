@@ -122,7 +122,12 @@
                     <form  action="../subpage/events.jsp">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-                    <input form="myform" type="submit" value="DELETE"  class="button"/>
+                    <input id="modalBtn" form="myform" type="submit" value="DELETE"  class="button"/>
+                 
+
+                    <form  action="../login/login.jsp">
+                        <input type="submit" value="LOGOUT"  class="button"/>
+                    </form>
                 </div>                      
             </div>
                         

@@ -65,8 +65,13 @@ public class AddEvent extends HttpServlet {
                 Part eventImageInput = request.getPart("imageInput");
                 String imageName = eventImageInput.getSubmittedFileName();
                 InputStream is = eventImageInput.getInputStream();
-                Files.copy(is, Paths.get(path + "\\Images\\" + imageName), StandardCopyOption.REPLACE_EXISTING);
-                eventImage = "Images/" + imageName;
+                    try {
+                        Files.copy(is, Paths.get(path + "\\Images\\" + imageName), StandardCopyOption.REPLACE_EXISTING);
+                        eventImage = "Images/" + imageName;
+                    } catch (Exception e) {
+                         eventImage = "none";
+                    }
+                
                 } 
 
  

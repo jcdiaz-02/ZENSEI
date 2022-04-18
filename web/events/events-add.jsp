@@ -94,7 +94,7 @@
                     
                     <div class="input">
                                 <label for="eventImage"><b>Event Image:</b></label>
-                                <input name="imageInput" type="file"  accept="image/*">
+                                <input name="imageInput" type="file"  accept="image/*" >
                     </div> 
                     <div class="add-event-buttons"> 
                             <input type="button" onclick="location.href='../subpage/events.jsp';" value="GO BACK" class="button" />

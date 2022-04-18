@@ -95,7 +95,7 @@ and open the template in the editor.
 }
 
 .events-container .upcoming-events-container .calendar-container{
-    height: 50%;
+    height: auto;
 }
 
 .events-container .upcoming-events-container .event-buttons{
