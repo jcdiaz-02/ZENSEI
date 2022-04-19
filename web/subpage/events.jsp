@@ -39,7 +39,7 @@
         <title>UST-TGS</title>
         <%
             List<EventRecord> recordList = (List) session.getAttribute("eventList");
-            String datenow = (String) session.getAttribute("date");
+            String datenow = java.time.LocalDate.now().toString();
         %>
     </head>
     <body>
@@ -113,6 +113,7 @@
                     <h2>Planned Events</h2>
                     <ul class="planned-events">
                         <%
+                            
                             for (int i = 0; i < recordList.size(); i++) {
                                 DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                                 LocalDate eventDate = LocalDate.parse(recordList.get(i).getDate(), f);

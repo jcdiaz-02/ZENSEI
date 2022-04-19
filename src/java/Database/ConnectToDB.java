@@ -16,7 +16,7 @@ public class ConnectToDB {
         try {
             final String url = "jdbc:mysql://localhost:3306/GamingArchives?useSSL=false";
             final String user = "root";
-            final String password = "root";
+            final String password = "Jc09d0i3az01Z";
             conn = DriverManager.getConnection(url, user, password);
             return conn;
         } catch (SQLException e) {

@@ -9,23 +9,22 @@ and open the template in the editor.
 */
 
 .all-records-section{
-    -ms-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, 0);
     background: white;
     border-radius: 40px;
-    height: 45rem;
-    margin: 0;
+    margin-top: 7rem;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 90rem;
+
+    transform: translate(-50%, 0);
+    width: 90%;
 }
 
 .all-records-section .all-records-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 95%;
     height: 90%;
     margin: 2rem auto;
 
@@ -52,27 +51,21 @@ and open the template in the editor.
 
 .all-records-section .all-records-container .table-container{
     width: 90%;
+    height: 90%;
     overflow: auto;
 }
-
-.all-records-section .all-records-container .table-container::-webkit-scrollbar {
-    display: none;
-}
-
 
 .all-records-section .all-records-container .table-container .records-table{
     font-family: var(--font5);
     border-spacing: 5px;
     margin: auto;
-    table-layout: fixed;
     border-collapse: collapse;
 }
 
 
 .all-records-section .all-records-container .table-container .records-table th,td{
     border: 1px solid var(--brown1);
-    padding: 10px;
-    max-width: 100px;
+    padding: 15px;
     overflow: hidden;
     white-space: nowrap;
     transition: 1.5s;
@@ -80,13 +73,14 @@ and open the template in the editor.
 }
 
 
-.all-records-section .all-records-container .table-container .records-table th:hover, td:hover{
+/*.all-records-section .all-records-container .table-container .records-table th:hover, td:hover{
     max-width: 1000px;
-}
+}*/
 
 .all-records-section .all-records-container .table-container .records-table th{
     background: var(--brown2);
     color: white;
+    max-width: 200px;
 }
 
 .all-records-section .all-records-container .table-container .records-table th:nth-child(1), td:nth-child(1){
@@ -106,7 +100,7 @@ and open the template in the editor.
 
 .all-records-section .all-records-container .all-records-buttons{
     display: flex;
-    margin-top: 1rem;
+    margin-top:2rem;
     width: 90%;
     justify-content: space-around;
 }
@@ -121,7 +115,7 @@ and open the template in the editor.
     font-family: var(--font2);
     font-size: 2.2rem;
     height: 3rem;
-    padding: 0px 50px;
+    padding: 0px 40px;
 }
 
 /*CHECKBOX CSS*/
