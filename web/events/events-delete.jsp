@@ -27,11 +27,11 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P&effect=anaglyph">
 
         <script src="../assets/scripts/sort-table.js"></script>   
-<!--        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-        <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>-->
+        <!--        <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
+                <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>-->
         <script language="JavaScript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script language="JavaScript" type="text/javascript" src="../assets/scripts/modal.js"></script>
-        
+
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
@@ -41,14 +41,14 @@
         %>
     </head>
     <body>
-                	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	                String role = (String) session.getAttribute("role");
+        <%
+            response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+            String role = (String) session.getAttribute("role");
 
-	  if (!role.equalsIgnoreCase("admin")) {
-		response.sendRedirect("../home.jsp");
-	    }
-	%>
+            if (!role.equalsIgnoreCase("admin")) {
+                response.sendRedirect("../home.jsp");
+            }
+        %>
         <!--TODO: CONNECT DELETE EVENT TO DATABASE ONLY AVAILABLE TO ADMIN-->
         <div class="bar"> 
             <input type="checkbox" id="check">
@@ -92,6 +92,7 @@
                         </tr>
                         <% for (int i = 0; i < recordList.size(); i++) {%>
                         <tr>
+                            <% try {%>
                             <td>
                                 <%= recordList.get(i).getId()%>
                             </td>
@@ -113,7 +114,9 @@
                                 </form>
                             </td>
                         </tr>
-                        <% }%>
+                        <%  } catch (Exception e) {
+                                }
+                            }%>
 
                     </table>
                 </div>       
@@ -123,30 +126,30 @@
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
                     <input id="modalBtn" form="myform" type="submit" value="DELETE"  class="button"/>
-                 
+
 
                     <form  action="../login/login.jsp">
                         <input type="submit" value="LOGOUT"  class="button"/>
                     </form>
                 </div>                      
             </div>
-                        
+
         </section>
 
-         
-                        <section id="modalSection" class="modal-section">
-                            <div class="modal-content">
-                                <h3 class="modal-header">ARE YOU SURE?</h3>
-                                <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
-                                <span class="modal-buttoncon">
-                                    <span onclick="Close()" class="close modal-button">Cancel</span>
-                                    <span class="modal-button">Delete</span> 
-                                </span>
-                            </div>
-                        </section>
-                        
-   
+
+        <section id="modalSection" class="modal-section">
+            <div class="modal-content">
+                <h3 class="modal-header">ARE YOU SURE?</h3>
+                <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
+                <span class="modal-buttoncon">
+                    <span onclick="Close()" class="close modal-button">Cancel</span>
+                    <span class="modal-button">Delete</span> 
+                </span>
+            </div>
+        </section>
+
+
     </body>
-    
-  
+
+
 </html>

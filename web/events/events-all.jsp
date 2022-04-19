@@ -46,14 +46,14 @@
     </head>
 
     <body>
-                	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	                String role = (String) session.getAttribute("role");
+        <%
+            response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+            String role = (String) session.getAttribute("role");
 
-	  if (!role.equalsIgnoreCase("admin")) {
-		response.sendRedirect("../home.jsp");
-	    }
-	%>
+            if (!role.equalsIgnoreCase("admin")) {
+                response.sendRedirect("../home.jsp");
+            }
+        %>
         <!--TODO: CONNECT TO DATABASE AND ACCESS ALL EVENTS DATA -->
         <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
         <!-- navbar -->
@@ -98,6 +98,7 @@
                         </tr>
                         <% for (int i = 0; i < recordList.size(); i++) {%>
                         <tr>
+                            <% try {%>
                             <td>
                                 <%= recordList.get(i).getId()%>
                             </td>
@@ -111,7 +112,9 @@
                                 <%= recordList.get(i).getDate()%>
                             </td>
                         </tr>
-                        <% }%>
+                        <% } catch (Exception e) {
+                                }
+                            }%>
 
                     </table>
                 </div>
