@@ -1,0 +1,287 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 20, 21, 10:29:01 AM
+    Author     : Admin
+*/
+
+* {
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+body{
+    --font: 'Overpass', Helvetica, sans-serif;
+}
+
+/* CSS for top bar */
+.bar{
+
+    position: fixed;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    height: 5rem;
+    transition: background 250ms ease-in;
+
+    z-index: 2;
+}
+
+
+/* title/ header*/
+.head{
+    font-family: "Teko", Helvetica, sans-serif; 
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+
+.top-continue{
+    font-family: var(--font);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.top:hover{
+    color: #a5a5a5;
+}
+
+/* FIRST SECTION */
+section{
+    margin: auto;
+    font-family: var(--font);
+}
+
+.section-1{ 
+    width: 100%;
+    color:white;
+    background: black;
+    position: relative;
+    height: 100vh;    
+}
+
+
+.section-1 .welcome-container{
+    padding-top: 10rem;
+    height: 100vh;
+    width: 100%;
+    max-width: 55rem; 
+    margin: auto;
+    background: linear-gradient(90deg 
+        , rgb(0, 0, 0) 0%
+        , rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%)
+        , url('../assets/ninja.jpg') center center / cover no-repeat;
+
+}
+
+
+
+.section-1 .welcome{
+    font-family: var(--font);
+    color: white;
+    font-weight: 700;
+    font-size: 3.2rem;
+    padding-top: 15rem;
+}
+
+.section-1 .welcome-sub{
+    color: #7f7f7f;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.section-1 .welcome-container .welcome-img{
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 5rem;
+}
+
+
+.subscription-title{
+    width: 60%;
+    margin: 10% auto 0 auto;
+    
+}
+
+.subscription-head{
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 1.2rem;
+}
+
+.subscription-head2 {
+    font-weight: 700;
+    font-size: 4rem;
+    color: #0075f6;
+}
+
+
+.subscription-box{
+    color: black;
+    width: 45%;
+    height: 48%;
+    margin: auto 20% 20% 20%;
+    background: white;
+    border-radius: 10px;
+    padding: 1rem 2rem;
+}
+
+.subscription-box .payment-text{
+    color: #1d1919;
+    margin: 1.5rem 0 4rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.subscription-box .payment-text .price{
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.subscription-box .payment-text .per-month{
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+.subscription-box .payment-features{
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.subscription-box .payment-features i {
+    color: #0900c3;
+    margin-right: 0.8rem;
+}
+
+.subscription-box .payment-features p {
+    padding-bottom: 1.2rem;
+}
+
+.subscription-box .purchase-membership{
+    width:100%;
+    display: flex;
+    justify-content:  center;
+
+}
+
+
+.subscription-box .purchase-button:hover{
+      color: #1d1919;
+}
+
+.subscription-box a{
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    background: #0075f6;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.subscription-box a:hover{
+    color: #1d1919;
+    background: #ffce76;
+}
+
+footer{
+    background-color: black;
+    height: 5rem;
+}
+
+footer p{
+    padding-top: 2rem;
+    color: white;
+    font-family: var(--font);
+    text-align: center;
+}
+
+@media(max-width:650px){
+    .subscription-box{
+        width: 50%;
+    }
+ 
+    .subscription-box .payment-text .price{
+        font-size: 2.2rem;
+    }
+    
+     .subscription-box{
+        height: 60%;
+        width: 90%;
+        margin: auto;
+    }
+    .top-continue{
+        width: 35%;
+        font-size: 0.7rem;
+    }
+    
+    .subscription-title{
+        margin: 10% 0 0 10%;
+    }
+    
+    .subscription-head{
+        font-size: 2.5rem;
+    }
+
+    .subscription-head2 {
+        font-size: 2.5rem;
+    }
+
+}
+@media(max-width:550px){
+       
+    .subscription-box .payment-text{
+        margin: 2rem 0 10% 0;
+    }
+    .section-1{
+        overflow: hidden;
+    }
+    .subscription-box{
+ 
+        height: 100%;
+        width: 90%;
+        margin: auto;
+    }
+    .subscription-box .payment-features i {
+        font-size: 0.8rem;
+    }
+
+    .subscription-box .payment-features p {
+        font-size: 0.8rem;
+    }
+    .subscription-box .purchase-button{
+        padding: 0.5;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    
+      footer p{
+       font-size: 0.6rem;
+    }
+    
+}

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+  
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <context-param>
+        <param-name>header</param-name>
+        <param-value>ZENSEI </param-value>
+    </context-param>
+    <context-param>
+        <param-name>footer</param-name>
+        <param-value>Project ZENSEI | © Agapito, Diaz, Paule, Saavedra | 2021</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>web.controller.LoginServlet</servlet-class>
+        <init-param>
+            <param-name>jdbcClass</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUName</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPass</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcDriver</param-name>
+            <param-value>jdbc:derby</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPort</param-name>
+            <param-value>1527</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbName</param-name>
+            <param-value>UserDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbQuery</param-name>
+            <param-value>SELECT * FROM ZENSEI_USERS WHERE USERNAME=?</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SignupServlet</servlet-name>
+        <servlet-class>web.controller.SignupServlet</servlet-class>
+        <init-param>
+            <param-name>jdbcClass</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUName</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPass</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcDriver</param-name>
+            <param-value>jdbc:derby</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPort</param-name>
+            <param-value>1527</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbName</param-name>
+            <param-value>UserDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbQuery</param-name>
+            <param-value>SELECT * FROM ZENSEI_USERS WHERE username=?</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbInsertQuery</param-name>
+            <param-value>INSERT INTO ZENSEI_USERS(USERNAME, PASSWORD, ROLE_1, COACH_GAME, ROLE_2, AVATAR) VALUES (?, ?, ?, ?, ?, ?)</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SignupServlet</servlet-name>
+        <url-pattern>/SignupServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SignupCoachServlet</servlet-name>
+        <servlet-class>web.controller.SignupCoachServlet</servlet-class>
+        <init-param>
+            <param-name>jdbcClass</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUName</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPass</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcDriver</param-name>
+            <param-value>jdbc:derby</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPort</param-name>
+            <param-value>1527</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbName</param-name>
+            <param-value>UserDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbQuery</param-name>
+            <param-value>SELECT * FROM ZENSEI_USERS WHERE username=?</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbInsertQuery</param-name>
+            <param-value>INSERT INTO ZENSEI_USERS(USERNAME, PASSWORD, ROLE_1, COACH_GAME, ROLE_2, AVATAR) VALUES (?, ?, ?, ?, ?, ?)</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SignupCoachServlet</servlet-name>
+        <url-pattern>/SignupCoachServlet</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>SubscribeServlet</servlet-name>
+        <servlet-class>web.controller.SubscribeServlet</servlet-class>
+        <init-param>
+            <param-name>jdbcClass</param-name>
+            <param-value>org.apache.derby.jdbc.ClientDriver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUName</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPass</param-name>
+            <param-value>app</param-value>
+        </init-param>
+        <init-param>
+            <param-name>jdbcDriver</param-name>
+            <param-value>jdbc:derby</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbHost</param-name>
+            <param-value>localhost</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbPort</param-name>
+            <param-value>1527</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbName</param-name>
+            <param-value>UserDB</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbQuery</param-name>
+            <param-value>SELECT * FROM ZENSEI_USERS WHERE username=?</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbUpdateQuery</param-name>
+            <param-value>UPDATE ZENSEI_USERS SET ROLE_1=? WHERE USERNAME=?</param-value>
+        </init-param>
+        <init-param>
+            <param-name>dbInsertQuery</param-name>
+            <param-value>INSERT INTO TRANSACTIONS(USERNAME, PRODUCT, TRANSACTION_DATE) VALUES (?, ?, ?)</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SubscribeServlet</servlet-name>
+        <url-pattern>/SubscribeServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>PdfServlet</servlet-name>
+        <servlet-class>web.controller.PdfServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PdfServlet</servlet-name>
+        <url-pattern>/PdfServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>PdfServletTransaction</servlet-name>
+        <servlet-class>web.controller.PdfServletTransaction</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PdfServletTransaction</servlet-name>
+        <url-pattern>/PdfServletTransaction</url-pattern>
+    </servlet-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <error-page>
+        <exception-type>web.exception.AuthenticationException</exception-type>
+        <location>/ErrorPages/error_authentication.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>web.exception.NullValueException</exception-type>
+        <location>/ErrorPages/noLoginCredentials.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/ErrorPages/error_404.jsp</location>
+    </error-page>
+</web-app>

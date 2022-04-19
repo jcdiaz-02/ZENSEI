@@ -1,0 +1,466 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 15, 21, 7:01:13 PM
+    Author     : Admin
+*/
+
+* {
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+body{
+    --font: 'Overpass', Helvetica, sans-serif;
+}
+
+/* CSS for top bar */
+.bar{
+  
+    --background: black;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 5rem;
+    transition: background 250ms ease-in;
+    z-index: 2;
+}
+
+.bar .nav-content{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.bar .nav-option {
+    font-family: var(--font);
+   
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer; 
+    display: flex;
+    align-items: baseline;
+}
+
+.bar .nav-option .option{
+    color: white;
+    text-decoration: none;
+    padding: 0 1rem;
+    transition: all 0.3s;
+    font-size: 0.92rem;
+}
+
+.bar .nav-option .option:hover{
+    color: #a5a5a5;
+}
+
+.bar  .nav-option .get-premium{
+
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #0075f6;
+    transition: background 0.3s ease;
+   
+}
+
+.get-premium a{
+    height: 100%;
+    width: 100%;
+    font-family: var(--font);
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+}
+
+.bar  .nav-option .get-premium:hover{
+    color: black;
+    background: #0900c3;
+}
+
+
+.bar .logo-container .bar-logo{
+    height: 4rem;
+    width: 4rem;
+    display: none;
+}
+
+.bar  .profile-menu{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 2rem;
+}
+
+.bar  .profile-menu .profile-head{
+    width: 4rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    border: solid 3px;
+    transition: all 0.2s ease-in;
+}
+
+.bar  .profile-menu .profile-head:hover{
+    border-radius: 50%;
+    border-color: #0075f6;
+}
+
+.bar #check{
+    display:none;
+}
+
+.checkbtn { 
+    display: none;
+    font-size: 20px;
+    color: white;
+    float: right;
+    line-height: 8vh;
+    cursor: pointer;
+}
+
+/* title/ header*/
+.head{
+    font-family: "Teko", Helvetica, sans-serif; 
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-size: 3rem;
+    cursor: pointer;
+    position: relative;
+    padding: 0 2rem;
+}
+
+/* select game */
+.drop-games{
+    width: 20rem;
+    background: #1d1919;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.drop-games .drop-games-button{
+    padding: 0 2rem;
+    color:white;
+    font-family: var(--font);   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+  
+}
+
+.drop-games:hover{ 
+    background: black;
+}
+
+.drop-games .select-game{
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.drop-games .current-game{
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+
+/* GAME MENU */
+.game-list{
+    display: none;
+    transition: all 0.5s ease;
+    top: -100%;
+    background: #1d1919;
+    height: 0;
+    padding: 2rem 5rem;
+}
+
+.show-games{
+    font-family: var(--font);
+    color:white;
+    width: 100%;
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    top: 5rem;
+    position: fixed;
+    z-index: 1;
+  
+}
+
+.game-list .img-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0px;   
+}
+
+.game-list .close{
+    display: none;
+}
+
+.game-list  .game-library{
+    font-size: 3rem;
+    font-weight: 700;
+    padding-bottom: 1rem;
+}
+
+.game-list .img-container .game-img img{
+    object-fit: cover;
+    width: 220px;
+    height: 300px;
+}
+
+.game-list .img-container .game-img{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: 2rem;
+}
+
+.game-list .img-container .game-img .games{
+    color:white;
+    text-decoration: none;
+}
+
+.game-list .img-container .game-img .games p{
+    padding: 10px 0;
+  
+}
+
+/* PROFILE MENU */
+.profile-list{
+    color: white;
+    font-family: var(--font);
+    display: none;
+    transform: scaleY(0);
+    background:  #2b2929;
+    width: 13rem;
+    height: 20rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    
+    font-family: var(--font);
+    font-size: 0.8rem;
+
+    transition: all 0.5s ease;
+    transform-origin: top;
+   
+}
+
+.profile-list .profile-user{
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.profile-list .profile-head{
+    margin-right: 1rem;
+    object-fit: cover;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+}
+
+.profile-list .menu-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-list i {
+    padding: 10px 20px;
+    
+}
+
+.profile-list a {
+    padding-left: 1rem;
+    font-family: var(--font);
+    color: white;
+    text-decoration: none;
+    width: 100%;
+}
+
+.profile-list .logout-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 85%;
+    width: 100%;
+    text-align: left;
+    color: white;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.profile-list .adminPDF-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 75%;
+    width: 100%;
+    text-align: left;
+    color: white;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.show-menu{
+    display: block;
+    transform: scaleY(1);
+    position: absolute;
+    right: 1.2rem;
+    top: 5rem;  
+    z-index: 30;
+}
+
+.bar-scrolled{
+    background: #000000;
+}
+
+
+@media (max-width: 1050px){
+    .checkbtn{
+        display:block;
+        margin-left: 2rem;
+    }
+    
+    #check:checked ~ .nav-content{
+        left: 0;
+    }
+    
+    .bar .nav-content{
+        position:fixed;
+        top: 5rem;
+        flex-direction: column;
+        background: #1d1919;
+        height: 100%;
+        width: 100%;
+        left: -100%;
+        transition: 0.5s ease;
+    }
+    
+    .bar .logo-container {
+        width: 100%;
+        display: flex;
+        justify-content:  center;
+    }
+    
+    .bar .logo-container .bar-logo{
+        display: inline;
+    }
+    
+    .bar .nav-content .nav-option .get-premium{
+        width: 100%;
+        padding: 20px 30px;
+    }
+    
+    .head{
+        width: 100%;
+    }
+    
+    .drop-games{
+        width: 100%;
+    }
+    
+    .game-list {
+        overflow: auto;
+        top: 0rem;
+        height: 100%;
+        padding-bottom: 7rem;
+        z-index: 19;
+    }
+    
+    .game-list .close{
+        display: block;
+        position: absolute;
+        margin: 0;
+        left: 90%;
+        font-size: 2rem;
+        cursor: pointer;
+        color:white; 
+   }
+    
+    .game-list  .game-library{
+        font-size: 2rem;
+        font-weight: 700;
+        padding-bottom: 1rem;
+    }
+    
+    .game-list .img-container .game-img img{
+        width: 200px;
+        height: 270px;
+    }
+  
+    .game-list .img-container .game-img .games p{
+        padding: 10px 0 20px 0;
+    }
+    
+    .nav-content .nav-option{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-content .nav-option .option{
+        padding: 1rem 2rem;
+        
+    }
+}
+
+
+@media (max-width: 630px){
+ 
+    .bar .nav-content .nav-option .get-premium{
+        width: 100%;
+        padding: 15px 25px;
+    }
+      
+    .bar  .profile-menu .profile-head{
+        width: 3rem;
+        height: 3rem; 
+    }   
+    
+    .game-list {
+        padding: 2rem 0 5rem 2rem;
+    
+    }
+    
+    .game-list .img-container .game-img img{
+        width: 150px;
+        height: 220px;
+    }
+    
+    .game-list .img-container .game-img .games p{
+        font-size: 0.8rem;
+    }
+    
+    footer p{
+       font-size: 0.8rem;
+    }
+  
+}
+
+@media(max-width: 400px){
+    
+    .game-list .img-container .game-img img{
+        width: 120px;
+        height: 170px;
+    }
+    
+    
+  
+}

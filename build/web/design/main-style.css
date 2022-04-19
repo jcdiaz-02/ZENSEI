@@ -1,0 +1,296 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 16, 21, 9:43:17 PM
+    Author     : Admin
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+    background: #f5f5fa;
+    --font: 'Overpass', Helvetica, sans-serif;
+}
+
+section{
+    margin: auto;
+    font-family: var(--font);
+}
+
+.section-1{ 
+    width: 100%;
+    color:white;
+    background: black;
+    position: relative;
+    height: 45rem;
+    
+}
+
+
+.section-1 .welcome-container{
+    padding-top: 15rem;
+    width: 100%;
+    height: 45rem;
+    max-width: 70.3rem; 
+    margin: auto;
+    background: linear-gradient(90deg 
+        , rgb(0, 0, 0) 0%
+        , rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%)
+        , url('../assets/p091j3dx.webp') center center / cover no-repeat;
+
+}
+
+.section-1 .welcome-container .welcome-text{
+    position: absolute;
+    bottom:5rem;
+    
+}
+
+.section-1 .welcome-container .welcome-text .welcome{
+    font-size: 3.5rem;
+}
+
+
+
+/* COURSES SECTION */
+.section-2{
+    width: 100%;
+    max-width: 70.3rem;
+    position: relative;
+    height: 100%;
+}
+
+.section-2 .course-container {
+    padding-bottom: 5rem;
+}
+
+.section-2 .course-container .course-header .watch-courses{
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 3rem 0 1.2rem 0;
+}
+
+.section-2 .course-container  .preview-1{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 11.25rem;
+    background: black;
+    transition: 0.5s ease;
+    margin: 0.8rem 0;
+}
+
+.section-2 .course-container  .preview-1:hover{
+    background: #1d1919;
+    opacity: 0.9;
+}
+
+.section-2 .course-container .preview-1 .course-img{
+    width: 19.5rem;
+    object-fit: cover;
+    height: 100%;
+    display: flex;
+    background: black;
+}
+
+.section-2 .course-container .preview-1 .course-img img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.section-2 .course-container .preview-1 .course-info{ 
+    color: white;
+    align-items: center;
+    height: 100%;
+    padding: 3.5rem 2rem; 
+
+}
+
+.section-2 .course-container .preview-1 .course-info .info-header{
+    padding: 0 0 12px 0;
+}
+
+.section-2 .course-container  .preview-1 .course-info .info-sub{
+    color: #cccccc;
+}
+ 
+.section-3{
+    height: 60rem;
+    width: 100%;
+    max-width: 70.3rem;
+}
+
+.section-3 .coach-container .coach-header .coaches{
+    font-size: 1.5rem;
+    font-weight: 600;
+    width: 100%;
+    padding: 1.2rem 0;
+    overflow-x: auto;
+}
+
+.section-3 .coach-container .coach-gallery{  
+    display: grid; 
+    width: 70%;
+    margin: auto;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item{
+    height: 20rem;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item:hover{
+    margin-top: -10px;
+    box-shadow:  2px 2px 10px #1d1919;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item .coach-pic{
+    width: 100%;
+    height: 60%;
+    background: black;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item .coach-pic img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item .coach-info{
+    background: #dedee0;
+    width: 100%;
+    height: 40%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 1.2rem 2rem;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item .coach-info .coach-name{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item .coach-info .coach-game{
+    font-size: 0.8rem;
+    padding-bottom: 1rem;
+}
+
+.section-3 .coach-container .coach-gallery .coach-item .coach-info .coach-rate{
+    color: #c16b09;
+}
+
+footer{
+    background-color: black;
+    height: 5rem;
+}
+
+footer p{
+    padding-top: 2rem;
+    color: white;
+    font-family: var(--font);
+    text-align: center;
+}
+
+@media (max-width: 1050px){
+    .section-1 .welcome-container{
+        width: 90%;
+        margin: auto;
+      
+    }
+    .section-2{
+        width: 90%;
+        margin: auto;
+      
+    }
+    .section-2 .course-container  .preview-1{
+  
+        flex-direction: column;
+        height: 15rem;
+    }
+    
+    .section-2 .course-container .preview-1 .course-img {
+        width: 100%;
+        height: 60%;
+    }
+
+    .section-2 .course-container .preview-1 .course-info{ 
+        padding: 2rem; 
+        width: 100%;
+    }
+    
+    .section-3{
+        width: 90%;
+        margin: auto;
+        height: 70rem;
+    }
+    .section-3 .coach-container .coach-gallery{  
+        width: 100%;
+    }
+}
+
+@media(max-width: 650px){
+    .section-1 .welcome-container .welcome-text .welcome{
+        font-size: 2.5rem;
+    }
+    
+    .section-3 .coach-container .coach-gallery{  
+        grid-template-columns: repeat(2,1fr);
+        column-gap: 1rem;
+       
+    }
+    
+}
+
+@media(max-width: 450px){
+    .section-1 {
+        height: 100vh;
+    }
+    
+    .section-1 .welcome-container{
+        height: 100vh;
+        background: linear-gradient(90deg 
+        , rgb(0, 0, 0) 0%
+        , rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%)
+        , url('../assets/ninja.jpg') center center / cover no-repeat;
+    }
+    .section-3 .coach-container .coach-gallery .coach-item .coach-info{
+        background: #dedee0;
+        width: 100%;
+        height: 40%;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        padding: 1rem 0.8rem;
+    }
+    .section-3 .coach-container .coach-gallery .coach-item .coach-info .coach-name{
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .section-3 .coach-container .coach-gallery .coach-item .coach-info .coach-game{
+        font-size: 0.8rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .section-3 .coach-container .coach-gallery .coach-item .coach-info .coach-rate{
+        font-size: 0.85rem;
+        color: #c16b09;
+    }
+    
+    footer p{
+       font-size: 0.6rem;
+    }
+    
+}

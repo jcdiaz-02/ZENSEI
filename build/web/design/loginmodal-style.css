@@ -1,0 +1,189 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 14, 21, 1:37:54 AM
+    Author     : Admin
+*/
+
+/* MODAL LOGIN */
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 3; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+    overflow-y: auto;
+}
+
+.modal-box{
+    font-family: var(--font);
+    border-radius: 5px;
+    width: 30rem;
+    background: white;
+    margin: auto; 
+    text-align: center;
+    padding: 0 3rem 2.4rem;
+}
+
+.modal-box .form-input{
+    margin-bottom: 2rem;
+}
+
+.modal-box .form-input .input-data{
+    height: 40px;
+    position: relative;
+}
+
+.modal-box h2{
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-top: 1.2rem;
+}
+
+.modal-box .label-cont{
+    display: block;
+    font-style: normal;
+    color: #7f7f7f;
+    font-weight: 400;
+    padding-top: 0.5rem;
+    padding-bottom: 1.6rem;
+}
+
+.modal-box .label-cont a{ 
+    cursor: pointer;
+    text-decoration: underline;
+    color: black;
+}
+
+.modal-box .form-input .input-data .input-box{
+    width: 100%;
+    outline: none;
+    padding: 15px;
+    border: none;
+    border-bottom: 1px solid #d2d8dd;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    font-size: 1rem;
+ 
+}
+
+.modal-box .form-input .input-data .input-box:focus{
+    border-width: 2px;
+    border-bottom-color: #0075f6;
+}
+
+::-webkit-input-placeholder {
+        /* WebKit browsers */
+         color: transparent;
+}
+
+ textarea::placeholder {
+         color: transparent;
+ }
+
+@supports (not (-ms-ime-align:auto)) {
+    label {
+      color: gray;
+   
+      transition: all 0.2s ease-out;
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label {
+      color: #111;
+      transform: translate(-5px, -15px);
+      font-size: 17px;
+    }
+    
+}
+
+.modal-box .form-input .input-data .label-tag{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    pointer-events: none;
+    transition: all 0.25s ease;
+    padding-left: 15px;
+}
+
+.captcha-img{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.captcha-img img{
+    width: 65%;
+}
+
+.captcha-img i{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.modal-box .form-captcha .input-box{
+    width: 100%;
+    outline: none;
+    padding: 10px 15px;
+    border: 1px solid #d2d8dd;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    font-size: 1rem;
+}
+
+.close{
+    position: relative;
+    margin-top: 20%;
+    left: 58%;
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.login-btn{
+    width: 100%;
+    font-family: var(--font);
+    color: white;
+    height: 3rem;
+    border:none;
+    background-color: #0075f6;
+    cursor: pointer;
+    background-size: 200%;
+    border-radius: 5px;
+    font-size: 1rem;;
+    transition: all 0.2s;
+    margin-bottom: 1.2rem;
+}
+
+.login-btn:hover{
+    background-color: #0067d6;
+}
+
+@media(max-width:950px){
+    
+}
+
+
+@media(max-width:450px){
+    .modal-box{
+        padding: 0 2rem 2rem;
+        width:90%;
+    }
+    
+    .close{
+        left: 55%;
+    }   
+    .captcha-img i{
+        font-size: 1.8rem;
+        margin-left: 1rem;
+    }
+}

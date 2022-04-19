@@ -1,0 +1,353 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 10, 21, 8:58:15 PM
+    Author     : Admin
+*/
+
+* {
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+}
+
+body{
+    --font: 'Overpass', Helvetica, sans-serif;
+}
+
+/* CSS for top bar */
+.bar{
+    --background: transparent;
+    position: fixed;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    height: 5rem;
+    transition: background 250ms ease-in;
+    background: var(--background);
+    z-index: 2;
+}
+
+.bar-scrolled{
+    --background: #000000;
+}
+
+/* title/ header*/
+.head{
+    font-family: "Teko", Helvetica, sans-serif; 
+    color: white;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    font-size: 3rem;
+    cursor: pointer;
+}
+
+
+.top-login{
+    font-family: var(--font);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.top-login:hover{
+    color: #a5a5a5;
+}
+
+
+
+/* FIRST SECTION */
+section{
+    margin: auto;
+    font-family: var(--font);
+}
+
+.section-1{ 
+    width: 100%;
+    color:white;
+    background: black;
+    position: relative;
+    height: 40rem;    
+}
+
+
+.section-1 .welcome-container{
+    padding-top: 10rem;
+    height: 40rem;
+    width: 100%;
+    max-width: 55rem; 
+    margin: auto;
+    background: linear-gradient(90deg 
+        , rgb(0, 0, 0) 0%
+        , rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%)
+        , url('../assets/ninja.jpg') center center / cover no-repeat;
+
+}
+
+.section-1 .welcome-container .welcome-img-container{
+   width: 600px;
+}
+
+.section-1 .welcome{
+    font-family: var(--font);
+    color: white;
+    font-weight: 700;
+    font-size: 3.2rem;
+    padding-top: 15rem;
+}
+
+.section-1 .welcome-sub{
+    color: #7f7f7f;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.section-1 .welcome-container .welcome-img{
+    max-width: 100%;
+    max-height: 100%;
+    margin-left: 5rem;
+}
+
+/* SECOND SECTION */
+.section-2{
+    width: 100%;
+    background-image: linear-gradient(180deg,#f5f5fa,#fff);; 
+}
+
+.section-2 .course-container{
+    height: 30rem;
+    width: 100%;
+    max-width: 55rem; 
+    margin: auto;
+    padding-top: 5rem;
+}
+
+.section-2 .course-container .courses{
+    font-family: var(--font);
+    margin: 0 auto;  
+    display: flex;
+}
+
+.section-2 .course-container .courses .watch-course {
+    margin: 0 auto 0 0;
+    font-weight: 700;
+}
+
+.section-2 .course-container .courses .watch-course .course-head{
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.section-2 .course-container .course-sub{
+    padding-top: 1.2rem;  
+    font-size: 1.2rem;
+    color: #636363;
+    
+}
+
+.section-2 .course-container .course-img-container{
+    width: 100%;
+    height: 45rem;
+}
+
+.section-2 .course-container .course-img{
+    object-fit: cover;
+    width: 100%;
+    height: 50%;
+}
+
+
+/* THIRD SECTION */
+.section-3{
+    width: 100%;
+    background-image: linear-gradient(180deg,#f5f5fa,#fff);; 
+}
+
+.section-3 .game-container{
+    height: 40rem;
+    width: 100%;
+    max-width: 55rem; 
+    margin: auto;
+    padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-3 .game-container{
+    margin-top: 4.2rem;
+}
+
+.section-3 .game-container .game-sub{
+    color: #636363;
+    margin-bottom: 2rem;
+}
+
+.section-3 .game-container .img-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+   
+    margin-top: 0px;    
+    width: 80%;
+
+}
+
+.img-container img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.game-img{
+    width: 220px;
+    height: 300px;  
+}
+
+footer{
+    background-color: black;
+    height: 5rem;
+}
+
+footer p{
+    padding-top: 2rem;
+    color: white;
+    font-family: var(--font);
+    text-align: center;
+}
+
+@media (max-width: 950px){
+    .section-1 .welcome-container{
+        width: 90%;
+        margin: auto;
+      
+    }
+    
+    .section-2 .course-container{
+        width: 90%;
+        margin: auto;
+        height: 38rem;
+    }
+    
+    .section-2 .course-container .course-sub{
+        padding: 0 0 1.2rem 0;
+    
+    }
+     .section-3 .game-container{
+        width: 90%;
+        margin: auto;
+        height: 55rem;
+    }
+
+    
+}
+
+@media(max-width:950px){
+    
+    .section-2 .course-container .courses{
+        flex-direction: column; 
+    }
+    
+    .section-3 .game-container .img-container{
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0px;    
+        width: 100%;
+    }
+    
+    .game-img{
+        width: 100%;
+        height: 180px; 
+        margin-bottom: 0.8rem;
+    }
+    
+    .lol-img{
+        content: url('../assets/lol/lol-logo.jpg')
+    }
+
+    .tekken-img{
+        content: url('../assets/tekken7/tekken-logo.jpg')
+    }
+    
+    .valorant-img{
+        content: url('../assets/valo/valorant-logo.jpg')
+    }
+
+}
+
+@media(max-width: 650px){
+    .section-2 .course-container{
+        padding-top: 3rem;
+    }
+    
+    .section-2 .course-container .courses .watch-course .course-head{
+        font-size: 2rem;
+    
+    }
+    
+    .section-2 .course-container .courses .watch-course .course-sub{
+        font-size: 1rem;
+    
+    }
+    
+    .section-3 .game-container .games .game-head{
+        font-size: 2rem;
+    }
+    
+    .section-3 .game-container .game-sub{
+        font-size: 1rem;
+        margin-bottom: 1.2rem;
+    }
+
+}
+
+@media(max-width: 450px){
+    .section-1 .welcome{
+        font-size: 2rem;
+    }
+    
+    .section-1 .welcome-sub{
+        font-size: 1.2rem;
+    }
+    
+    .section-2 .course-container .courses .watch-course .course-head{
+        font-size: 1.7rem;
+    
+    }
+    
+    .section-2 .course-container .courses .watch-course .course-sub{
+        font-size: 0.9rem;
+    
+    }
+    
+    .section-3 .game-container .games .game-head{
+        font-size: 1.7rem;
+    }
+    
+    .section-3 .game-container .game-sub{
+        font-size: 0.9rem;
+       
+    }
+
+    footer p{
+       font-size: 0.6rem;
+    }
+}

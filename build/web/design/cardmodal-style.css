@@ -1,0 +1,205 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 23, 21, 6:25:37 PM
+    Author     : Admin
+*/
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 05 14, 21, 1:37:54 AM
+    Author     : Admin
+*/
+
+/* MODAL LOGIN */
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 3; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+     overflow-y: auto;
+    
+}
+
+
+
+.modal-box{
+    font-family: var(--font);
+    border-radius: 5px;
+    max-width: 30rem;
+    width: 100%;
+    background: white;
+    margin: auto; 
+    padding: 1.5rem 2.4rem;
+    height: 38rem;
+}
+
+#cardModal .close{
+    position: relative;
+    width: 100%;
+    left: 99%;
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+.modal-box .form-input{
+    margin-bottom: 1.5rem;
+}
+
+.date-cvv-container .cvv-input-box{
+    display: flex;
+    outline: none;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    font-size: 1rem;
+    padding: 15px;
+}
+
+.date-cvv-container .exp-date{
+    width: 100%;
+    
+}
+
+.date-cvv-container .cvv{
+    width: 100%;
+}
+
+.date-cvv-container{
+    display: flex;
+    width: 100%;
+}
+
+
+.form-input .input-data{
+    position: relative;
+}
+
+.modal-box h2{
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+     text-align: center;
+}
+
+.modal-box .form-input .input-data .input-box{
+    width: 100%;
+    outline: none;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 5px;
+    line-height: 1.2rem;
+    font-size: 1rem;
+ 
+}
+
+
+.card-holders{
+    display: flex;
+    align-items: center;
+}
+
+.card-holders img{
+    height: 20px;
+    width: 30px;
+}
+
+
+
+.modal-box .form-input .input-data .label-tag{
+    pointer-events: none;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.captcha-img{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 1rem;
+}
+
+.captcha-img img{
+    width: 65%;
+}
+
+.captcha-img i{
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+
+
+.login-btn{
+    width: 100%;
+    font-family: var(--font);
+    color: white;
+    height: 3rem;
+    border:none;
+    background-color: #0075f6;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;;
+    transition: all 0.2s;
+    margin-bottom: 1.2rem;
+}
+
+.login-btn:hover{
+    background-color: #0067d6;
+}
+
+select{
+    width: 100%;
+    padding: 0.5rem;
+}
+
+@media(max-width: 900px){
+    .modal-box{
+        margin-top: 20%;
+    }
+}
+
+
+@media(max-width:450px){
+
+    .modal{
+        overflow-y: auto;
+    }
+    .modal-box{
+        margin: 5rem auto 0 auto;
+        height: 90%;
+        padding: 1rem 2rem;
+        width:100%;
+        z-index: 20;
+    }
+    .label-tag{
+        font-size: 0.8rem;
+    }
+    
+    .captcha-img i{
+        font-size: 1.8rem;
+        margin-left: 1rem;
+    }
+    .login-btn{
+        height: 2rem;
+    }
+    
+}
