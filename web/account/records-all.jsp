@@ -110,7 +110,7 @@
 			    <td>Course</td>
 			    <td>Email</td>
 			    <td>Username</td>
-			    <td>Password</td>
+
 			    <td>Age</td>
 			    <td>Birthday</td>
 			    <td>Gender</td>
@@ -120,7 +120,8 @@
 			    <td>Address</td>
 			    <td>Verification</td>
 			</tr>
-			<% try {
+			<%
+			    try {
 				conn = DriverManager.getConnection(url, username, password);
 				String query = "SELECT * FROM APP.USERDB";
 				PreparedStatement pstmt = conn.prepareStatement(query);
@@ -132,7 +133,6 @@
 			    <td>null</td>
 			    <td><%=records.getString("EMAIL")%></td>
 			    <td><%=records.getString("USERNAME")%></td>
-			    <td><%=records.getString("PASSWORD")%></td>
 			    <td>null</td>
 			    <td>null</td>
 			    <td>null</td>
@@ -148,14 +148,14 @@
 			    pstmt = conn.prepareStatement(query1);
 			    records = pstmt.executeQuery();
 			    while (records.next()) {
+				
 			%>
 			<tr>
 			    <td><%=records.getString("NAME")%></td>
 			    <td><%=records.getString("COURSE")%></td>
 			    <td><%=records.getString("EMAIL")%></td>
 			    <td><%=records.getString("USERNAME")%></td>
-			    <td><%=records.getString("PASSWORD")%></td>
-			    <td><%=records.getString("AGE")%></td>
+			   <td><%=records.getString("AGE")%></td>
 			    <td><%=records.getString("BIRTHDAY")%></td>
 			    <td><%=records.getString("GENDER")%></td>
 			    <td><%=records.getString("STUDENTNUMBER")%></td>

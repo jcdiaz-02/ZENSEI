@@ -20,6 +20,7 @@
     String url = "jdbc:derby://localhost:1527/userDB";
     String username = "app";
     String password = "app";
+
     Connection conn;
     try {
 	Class.forName(driver);
@@ -118,7 +119,6 @@
 			    <td>Course</td>
 			    <td>Email</td>
 			    <td>Username</td>
-			    <td>Password</td>
 			    <td>Age</td>
 			    <td>Birthday</td>
 			    <td>Gender</td>
@@ -129,6 +129,7 @@
 			    <td>Verification</td>
 			</tr>
 			<% try {
+
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
 				LocalDate today = LocalDate.now();
 				String todaydate = dtf.format(today);
@@ -138,13 +139,13 @@
 				pstmt.setString(1, todaydate);
 				ResultSet records = pstmt.executeQuery();
 				while (records.next()) {
+
 			%>
 			<tr>
 			    <td>null</td>
 			    <td>null</td>
 			    <td><%=records.getString("EMAIL")%></td>
 			    <td><%=records.getString("USERNAME")%></td>
-			    <td><%=records.getString("PASSWORD")%></td>
 			    <td>null</td>
 			    <td>null</td>
 			    <td>null</td>
@@ -161,13 +162,13 @@
 			    pstmt.setString(1, todaydate);
 			    records = pstmt.executeQuery();
 			    while (records.next()) {
+
 			%>
 			<tr>
 			    <td><%=records.getString("NAME")%></td>
 			    <td><%=records.getString("COURSE")%></td>
 			    <td><%=records.getString("EMAIL")%></td>
 			    <td><%=records.getString("USERNAME")%></td>
-			    <td><%=records.getString("PASSWORD")%></td>
 			    <td><%=records.getString("AGE")%></td>
 			    <td><%=records.getString("BIRTHDAY")%></td>
 			    <td><%=records.getString("GENDER")%></td>
