@@ -227,7 +227,7 @@
 			<%
 			    session.setAttribute("ident", "all");
 			%>
-			<label for="uname"><b>Username of record being deleted</b></label>
+			<label for="uname"><b>Username of record being deleted(cannot delete own record)</b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
 			<button type="submit" class="submit">Submit</button>
@@ -264,28 +264,15 @@
             </div>
         </section>
 
-        <section id="modalSection" class="modal-section">
-            <div class="modal-content">
-                <h3 class="modal-header">ARE YOU SURE?</h3>
-                <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
-                <span class="modal-buttoncon">
-                    <span onclick="Close()" class="close modal-button">Cancel</span>
-                    <span class="modal-button">Delete</span> 
-                </span>
-            </div>
-        </section>
-
-        <section id="modalSection1" class="modal-section">
+	<section id="modalSection1" class="modal-section">
             <div class="modal-content">
                 <h3 class="modal-header">SUCCESS!</h3>
                 <p class="modal-msg">Your PDF has been generated.</p>   
                 <form method="POST" action ="../PDFServlet">
-		    <button class="button"  name="pdfbutton" value="alluserpdf">Download PDF</button>
+		    <button class="button" name="pdfbutton" value="alluserpdf">Download PDF</button>
 		</form>
             </div>
-        </section> 
-
-
+        </section>     
 
     </body>
 </html>

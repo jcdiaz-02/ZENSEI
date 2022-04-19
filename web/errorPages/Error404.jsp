@@ -22,7 +22,7 @@
                         Page is not found
                     </p>
                     <div class="err-wrap">
-                        <a class="err-btn" href="login.jsp">SIGN IN AGAIN</a>
+                        <a class="err-btn" href="login/login.jsp">SIGN IN AGAIN</a>
                     </div>
                 </div>
             </div>

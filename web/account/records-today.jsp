@@ -233,7 +233,7 @@
 			<%
 			    session.setAttribute("ident", "today");
 			%>
-			<label for="uname"><b>Username of record being deleted</b></label>
+			<label for="uname"><b>Username of record being deleted (cannot delete own record) </b></label>
 			<input type="text" placeholder="Enter Username" name="uname" required>
 
 			<button type="submit" class="submit">Submit</button>

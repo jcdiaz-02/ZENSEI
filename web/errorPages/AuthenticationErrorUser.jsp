@@ -23,7 +23,7 @@
                         This user does not exist!
                     </p>
                     <div class="err-wrap">
-                        <a class="err-btn" href="login.jsp">SIGN IN AGAIN</a>
+                        <a class="err-btn" href="login/login.jsp">SIGN IN AGAIN</a>
                     </div>
                 </div>
             </div>

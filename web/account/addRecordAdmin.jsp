@@ -101,7 +101,11 @@
                     </div>
 
 		    <div class='personal-records-info-container1'>
-			<h1>Gender: </h1><input required type="text" placeholder="Enter Gender" name="gender"><br>
+			<h1>Gender: </h1>
+			<select id="gender" name="gender">
+			    <option value="male">Male</option>
+			    <option value="female">Female</option>
+			</select><br>
                     </div>
 
 		    <div class='personal-records-info-container1'>
