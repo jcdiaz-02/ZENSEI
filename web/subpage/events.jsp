@@ -63,7 +63,7 @@
             <div class="logo-container" >
                 <a href="../home.jsp"><img class="nav-logo nav-logo2" src="../assets/logo.svg" ></a>
             </div>
-            
+
             <div class="nav-content">
                 <div class="nav-title">
                     <img class="nav-logo" src="../assets/logo.svg" alt="UST-TGS logo">
@@ -115,11 +115,14 @@
                         <%
                             
                             for (int i = 0; i < recordList.size(); i++) {
-                                DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                                LocalDate eventDate = LocalDate.parse(recordList.get(i).getDate(), f);
-                                LocalDate currentDate = LocalDate.parse(datenow, f);
-                                if (eventDate.isAfter(currentDate)) {
-                                    out.println("<li>" + recordList.get(i).getName() + "</li>");
+                                try {
+                                    DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                                    LocalDate eventDate = LocalDate.parse(recordList.get(i).getDate(), f);
+                                    LocalDate currentDate = LocalDate.parse(datenow, f);
+                                    if (eventDate.isAfter(currentDate)) {
+                                        out.println("<li>" + recordList.get(i).getName() + "</li>");
+                                    }
+                                } catch (Exception e) {
                                 }
                             }
                         %>
@@ -133,12 +136,18 @@
                             for (int i = 0; i < recordList.size(); i++) {
                         %>
                         <li>
+                            <% try {
+                                    
+                               
+                            %>
                             <div>
                                 <p><%= recordList.get(i).getName()%></p>
                                 <%if (recordList.get(i).getImgURL().contains("Images")) {
                                         out.println("<img src=" + "\"../" + recordList.get(i).getImgURL() + "\">");
                                     }%>
                             </div>
+                            <% } catch (Exception e) {
+                                }%>
                         </li>    
                         <% }%>
                     </ul>

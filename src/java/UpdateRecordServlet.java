@@ -97,7 +97,7 @@ public class UpdateRecordServlet extends HttpServlet {
 		pst.setString(14, date);
 		pst.setString(15, u);
 		pst.executeUpdate();
-		response.sendRedirect("account/records-all.jsp");
+		response.sendRedirect("account/addRecordAdmin.jsp");
 	    } else if (butt.equals("add")) {
 		String query = "INSERT INTO APP.VERIFIEDDB(NAME, COURSE, AGE, BIRTHDAY, GENDER, STUDENTNUMBER, "
 			+ "FAVORITEGAME, CONTACTNUMBER, ADDRESS, ROLE, EMAIL, USERNAME, PASSWORD, DATE)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -117,7 +117,7 @@ public class UpdateRecordServlet extends HttpServlet {
 		pst.setString(13, pass);
 		pst.setString(14, date);
 		pst.executeUpdate();
-		response.sendRedirect("account/records-add.jsp");
+		response.sendRedirect("account/addRecordAdmin.jsp");
 	    }
 
 	} catch (SQLException sqle) {
