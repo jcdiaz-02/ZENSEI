@@ -70,12 +70,13 @@
                     </a>
                 </div>
                 <div class="nav-options">
-                    <a class="option" href="../home.jsp">Home</a>
-                    <a class="option" href="../subpage/about.jsp">About</a>
-                    <a class="option" style="color:#B92432;" href="../subpage/events.jsp">Events</a>
-                    <a class="option" href="../subpage/contact.jsp">Contact</a>
-                    <form action="../login/login.jsp">
-                        <input type="submit" value="Login" class="button" />
+                    <a class="option" href="authenticatedHome.jsp">Home</a>
+                    <a class="option" href="authenticatedAbout.jsp">About</a>
+                    <a class="option" style="color:#B92432;" href="../EventOverview">Events</a>
+                    <a class="option" href="authenticatedContacts.jsp">Contact</a>
+                    <form action="../MyAccountServlet">
+                        <input type="hidden" name="verify" value="${verify}" />
+                        <input type="submit" value="ADMIN"  class="button"/>
                     </form>
 
                 </div>
