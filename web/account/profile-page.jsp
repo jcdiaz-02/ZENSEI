@@ -65,20 +65,16 @@
 	    String uname = (String) session.getAttribute("username");
 	    String verify = (String) session.getAttribute("verify");
 
-	    session.setAttribute("verify", session.getAttribute("verify"));
-
 	    session.setAttribute("username", uname);
 	    if (uname == null) {
 		response.sendRedirect("../login.jsp");
 	    }
-	    if (verify.equals("verified")) {
-		try {
-		    conn = DriverManager.getConnection(url, username, password);
-		    String query = "SELECT NAME FROM APP.VERIFIEDDB where USERNAME=?";
-		    PreparedStatement pstmt = conn.prepareStatement(query);
-		    pstmt.setString(1, uname);
-		    ResultSet records = pstmt.executeQuery();
-
+	    try {
+		conn = DriverManager.getConnection(url, username, password);
+		String query = "SELECT NAME FROM APP.VERIFIEDDB where USERNAME=?";
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		pstmt.setString(1, uname);
+		ResultSet records = pstmt.executeQuery();
 
 	%>
         <!--TODO: CONNECT ACCOUNT AND CHECK IF VERIFIED OR NOT--> 
@@ -113,14 +109,7 @@
 
         <section class="profile-section">
             <div class="profile-container">
-                <% if (verify.equals("unverified")) {%>
-                <button type="button" onclick="location.href = '../PersonalRecordServlet';" name="uname"  value = "<c:out value="${username}"/>"  class="button" >
-		    <span class="material-icons-outlined">badge</span> 
-		    View Personal Record
-                </button>
 
-                <% } else if (verify.equals("verified")) { %>
-                <!-- IF ACCOUNT VERIFIED -->
                 <button type="button" onclick="location.href = '../PersonalRecordServlet';" name="uname" value ="<c:out value="${username}"/>"  class="button">
                     <span class="material-icons-outlined">badge</span> 
                     View Personal Record
@@ -130,29 +119,21 @@
                     <span class="material-icons-outlined">person_add_alt</span>
                     Add Record
                 </button>
-		<% }%> 
-
 
                 <button type="button" onclick="location.href = '../LogoutServlet';" class="button">
                     <span class="material-icons-outlined">power_settings_new</span>
                     Logout
                 </button>
-		<%  if (verify.equals("verified")) { %>
 
                 <div class="profile-verify-msg">
                     <span class="material-icons" style="color:green;">check_circle</span>
                     <p> Your account has been verified and you can now add your record.</p>
                 </div>
-                <% } else if (verify.equals("unverified")) {%>
-                <div class="profile-verify-msg">
-                    <span class="material-icons" style="color:red;">cancel</span>
-                    <p> Your account has not been verified.</p>
-                </div>
-		<% }%>
+
 		<%} catch (Exception e) {
-			    e.printStackTrace();
-			}
-		    }%>
+			e.printStackTrace();
+		    }
+		%>
             </div>
         </section>       
     </body>

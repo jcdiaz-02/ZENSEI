@@ -35,6 +35,7 @@ public class TransferRecordServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 	username = config.getInitParameter("DBusername");
 	password = config.getInitParameter("DBpassword");
+
 	super.init(config);
 	try {
 	    Class.forName(config.getInitParameter("DBdriver"));
@@ -59,8 +60,15 @@ public class TransferRecordServlet extends HttpServlet {
 
 	    HttpSession session = request.getSession();
 	    String ident = (String) session.getAttribute("ident");
-
 	    String uname = request.getParameter("uname");
+	    if (uname.isEmpty()) {
+		if (ident.equals("all")) {
+		    response.sendRedirect("account/records-all.jsp");
+		} else if (ident.equals("today")) {
+		    response.sendRedirect("account/records-today.jsp");
+		}
+	    }
+
 	    String query = "SELECT * FROM APP.USERDB where USERNAME = ?";
 	    PreparedStatement pst = conn.prepareStatement(query);
 	    pst.setString(1, uname);

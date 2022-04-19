@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Exceptions.*;
 import java.sql.PreparedStatement;
-import javax.mail.*;
-import javax.mail.internet.*;
-import java.util.*;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -29,6 +26,7 @@ public class LoginServlet extends HttpServlet {
 
     String username;
     String password;
+    String stringKey;
 
     Connection conn;
 
@@ -36,6 +34,8 @@ public class LoginServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 	username = config.getInitParameter("DBusername");
 	password = config.getInitParameter("DBpassword");
+	stringKey = config.getInitParameter("publicKey");//retrieves the public key (hutaocomehomepls) from web xml
+
 	super.init(config);
 	try {
 	    Class.forName(config.getInitParameter("DBdriver"));
@@ -53,7 +53,10 @@ public class LoginServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-
+	byte[] key = new byte[16];
+	for (int i = 0; i < key.length; i++) {
+	    key[i] = (byte) stringKey.charAt(i);
+	}
 	try {
 	    HttpSession httpsession = request.getSession();
 
@@ -81,11 +84,13 @@ public class LoginServlet extends HttpServlet {
 			    throw new AuthenticationExceptionUsername();
 			} else {
 			    String dPass = records.getString("PASSWORD");
+			    String ePass = Security.decrypt(dPass, key);//encrypts the password the user has inputted and compares it to the encrypted password in DB
+
 //                    System.out.println("password is:" + dPass);
-			    if (!dPass.equals(pass)) {
+			    if (!ePass.equals(pass)) {
 				//password is incorrect
 				throw new AuthenticationExceptionPassword();
-			    } else if (dPass.equals(pass)) {
+			    } else if (ePass.equals(ePass)) {
 
 				HttpSession session = request.getSession();
 				session.setAttribute("username", uname);
@@ -97,11 +102,13 @@ public class LoginServlet extends HttpServlet {
 			}
 		    } else {
 			String dPass = records.getString("PASSWORD");
+			String ePass = Security.decrypt(dPass, key);//encrypts the password the user has inputted and compares it to the encrypted password in DB
+
 //                    System.out.println("password is:" + dPass);
-			if (!dPass.equals(pass)) {
+			if (!ePass.equals(pass)) {
 			    //password is incorrect
 			    throw new AuthenticationExceptionPassword();
-			} else if (dPass.equals(pass)) {
+			} else if (ePass.equals(pass)) {
 
 			    HttpSession session = request.getSession();
 			    session.setAttribute("username", uname);

@@ -35,7 +35,7 @@ public class MyAccountServlet extends HttpServlet {
 		}
 
 	    } else if (verify.equals("unverified")) {
-		response.sendRedirect("subpage/myAccountPage.jsp");
+		response.sendRedirect("account/profile-page-unverified.jsp");
 	    }
 	} catch (Exception e) {
 	    response.sendRedirect("errPages/Error404.jsp");

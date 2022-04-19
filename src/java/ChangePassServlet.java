@@ -37,6 +37,7 @@ public class ChangePassServlet extends HttpServlet {
      */
     String username;
     String password;
+    String stringKey;
 
     Connection conn;
 
@@ -44,6 +45,8 @@ public class ChangePassServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 	username = config.getInitParameter("DBusername");
 	password = config.getInitParameter("DBpassword");
+        stringKey = config.getInitParameter("publicKey");//retrieves the public key (hutaocomehomepls) from web xml
+
 	super.init(config);
 	try {
 	    Class.forName(config.getInitParameter("DBdriver"));
@@ -62,6 +65,11 @@ public class ChangePassServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	response.setContentType("text/html;charset=UTF-8");
+	byte[] key = new byte[16];
+	//converts each character of the public key into a byte and inserts it into a array.
+	for (int i = 0; i < key.length; i++) {
+	    key[i] = (byte) stringKey.charAt(i);
+	}
 	try {
 	    HttpSession httpsession = request.getSession();
 	    String email = (String) httpsession.getAttribute("email");
@@ -73,6 +81,8 @@ public class ChangePassServlet extends HttpServlet {
 		    httpsession.setAttribute("error", "1");
 		    response.sendRedirect("login/password-change.jsp");
 		} else {
+		   String ePass = Security.encrypt(psw, key);//encrypts the password that the new user has inputted
+
 		    String query = "SELECT PASSWORD FROM APP.USERDB where EMAIL=?";
 		    PreparedStatement pstmt = conn.prepareStatement(query);
 		    pstmt.setString(1, email);
@@ -88,7 +98,7 @@ public class ChangePassServlet extends HttpServlet {
 			} else {
 			    query = "UPDATE APP.VERIFIEDDB set PASSWORD=? where EMAIL=?";
 			    pstmt = conn.prepareStatement(query);
-			    pstmt.setString(1, psw);
+			    pstmt.setString(1, ePass);
 			    pstmt.setString(2, email);
 			    pstmt.executeUpdate();
 			    response.sendRedirect("home.jsp");

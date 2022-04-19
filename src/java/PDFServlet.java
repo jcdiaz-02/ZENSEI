@@ -93,10 +93,10 @@ public class PDFServlet extends HttpServlet {
 
 	@Override
 	public void onEndPage(PdfWriter writer, Document document) {
-	    PdfPTable table = new PdfPTable(15);
+	    PdfPTable table = new PdfPTable(14);
 	    try {
 		//Table formatting
-		float[] columnWidths = new float[]{3f, 8f, 8f, 30f, 20f, 20f, 3f, 8f, 8f, 8f, 8f, 8f, 8f, 8f, 8f};
+		float[] columnWidths = new float[]{3f, 8f, 8f, 30f, 20f, 20f, 3f, 8f, 8f, 8f, 8f, 8f, 8f, 8f};
 		table.setWidths(columnWidths);
 		table.setTotalWidth(720);
 		table.getDefaultCell().setFixedHeight(20);
@@ -192,7 +192,7 @@ public class PDFServlet extends HttpServlet {
 		stmt.setString(1, u);
 		ResultSet rs1 = stmt.executeQuery();
 
-		PdfPTable table = new PdfPTable(15);
+		PdfPTable table = new PdfPTable(14);
 
 		//table.setSpacingBefore(1f);
 		table.addCell(new Phrase("No.", FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -219,7 +219,6 @@ public class PDFServlet extends HttpServlet {
 		    table.addCell(new Phrase(rs1.getString("COURSE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 		    table.addCell(new Phrase(rs1.getString("EMAIL"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 		    table.addCell(new Phrase(rs1.getString("USERNAME"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
-		    table.addCell(new Phrase(rs1.getString("PASSWORD"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 		    table.addCell(new Phrase(rs1.getString("AGE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 		    table.addCell(new Phrase(rs1.getString("BIRTHDAY"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 		    table.addCell(new Phrase(rs1.getString("GENDER"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -264,7 +263,7 @@ public class PDFServlet extends HttpServlet {
 			    document.add(table);
 			    document.newPage();
 			    document.add(new Phrase("\n"));
-			    table = new PdfPTable(15);
+			    table = new PdfPTable(14);
 			    table.setSpacingBefore(8f);
 			}
 
@@ -290,7 +289,6 @@ public class PDFServlet extends HttpServlet {
 			    table.addCell(new Phrase(rs1.getString("COURSE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("EMAIL"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("USERNAME"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
-			    table.addCell(new Phrase(rs1.getString("PASSWORD"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("AGE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("BIRTHDAY"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("GENDER"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -307,7 +305,6 @@ public class PDFServlet extends HttpServlet {
 			    table.addCell(new Phrase(rs1.getString("COURSE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("EMAIL"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("USERNAME"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
-			    table.addCell(new Phrase(rs1.getString("PASSWORD"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("AGE"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("BIRTHDAY"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
 			    table.addCell(new Phrase(rs1.getString("GENDER"), FontFactory.getFont(FontFactory.HELVETICA, 8)));
@@ -322,7 +319,7 @@ public class PDFServlet extends HttpServlet {
 				document.add(table);
 				document.newPage();
 				document.add(new Phrase("\n"));
-				table = new PdfPTable(15);
+				table = new PdfPTable(14);
 				table.setSpacingBefore(8f);
 			    }
 			}

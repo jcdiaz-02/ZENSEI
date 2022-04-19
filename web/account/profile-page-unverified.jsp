@@ -1,11 +1,11 @@
 <%-- 
-    Document   : personal-record-0
-    Created on : 03 20, 22, 1:17:02 AM
+    Document   : profile-page
+    Created on : 03 19, 22, 2:59:24 AM
     Author     : Admin
 --%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,7 +14,7 @@
         <link rel="icon" href="../assets/logo.svg">
         <link rel="stylesheet" href="../assets/css/asset-sheet.css">
         <link rel="stylesheet" href="../assets/css/navbar-style.css">
-        <link rel="stylesheet" href="../assets/css/records-personal-style.css">
+        <link rel="stylesheet" href="../assets/css/profile-page-style.css">
 
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,13 +30,21 @@
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-
-        <script src="https://kit.fontawesome.com/db09b338f9.js" crossorigin="anonymous"></script>
-        <title>UST-TGS</title>
     </head>
     <body>
-        <!--TODO: CONNECT TO DATABASE TO ACCESS PERSONAL RECORD -->
-        <!--TODO: FUNCTIONALITY OF SORT BUTTONS-->
+	<%
+	    response.setHeader("Cache-Control", "no-cache");
+	    response.setHeader("Cache-Control", "no-store");
+	    response.setHeader("Pragma", "no-cache");
+	    response.setDateHeader("Expires", 0);
+	    String uname = (String) session.getAttribute("username");
+
+	    if (uname == null) {
+		response.sendRedirect("../login.jsp");
+	    }
+
+	%>
+        <!--TODO: CONNECT ACCOUNT AND CHECK IF VERIFIED OR NOT--> 
         <!-- navbar -->
         <div class="bar"> 
             <input type="checkbox" id="check">
@@ -51,7 +59,7 @@
                     </a>
                 </div>
                 <div class="nav-options" >
-		    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
+                    <a class="option" href="../subpage/authenticatedHome.jsp">Home</a>
                     <a class="option" href="../subpage/authenticatedAbout.jsp">About</a>
                     <a class="option" href="../EventOverview">Events</a>
                     <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
@@ -60,58 +68,32 @@
                         <input type="submit" value="My Account"  class="button"/>
                     </form>
 
+
                 </div>
             </div>
         </div>
 
-        <section class="personal-records-section-0">
-            <div class="personal-records-container">
-		<%
-		    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-		    String uname = (String) session.getAttribute("username");
 
-		    if (uname == null) {
-			response.sendRedirect("home.jsp");
-		    }
-                %>
-                <h3> View Personal Record </h3>
-                <form class="personal-records-info-container0" action="/">
-                    <div class='personal-records-info-container1'>
-                        <label for=''>Email:</label>
-                        <input type='email' id='email' name='email' value="${email}" readonly> 
+        <section class="profile-section">
+            <div class="profile-container">
 
-                    </div>
+                <button type="button" onclick="location.href = '../PersonalRecordServlet';" class="button" >
+		    <span class="material-icons-outlined">badge</span> 
+		    View Personal Record
+                </button>
 
-                    <div class='personal-records-info-container1'> 
-                        <label for=''>Username:</label>
+                <button type="button" onclick="location.href = '../LogoutServlet';" class="button">
+                    <span class="material-icons-outlined">power_settings_new</span>
+                    Logout
+                </button>
 
-                        <input type='text' id='uname' name='uname' value="${username}" readonly> 
+                <div class="profile-verify-msg">
+                    <span class="material-icons" style="color:red;">cancel</span>
+                    <p> Your account has not been verified.</p>
+                </div>
 
 
-                    </div>
-
-
-                    <div class='personal-records-info-container1'> 
-                        <label for=''>Password:</label>
-
-                        <input type='text' id='password' name='password' value="${password}" readonly> 
-
-
-                    </div>
-
-                    <span class='verification-container'>
-                        <span class="material-icons verification-icon" style="color:red;">
-			    cancel
-                        </span> 
-                        Your account has not been verified.
-                    </span>
-
-                    <div class="personal-records-buttons"> 
-			<input type="button" onclick="location.href = 'profile-page-unverified.jsp';" value="GO BACK" class="button" />
-			<input type="button" onclick="location.href = '../LogoutServlet';" value="LOGOUT" class="button" />
-                    </div>    
-                </form> 
             </div>
-        </section>
+        </section>       
     </body>
 </html>

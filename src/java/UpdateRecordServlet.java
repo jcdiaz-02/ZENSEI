@@ -29,6 +29,7 @@ public class UpdateRecordServlet extends HttpServlet {
 
     String username;
     String password;
+    String stringKey;
 
     Connection conn;
 
@@ -36,6 +37,8 @@ public class UpdateRecordServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 	username = config.getInitParameter("DBusername");
 	password = config.getInitParameter("DBpassword");
+        stringKey = config.getInitParameter("publicKey");//retrieves the public key (hutaocomehomepls) from web xml
+
 	super.init(config);
 	try {
 	    Class.forName(config.getInitParameter("DBdriver"));
@@ -53,7 +56,10 @@ public class UpdateRecordServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-
+	byte[] key = new byte[16];
+	for (int i = 0; i < key.length; i++) {
+	    key[i] = (byte) stringKey.charAt(i);
+	}
 	try {
 	    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
 	    LocalDate now = LocalDate.now();
@@ -75,6 +81,7 @@ public class UpdateRecordServlet extends HttpServlet {
 	    String favgame = request.getParameter("favgame");
 	    String gender = request.getParameter("gender");
 	    String role = request.getParameter("userrole");
+	    String ePass = Security.encrypt(pass, key);//encrypts the password the user has inputted and compares it to the encrypted password in DB
 
 	    if (butt.equals("update")) {
 		String query = "UPDATE APP.VERIFIEDDB set NAME=?, COURSE=?, AGE=?, BIRTHDAY=?, GENDER=?, STUDENTNUMBER=?, "
@@ -93,7 +100,7 @@ public class UpdateRecordServlet extends HttpServlet {
 		pst.setString(10, role);
 		pst.setString(11, email);
 		pst.setString(12, uname);
-		pst.setString(13, pass);
+		pst.setString(13, ePass);
 		pst.setString(14, date);
 		pst.setString(15, u);
 		pst.executeUpdate();
@@ -114,7 +121,7 @@ public class UpdateRecordServlet extends HttpServlet {
 		pst.setString(10, role);
 		pst.setString(11, email);
 		pst.setString(12, uname);
-		pst.setString(13, pass);
+		pst.setString(13, ePass);
 		pst.setString(14, date);
 		pst.executeUpdate();
 		response.sendRedirect("account/addRecordAdmin.jsp");

@@ -28,12 +28,16 @@ public class SignUpServlet extends HttpServlet {
 
     String username;
     String password;
+    String stringKey;
+
     Connection conn;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
 	username = config.getInitParameter("DBusername");
 	password = config.getInitParameter("DBpassword");
+        stringKey = config.getInitParameter("publicKey");//retrieves the public key (hutaocomehomepls) from web xml
+
 	super.init(config);
 	try {
 	    Class.forName(config.getInitParameter("DBdriver"));
@@ -51,6 +55,10 @@ public class SignUpServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+	byte[] key = new byte[16];
+	for (int i = 0; i < key.length; i++) {
+	    key[i] = (byte) stringKey.charAt(i);
+	}
 	HttpSession httpsession = request.getSession();
 	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
 	LocalDate now = LocalDate.now();
@@ -60,6 +68,7 @@ public class SignUpServlet extends HttpServlet {
 	String psw = (String) httpsession.getAttribute("psw");
 	String email = (String) httpsession.getAttribute("email");
 	String code = (String) httpsession.getAttribute("code");
+	String ePass = Security.encrypt(psw, key);//encrypts the password the user has inputted and compares it to the encrypted password in DB
 
 	String verify = request.getParameter("verify");
 	try {
@@ -71,7 +80,7 @@ public class SignUpServlet extends HttpServlet {
 		PreparedStatement pst = conn.prepareStatement(query);
 
 		pst.setString(1, uname);
-		pst.setString(2, psw);
+		pst.setString(2, ePass);
 		pst.setString(3, email);
 		pst.setString(4, "member");
 		pst.setString(5, date);

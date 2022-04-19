@@ -17,6 +17,7 @@
     String url = "jdbc:derby://localhost:1527/userDB";
     String username = "app";
     String password = "app";
+
     Connection conn;
     try {
 	Class.forName(driver);
@@ -90,7 +91,6 @@
 	<%
 	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
 	    String sessionuname = (String) session.getAttribute("username");
-	    //session.setAttribute("verify", session.getAttribute("verify"));
 
 	    String role = (String) session.getAttribute("role");
 	    if (sessionuname == null) {
@@ -99,7 +99,8 @@
 	%>
         <section class="personal-records-section-2">
             <div class="personal-records-container">
-		<% try {
+		<%
+		    try {
 			conn = DriverManager.getConnection(url, username, password);
 
 			String uname = request.getParameter("uname");
@@ -114,7 +115,6 @@
 			    do {
 				System.out.println("");
 
-
 		%>
                 <h3> Update Record</h3>
                 <form class="personal-records-info-container0" method="POST" action="UpdateRecordServlet">
@@ -127,7 +127,7 @@
 		    </div>
 
 		    <div class="personal-records-info-container1">
-			<h1>Password: </h1><input type="text" placeholder="<%=records.getString("PASSWORD")%>" name="pass">
+			<h1>Password: </h1><input type="text" placeholder="Password" name="pass">
 		    </div>
 		    <div class="personal-records-info-container1">
 

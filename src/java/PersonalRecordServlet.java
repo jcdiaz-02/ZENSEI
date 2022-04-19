@@ -32,6 +32,7 @@ public class PersonalRecordServlet extends HttpServlet {
 
     String username;
     String password;
+    String stringKey;
 
     Connection conn;
 
@@ -39,6 +40,8 @@ public class PersonalRecordServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 	username = config.getInitParameter("DBusername");
 	password = config.getInitParameter("DBpassword");
+        stringKey = config.getInitParameter("publicKey");//retrieves the public key (hutaocomehomepls) from web xml
+
 	super.init(config);
 	try {
 	    Class.forName(config.getInitParameter("DBdriver"));
@@ -56,7 +59,11 @@ public class PersonalRecordServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-
+	byte[] key = new byte[16];
+	//converts each character of the public key into a byte and inserts it into a array.
+	for (int i = 0; i < key.length; i++) {
+	    key[i] = (byte) stringKey.charAt(i);
+	}
 	try {
 	    HttpSession session = request.getSession();
 
@@ -75,13 +82,13 @@ public class PersonalRecordServlet extends HttpServlet {
 		if (records.next() == false) {
 		    throw new AuthenticationExceptionUsername();
 		} else {
-
+		    String dPass = Security.decrypt(records.getString("PASSWORD"), key);//encrypts the password that the new user has inputted
 		    session.setAttribute("verify", "verified");
 		    session.setAttribute("name", records.getString("NAME"));
 		    session.setAttribute("course", records.getString("COURSE"));
 		    session.setAttribute("email", records.getString("EMAIL"));
 		    session.setAttribute("username", uname);
-		    session.setAttribute("password", records.getString("PASSWORD"));
+		    session.setAttribute("password", dPass);
 		    session.setAttribute("age", records.getString("AGE"));
 		    session.setAttribute("birthday", records.getString("BIRTHDAY"));
 		    session.setAttribute("gender", records.getString("GENDER"));
@@ -94,13 +101,12 @@ public class PersonalRecordServlet extends HttpServlet {
 		}
 	    } else {
 
-		
-		String pass = records.getString("PASSWORD");
 		String toemail = records.getString("EMAIL");
+		String dPass = Security.decrypt(records.getString("PASSWORD"), key);//encrypts the password that the new user has inputted
 
 		session.setAttribute("email", toemail);
 		session.setAttribute("username", uname);
-		session.setAttribute("password", pass);
+		session.setAttribute("password", dPass);
 		response.sendRedirect("account/records-personal-0.jsp");
 	    }
 
