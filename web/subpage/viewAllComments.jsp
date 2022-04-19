@@ -47,7 +47,7 @@
         <%
             response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
             String role = (String) session.getAttribute("role");
-             List<CommentBox> commentList = (List) session.getAttribute("CommentList");
+            List<CommentBox> commentList = (List) session.getAttribute("CommentList");
             role = "admin";
 
             if (role != "admin") {
@@ -100,6 +100,7 @@
                         <% if (commentList != null) {
                                 for (int i = 0; i < commentList.size(); i++) {%>
                         <tr>
+                            <% try {%>
                             <td>
                                 <%= commentList.get(i).getId()%>
                             </td>
@@ -112,7 +113,7 @@
                             <td>
                                 <%= commentList.get(i).getComment()%>
                             </td>
-                                                        <td>
+                            <td>
                                 <form id="myform" action="../DeleteComment"  method="get">
                                     <label class="checkbox-container">
                                         <input form="myform" type="checkbox" id="rows" name="selectedRows" value="<%= commentList.get(i).getId()%>">
@@ -121,7 +122,9 @@
                                 </form>
                             </td>
                         </tr>
-                        <% }
+                        <%  } catch (Exception e) {
+                                    }
+                                }
                             }%>
 
                     </table>

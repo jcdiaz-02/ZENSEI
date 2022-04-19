@@ -20,10 +20,10 @@
     String password = "app";
     Connection conn;
     try {
-	Class.forName(driver);
+        Class.forName(driver);
 
     } catch (ClassNotFoundException e) {
-	e.printStackTrace();
+        e.printStackTrace();
     }
     Connection connection = null;
     Statement statement = null;
@@ -82,28 +82,28 @@
                     <a class="option" href="../EventOverview">Events</a>
                     <a class="option" href="../subpage/authenticatedContacts.jsp">Contact</a>
                     <form style="color:#B92432;" action="../MyAccountServlet">
-			<input type="hidden" name="verify" value="${verify}" />
+                        <input type="hidden" name="verify" value="${verify}" />
                         <input type="submit" value="ADMIN"  class="button"/>
                     </form>
                 </div>
             </div>
         </div>
-	<%
-	    response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	    String uname = (String) session.getAttribute("username");
-	    //session.setAttribute("verify", session.getAttribute("verify"));
+        <%
+            response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+            String uname = (String) session.getAttribute("username");
+            //session.setAttribute("verify", session.getAttribute("verify"));
 
-	    String role = (String) session.getAttribute("role");
-	    if (uname == null) {
-		response.sendRedirect("home.jsp");
-	    }
-	%>
+            String role = (String) session.getAttribute("role");
+            if (uname == null) {
+                response.sendRedirect("home.jsp");
+            }
+        %>
         <section class="all-records-section">
             <div class="all-records-container">
-		<div class="all-records-head">
-		    <h2>All Records</h2>          
+                <div class="all-records-head">
+                    <h2>All Records</h2>          
                 </div>
-		<div class="table-container">
+                <div class="table-container">
                     <table class="records-table">
 			<tr>
 			    <td>Name</td>
@@ -170,109 +170,137 @@
 				e.printStackTrace();
 			    }%>
 
-		    </table>
+                    </table>
                 </div>       
 
                 <div class="all-records-buttons"> 
                     <form  action="profile-page-admin.jsp">
                         <input type="submit" value="GO BACK"  class="button"/>
                     </form>
-		    <form onclick ="deleteOpenForm()">
-			<button class="button" onclick="">Delete</button>
-		    </form>
-		    <form onclick="verifyOpenForm()" >
-			<button class="button"  onclick="verifyOpenForm()">Verify </button>
-		    </form>
-		    <form onclick="openForm()" >
-			<button class="button"  onclick="openForm()">Update</button>
-		    </form>
-                    <button id="modalBtn1"  onclick="OpenModal1()" class="button"/>GENERATE PDF</button>
+                    <form onclick ="deleteOpenForm()">
+                        <button class="button" onclick="">DELETE</button>
+                    </form>
+                    <form onclick="verifyOpenForm()" >
+                        <button class="button"  onclick="verifyOpenForm()">VERIFY </button>
+                    </form>
+                    <form onclick="openForm()" >
+                        <button class="button"  onclick="openForm()">UPDATE</button>
+                    </form>
+                    <button id="modalBtn"  class="button"/>GENERATE PDF</button>
 
                     <form  action="../LogoutServlet">
                         <input type="submit" value="LOGOUT"  class="button"/>
                     </form>
 
                 </div>      
-
-		<div class="form-popup" id="myForm">
-		    <form action="records-update.jsp" class="form-container">
-			<h1>Update Record</h1>
-
-			<label for="uname"><b>Username of record being updated </b></label>
-			<b> (verified usernames only) </b>
-			<input type="text" placeholder="Enter Username" name="uname" required>
-
-			<button type="submit" class="submit">Submit</button>
-			<button type="button" class="cancel" onclick="closeForm()">Cancel</button>
-		    </form>
-		</div>
-
-		<div class="form-popup" id="verifyForm">
-		    <form action="../TransferRecordServlet" class="form-container">
-			<h1>Verify Record</h1>
-			<%
-			    session.setAttribute("ident", "all");
-			%>
-			<label for="uname"><b>Username of record being verified</b></label>
-			<input type="text" placeholder="Enter Username" name="uname" required>
-
-			<button type="submit" class="submit">Submit</button>
-			<button type="button" class="cancel" onclick="verifyCloseForm()">Cancel</button>
-		    </form>
-		</div>
-
-		<div class="form-popup" id="deleteForm">
-		    <form action="../DeleteRecordServlet" class="form-container">
-			<h1>Delete Record</h1>
-			<%
-			    session.setAttribute("ident", "all");
-			%>
-			<label for="uname"><b>Username of record being deleted(cannot delete own record)</b></label>
-			<input type="text" placeholder="Enter Username" name="uname" required>
-
-			<button type="submit" class="submit">Submit</button>
-			<button type="button" class="cancel" onclick="deleteCloseForm()">Cancel</button>
-		    </form>
-		</div>
-		<script>
-		    function openForm() {
-			event.preventDefault();
-			document.getElementById("myForm").style.display = "block";
-		    }
-		    function closeForm() {
-			event.preventDefault();
-			document.getElementById("myForm").style.display = "none";
-		    }
-		    function verifyOpenForm() {
-			event.preventDefault();
-			document.getElementById("verifyForm").style.display = "block";
-		    }
-		    function verifyCloseForm() {
-			event.preventDefault();
-			document.getElementById("verifyForm").style.display = "none";
-		    }
-		    function deleteOpenForm() {
-			event.preventDefault();
-			document.getElementById("deleteForm").style.display = "block";
-		    }
-		    function deleteCloseForm() {
-			event.preventDefault();
-			document.getElementById("deleteForm").style.display = "none";
-		    }
-
-		</script>
             </div>
         </section>
 
-	<section id="modalSection1" class="modal-section">
+
+        <div id="deleteForm" class="modal-section">
+            <form action="../DeleteRecordServlet" class="modal-content">
+                <h3 class="modal-header">Delete Record</h3>
+                <%
+                    session.setAttribute("ident", "all");
+                %>
+                <label class="modal-msg" for="uname"><b>Username of record being deleted</b></label>
+                <input class="modal-input" type="text" placeholder="Enter Username" name="uname" required>
+               
+                <span class="modal-buttoncon"> 
+                    <button  class="close modal-button" type="button" class="cancel" onclick="deleteCloseForm()">Cancel</button>
+                    <button  class="modal-button"  type="submit" class="submit">Submit</button>
+                </span>
+            </form>
+        </div>
+
+        <div id="verifyForm" class="modal-section">
+            <form action="../TransferRecordServlet" class="modal-content">
+                <h3 class="modal-header">Verify Record</h3>
+                <%
+                    session.setAttribute("ident", "all");
+                %>
+                <label class="modal-msg" for="uname"><b>Username of record being verified</b></label>
+                <input class="modal-input"  type="text" placeholder="Enter Username" name="uname" required>
+                <span class="modal-buttoncon"> 
+                    <button class="close modal-button" type="button" class="cancel" onclick="verifyCloseForm()">Cancel</button>
+                    <button class="modal-button" type="submit" class="submit">Submit</button>
+
+                </span>
+            </form>
+        </div>
+
+        <div id="myForm" class="modal-section" >
+            <form action="records-update.jsp" class="modal-content">
+                <h3 class="modal-header">Update Record</h3>
+
+                <label class="modal-msg" for="uname"><b>Username of record being updated </b>  <b> (verified usernames only) </b></label>
+                <input class="modal-input" type="text" placeholder="Enter Username" name="uname" required>
+                <span class="modal-buttoncon"> 
+                    <button class="close modal-button" type="button" class="cancel" onclick="closeForm()">Cancel</button>
+                    <button class="modal-button" type="submit" class="submit">Submit</button>
+                </span>
+            </form>
+        </div>
+
+        <section id="modalSection" class="modal-section">
             <div class="modal-content">
                 <h3 class="modal-header">SUCCESS!</h3>
                 <p class="modal-msg">Your PDF has been generated.</p>   
-                <form method="POST" action ="../PDFServlet">
-		    <button class="button" name="pdfbutton" value="alluserpdf">Download PDF</button>
-		</form>
-            </div>
-        </section>     
+                <form class="modal-buttoncon" method="POST" action ="../PDFServlet">
+                    <button class="modal-button"  name="pdfbutton" value="alluserpdf">Download PDF</button>
+                </form>
+            </div>"
+        </section> 
 
+        <!--        <section id="modalSection" class="modal-section">
+                    <div class="modal-content">
+                        <h3 class="modal-header">ARE YOU SURE?</h3>
+                        <p class="modal-msg">Please confirm that you have selected the correct event/s. You cannot reverse this action after pressing the delete button.</p>
+                        <span class="modal-buttoncon">
+                            <span onclick="Close()" class="close modal-button">Cancel</span>
+                            <span class="modal-button">Delete</span> 
+                        </span>
+                    </div>
+                </section>-->
+        <script>
+            function openForm() {
+                event.preventDefault();
+                document.getElementById("myForm").style.display = "block";
+            }
+            ;
+            function closeForm() {
+                event.preventDefault();
+                document.getElementById("myForm").style.display = "none";
+
+            }
+            ;
+            function verifyOpenForm() {
+                event.preventDefault();
+                document.getElementById("verifyForm").style.display = "block";
+            }
+            ;
+            function verifyCloseForm() {
+                event.preventDefault();
+                document.getElementById("verifyForm").style.display = "none";
+            }
+            ;
+            function deleteOpenForm() {
+                event.preventDefault();
+                document.getElementById("deleteForm").style.display = "block";
+            }
+            ;
+            function deleteCloseForm() {
+                event.preventDefault();
+                document.getElementById("deleteForm").style.display = "none";
+            }
+            ;
+
+            window.onclick = function (event) {
+                if (event.target === document.getElementById("myForm")) {
+                    document.getElementById("myForm").style.display = "none";
+                }
+            };
+
+        </script>
     </body>
 </html>
