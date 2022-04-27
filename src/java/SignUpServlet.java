@@ -65,7 +65,7 @@ public class SignUpServlet extends HttpServlet {
 	String date = dtf.format(now);
 
 	String uname = (String) httpsession.getAttribute("uname");
-	String psw = (String) httpsession.getAttribute("psw");
+	String psw = (String) httpsession.getAttribute("pass");
 	String email = (String) httpsession.getAttribute("email");
 	String code = (String) httpsession.getAttribute("code");
 	String ePass = Security.encrypt(psw, key);//encrypts the password the user has inputted and compares it to the encrypted password in DB

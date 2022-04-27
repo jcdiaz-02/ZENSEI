@@ -104,7 +104,7 @@ public class UpdateRecordServlet extends HttpServlet {
 		pst.setString(14, date);
 		pst.setString(15, u);
 		pst.executeUpdate();
-		response.sendRedirect("account/addRecordAdmin.jsp");
+		response.sendRedirect("account/records-all.jsp");
 	    } else if (butt.equals("add")) {
 		String query = "INSERT INTO APP.VERIFIEDDB(NAME, COURSE, AGE, BIRTHDAY, GENDER, STUDENTNUMBER, "
 			+ "FAVORITEGAME, CONTACTNUMBER, ADDRESS, ROLE, EMAIL, USERNAME, PASSWORD, DATE)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

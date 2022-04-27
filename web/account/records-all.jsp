@@ -155,7 +155,7 @@
 			    <td><%=records.getString("COURSE")%></td>
 			    <td><%=records.getString("EMAIL")%></td>
 			    <td><%=records.getString("USERNAME")%></td>
-			   <td><%=records.getString("AGE")%></td>
+                            <td><%=records.getString("AGE")%></td>
 			    <td><%=records.getString("BIRTHDAY")%></td>
 			    <td><%=records.getString("GENDER")%></td>
 			    <td><%=records.getString("STUDENTNUMBER")%></td>

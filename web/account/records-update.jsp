@@ -117,7 +117,7 @@
 
 		%>
                 <h3> Update Record</h3>
-                <form class="personal-records-info-container0" method="POST" action="UpdateRecordServlet">
+                <form class="personal-records-info-container0" method="POST" action="../UpdateRecordServlet">
 		    <div class="personal-records-info-container1">
 			<h1>Email: </h1><input type="email" placeholder="<%=records.getString("EMAIL")%>" name="email">
 		    </div>
@@ -178,7 +178,9 @@
 
 		    <div class="personal-records-buttons"> 
                         <input type="button" onclick="location.href = 'records-all.jsp';" value="GO BACK" class="button" />
-                        <input type="submit" id="modalBtn" value="UPDATE" class="button" />
+                        
+                        <button type="submit" id="modalBtn" name="recbutton" value="update" class="button" />UPDATE</button>
+                    
                         <button type="button" onclick="location.href = '../LogoutServlet';" class="button">
 			    <span class="material-icons-outlined">power_settings_new</span>
 			    Logout</button>

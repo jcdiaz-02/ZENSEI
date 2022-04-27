@@ -50,7 +50,7 @@ public class AddComment extends HttpServlet {
             String query = "INSERT INTO comment (comment, first_name, last_name, email, course) VALUES (?, ?, ?, ?, ?)";
             db.updateQuery(query, new String[] { comment, firstName, lastName, email, course }, conn);
             if("admin".equalsIgnoreCase(role)){
-                response.sendRedirect("subpage/authenticatedcontacts.jsp");
+                response.sendRedirect("subpage/authenticatedContacts.jsp");
             }else{
                 response.sendRedirect("subpage/contact.jsp");
             }

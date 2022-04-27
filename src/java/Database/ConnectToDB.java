@@ -14,12 +14,16 @@ public class ConnectToDB {
     public Connection getConnection(String dbUrl, String dbUser, String dbPassword) throws SQLException {
         Connection conn;
         try {
-            final String url = "jdbc:mysql://localhost:3306/GamingArchives?useSSL=false";
-            final String user = "root";
-            final String password = "Jc09d0i3az01Z";
+//            "jdbc:mysql://gamingarchives.mysql.database.azure.com:3306/{your_database}?useSSL=true";
+//            DriverManager.getConnection(url, "gamingarchivesAdmin", "{your_password}");
+            final String url = "jdbc:mysql://gamingarchives.mysql.database.azure.com:3306/gamingarchives?useSSL=false&serverTimezone=UTC";
+            final String user = "gamingarchivesAdmin";
+            final String password = "zt.sw9\"D6`VjBnhh";
             conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to Azure Database");
             return conn;
         } catch (SQLException e) {
+            System.out.println("Not Connected");
             System.out.println(e.getMessage());
             return null;
         }
@@ -27,7 +31,7 @@ public class ConnectToDB {
 
     public ResultSet getTableResultSet(String tablename, Connection conn) {
         try {
-           String query = "SELECT * FROM " + tablename;
+            String query = "SELECT * FROM " + tablename;
             Statement pstmt = conn.createStatement();
             ResultSet rs = pstmt.executeQuery(query);
             return rs;
@@ -39,7 +43,7 @@ public class ConnectToDB {
 
     public ResultSet getSortedTableRS(String tablename, Connection conn) {
         try {
-            String query = "SELECT * FROM " + tablename +" ORDER BY event_date DESC";
+            String query = "SELECT * FROM " + tablename + " ORDER BY event_date DESC";
             Statement pstmt = conn.createStatement();
             ResultSet rs = pstmt.executeQuery(query);
             return rs;
